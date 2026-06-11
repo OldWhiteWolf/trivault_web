@@ -151,6 +151,7 @@
             background-color: var(--accent-gold);
             color: var(--primary-dark);
             border: 1px solid var(--accent-gold);
+            display: inline-block;
         }
 
         .btn-primary:hover {
@@ -311,51 +312,34 @@
             color: var(--text-muted);
         }
 
-        /* --- INTAKE FORM --- */
+        /* --- INTAKE PORTAL CALLOUT --- */
         .intake-section {
             background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
-            padding: 80px 2rem;
+            padding: 100px 2rem;
+            text-align: center;
         }
 
-        .form-wrapper {
-            max-width: 700px;
+        .portal-wrapper {
+            max-width: 650px;
             margin: 0 auto;
             background-color: var(--primary-dark);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            border: 2px solid var(--accent-gold);
             border-radius: 8px;
-            padding: 3rem 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            padding: 3.5rem 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
         }
 
-        .custom-form-group {
-            margin-bottom: 1.5rem;
+        .portal-wrapper h3 {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
         }
 
-        .custom-form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
-
-        .custom-form-group input, 
-        .custom-form-group select, 
-        .custom-form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            background-color: var(--secondary-dark);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 4px;
-            color: var(--text-light);
-            font-size: 1rem;
-        }
-
-        .custom-form-group input:focus, 
-        .custom-form-group select:focus, 
-        .custom-form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent-gold);
+        .portal-wrapper p {
+            color: #cbd5e1;
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
         /* --- FOOTER --- */
@@ -416,7 +400,7 @@
             We provide independent insurance adjusting, certified field inspections, and line-item auditing designed to streamline cycle times, eliminate friction, and establish mathematical file accuracy for all industry stakeholders.
         </p>
         <div class="hero-btns">
-            <a href="#intake" class="btn btn-primary">Submit Intake File</a>
+            <a href="#intake" class="btn btn-primary">Open Intake Portal</a>
             <a href="mailto:LuisLopez@FloridaParamount.com" class="btn btn-secondary">Contact Luis Lopez</a>
         </div>
     </section>
@@ -443,7 +427,7 @@
                 <div class="metric-label">Line-Item Compliance</div>
                 <div class="bilingual-text">
                     <p>of our Xactimate parameters are matched perfectly to verifiable local material standards and current policy guidelines, eliminating scope gaps.</p>
-                    <p class="es">de los parámetros de Xactimate están adaptados a las pautas vigentes, eliminando discrepancies en el alcance de obra.</p>
+                    <p class="es">de los parámetros de Xactimate están adaptados a las pautas vigentes, eliminando discrepancias en el alcance de obra.</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -540,55 +524,21 @@
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION WITH DIRECT OPEN ROUTING -->
+    <!-- SECURE B2B INTAKE SECTION - DIRECT ACCESS LINK -->
     <section id="intake" class="intake-section">
-        <div class="section-header">
-            <h2>B2B Secure File Intake Portal</h2>
-            <p>Carriers, Public Adjusters, and Restoration Contractors can route file parameters directly into our system.</p>
-        </div>
-        <div class="form-wrapper">
-            <form id="intakeForm">
-                
-                <div class="custom-form-group">
-                    <label>Organization Type (Tipo de Organización)</label>
-                    <style>select option { background: var(--secondary-dark); }</style>
-                    <select name="organization_type" id="organization_type" required>
-                        <option value="">-- Select Stakeholder Type --</option>
-                        <option value="carrier">Insurance Carrier / TPA</option>
-                        <option value="contractor">Restoration Contractor</option>
-                        <option value="pa">Public Adjuster / Law Firm</option>
-                    </select>
-                </div>
-
-                <div class="custom-form-group">
-                    <label>Contact Name & Company (Nombre y Empresa)</label>
-                    <input type="text" name="contact_name" id="contact_name" placeholder="e.g., Claims Manager / ABC Restoration" required>
-                </div>
-
-                <div class="custom-form-group">
-                    <label>Business Email (Correo Electrónico Corporativo)</label>
-                    <input type="email" name="email" id="email" placeholder="name@yourcompany.com" required>
-                </div>
-
-                <div class="custom-form-group">
-                    <label>Direct Phone Line (Teléfono Directo)</label>
-                    <input type="tel" name="phone" id="phone" placeholder="786-879-1056" required>
-                </div>
-
-                <div class="custom-form-group">
-                    <label>Loss Property Address (Dirección de la Propiedad Afectada)</label>
-                    <input type="text" name="address" id="address" placeholder="123 Magnolia Dr, Miami, FL 33101" required>
-                </div>
-
-                <div class="custom-form-group">
-                    <label>Project Scope or Claim Reference # (Alcance o Número de Reclamación)</label>
-                    <textarea name="scope_details" id="scope_details" rows="4" placeholder="Provide damage profiles (Fire, Water, Mold), structural components, or specific dispatch guidelines..."></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
-                    Proceed to Secure Document Upload ➔
-                </button>
-            </form>
+        <div class="portal-wrapper">
+            <h3>B2B Secure File Intake Portal</h3>
+            <p>
+                Carriers, Public Adjusters, and Restoration Contractors can securely upload claims parameters, property damage information, and scope files directly into our database using our secure Microsoft gateway.
+            </p>
+            
+            <!-- ENLACE DIRECTO COMPLETO Y TOTALMENTE PÚBLICO -->
+            <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u" 
+               target="_blank" 
+               class="btn btn-primary" 
+               style="font-size: 1.1rem; padding: 1rem 2.5rem; width: 100%;">
+                Access Secure Intake Form ➔
+            </a>
         </div>
     </section>
 
@@ -599,19 +549,6 @@
             Regulatory Compliance Notice: TriVault LLC provides professional independent estimations, independent claim adjustments, and licensed structural/environmental home inspections conforming fully to the statutory requirements of the State of Florida.
         </p>
     </footer>
-
-    <!-- INTERFACE ROUTING SCRIPT (DIRECT STABLE FORM ROUTING) -->
-    <script>
-        document.getElementById('intakeForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            // Enlace directo verificado y 100% público de TriVault en Microsoft Cloud
-            const publicFormUrl = "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u";
-            
-            // Abre tu formulario oficial al instante en una pestaña limpia, permitiendo acceso externo continuo
-            window.open(publicFormUrl, '_blank');
-        });
-    </script>
 
 </body>
 </html>
