@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TriVault LLC | Property Claims, Inspections & Estimates</title>
-    <!-- Tailwind CSS para diseño moderno, rápido e institucional -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -20,12 +19,10 @@
             }
         }
     </script>
-    <!-- Iconos Lucide -->
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body class="bg-vaultBgLight text-slate-900 font-sans antialiased">
 
-    <!-- 1. BARRA DE NAVEGACIÓN (Estilo TruView: Siempre visible y con CTA claro) -->
     <header class="sticky top-0 z-50 bg-vaultNavy text-white shadow-sm border-b border-slate-800/80">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -46,9 +43,7 @@
         </div>
     </header>
 
-    <!-- 2. HERO SECTION (Fondo institucional oscuro, texto blanco e impecable) -->
     <section class="relative bg-gradient-to-br from-vaultNavy via-slate-950 to-vaultNavy text-white py-24 lg:py-36 overflow-hidden">
-        <!-- Imagen de fondo de propiedad de alta gama con opacidad suave -->
         <div class="absolute inset-0 z-0">
             <img src="public/assets/hero-bg.png" alt="" class="w-full h-full object-cover object-center" aria-hidden="true">
             <div class="absolute inset-0 bg-vaultNavy opacity-80"></div>
@@ -75,7 +70,6 @@
         </div>
     </section>
 
-    <!-- 3. SECCIÓN DE ESTADÍSTICAS DEL MERCADO (Uso estratégico del Rojo Alerta del Flyer) -->
     <section id="market" class="py-20 bg-white border-b border-slate-100">
         <div class="container mx-auto px-4 max-w-5xl">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -85,20 +79,17 @@
             </div>
             
             <div class="grid md:grid-cols-3 gap-8 text-center">
-                <!-- Tarjeta 1 - Rojo Alerta -->
                 <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100">
                     <div class="text-6xl font-black text-vaultAlert mb-2 tracking-tight">80%</div>
                     <p class="font-bold text-sm text-vaultNavy uppercase tracking-wider mb-2">Underpaid or Denied</p>
                     <p class="text-xs text-slate-500 leading-relaxed">of property claims are underpaid or denied on the first submission due to improper or incomplete documentation.</p>
                 </div>
-                <!-- Tarjeta 2 - Dorado Éxito -->
                 <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100 shadow-sm relative">
                     <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-vaultGold text-vaultNavy text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Proven Outcome</div>
                     <div class="text-6xl font-black text-vaultGold mb-2 tracking-tight">3X</div>
                     <p class="font-bold text-sm text-vaultNavy uppercase tracking-wider mb-2">Higher Settlements</p>
                     <p class="text-xs text-slate-500 leading-relaxed">achieved when a licensed adjuster and expert structural team properly represents and logs the policyholder's loss.</p>
                 </div>
-                <!-- Tarjeta 3 - Rojo Alerta -->
                 <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100">
                     <div class="text-5xl font-black text-vaultAlert mb-3 tracking-tight">$Billions</div>
                     <p class="font-bold text-sm text-vaultNavy uppercase tracking-wider mb-2">Left Unclaimed</p>
@@ -108,7 +99,6 @@
         </div>
     </section>
 
-    <!-- 4. ALIANZA ESTRATÉGICA (Limpieza corporativa de Trivault 6) -->
     <section id="partnership" class="py-20 bg-vaultBgLight">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -118,25 +108,21 @@
             </div>
             
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Card 1 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
                     <div class="text-vaultGold mb-4"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
                     <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Estimate Precision</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">We minimize structural and engineering technical errors to maximize your carrier approval. Clean, detailed scopes so you collect every dollar.</p>
                 </div>
-                <!-- Card 2 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
                     <div class="text-vaultGold mb-4"><i data-lucide="clock" class="w-6 h-6"></i></div>
                     <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Time Recovery</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">Less administrative gridlock, more enterprise scale. We manage the intricate insurance maze so you focus entirely on building.</p>
                 </div>
-                <!-- Card 3 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
                     <div class="text-vaultGold mb-4"><i data-lucide="zap" class="w-6 h-6"></i></div>
                     <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Speed & Response</h3>
                     <p class="text-xs text-slate-600 leading-relaxed">Eliminate file friction completely. We execute agile field and desk processes to deliver structural data exactly when it is requested.</p>
                 </div>
-                <!-- Card 4 -->
                 <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
                     <div class="text-vaultGold mb-4"><i data-lucide="help-circle" class="w-6 h-6"></i></div>
                     <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Technical Backing</h3>
@@ -146,7 +132,6 @@
         </div>
     </section>
 
-    <!-- 5. NUESTROS SERVICIOS CORE (Estructura sólida y seria) -->
     <section id="services" class="py-20 bg-white">
         <div class="container mx-auto px-4 max-w-5xl">
             <div class="text-center max-w-2xl mx-auto mb-16">
@@ -181,7 +166,6 @@
         </div>
     </section>
 
-    <!-- 6. SECCIÓN DE CREDENCIALES TÉCNICAS (Garantía de Autoridad) -->
     <section id="credentials" class="py-16 bg-vaultNavy text-white border-t border-slate-900">
         <div class="container mx-auto px-4 max-w-4xl text-center">
             <h2 class="text-xl md:text-2xl font-bold uppercase tracking-widest mb-10 text-white">Verified Industry Credentials</h2>
@@ -207,47 +191,21 @@
         </div>
     </section>
 
-    <!-- 7. SECURE INTAKE FORM (Formulario de Captura de Clientes) -->
     <section id="contact" class="py-20 bg-vaultBgLight border-t border-slate-200">
-        <div class="container mx-auto px-4 max-w-3xl">
+        <div class="container mx-auto px-4 max-w-4xl">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Initiate Your File Today</h2>
-                <p class="text-slate-500 text-sm mt-2">Connect directly with our claim logistics dispatchers for immediate file routing.</p>
+                <p class="text-slate-500 text-sm mt-2 max-w-2xl mx-auto">
+                    Please fill out our secure intake framework below to submit your claim details and property data directly to our routing dispatchers.
+                </p>
             </div>
-            <form class="bg-white p-8 md:p-10 rounded-2xl shadow-sm border border-slate-200 space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 tracking-wider mb-2">Name *</label>
-                        <input type="text" required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-900 focus:outline-none focus:border-vaultGold text-sm transition-colors">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold uppercase text-slate-500 tracking-wider mb-2">Phone Number *</label>
-                        <input type="tel" required placeholder="786-879-1056" class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-900 focus:outline-none focus:border-vaultGold text-sm transition-colors">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase text-slate-500 tracking-wider mb-2">Required Core Capability *</label>
-                    <select required class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-900 focus:outline-none focus:border-vaultGold text-sm transition-colors">
-                        <option value="">Select an option...</option>
-                        <option value="inspection">Property Inspection (Field Logistics)</option>
-                        <option value="adjusting">Insurance Adjusting Representation</option>
-                        <option value="estimate">Xactimate Scope & Estimate Build</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block text-xs font-bold uppercase text-slate-500 tracking-wider mb-2">Loss Context / Scope of Work</label>
-                    <textarea rows="4" placeholder="Provide damage location details, file deadlines, or current carrier status..." class="w-full bg-slate-50 border border-slate-300 rounded-lg p-3 text-slate-900 focus:outline-none focus:border-vaultGold text-sm transition-colors"></textarea>
-                </div>
-                <div class="text-center">
-                    <button type="submit" class="w-full md:w-auto bg-vaultNavy hover:bg-slate-800 text-white font-bold uppercase tracking-wider text-xs px-10 py-4 rounded-lg shadow transition-all">
-                        Submit Secured Intake Request
-                    </button>
-                </div>
-            </form>
+
+            <div class="w-full bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 flex justify-center">
+                <iframe width="100%" height="600px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFUQUVUUFI0OUlHRVhTV0JHS1VKWFc2NFRJSS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; min-height:600px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+            </div>
         </div>
     </section>
 
-    <!-- 8. PIE DE PÁGINA CORPORATIVO -->
     <footer class="bg-vaultNavy text-slate-500 py-12 text-xs border-t border-slate-900">
         <div class="container mx-auto px-4 text-center space-y-4">
             <p class="text-white font-bold tracking-wide">&copy; 2026 TriVault LLC. All Rights Reserved.</p>
@@ -260,7 +218,6 @@
         </div>
     </footer>
 
-    <!-- Renderizado de los iconos Lucide -->
     <script>
         lucide.createIcons();
     </script>
