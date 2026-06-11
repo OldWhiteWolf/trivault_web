@@ -4,296 +4,630 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TriVault LLC | Property Claims, Inspections & Estimates</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        vaultNavy: '#0A1128',
-                        vaultGold: '#D4AF37',
-                        vaultAlert: '#DC2626',
-                        vaultBgLight: '#F8FAFC'
-                    }
-                }
-            }
+    <style>
+        /* --- BRAND THEME & LOGO VARIABLES --- */
+        :root {
+            --primary-dark: #0a1118;   /* Executive Slate/Navy */
+            --secondary-dark: #121b24; /* Card & Section Backgrounds */
+            --accent-gold: #d4af37;    /* Premium Classic Gold Accent */
+            --text-light: #f5f6f7;     /* High-contrast crisp text */
+            --text-muted: #a0aec0;     /* Bilingual subtext and captions */
+            --white: #ffffff;
         }
-    </script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-</head>
-<body class="bg-vaultBgLight text-slate-900 font-sans antialiased">
 
-    <header class="sticky top-0 z-50 bg-vaultNavy text-white shadow-sm border-b border-slate-800/80">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="public/assets/logo-trivault.png" alt="TriVault Logo" class="h-12 w-12 object-contain drop-shadow-md">
-                <span class="text-xl font-black tracking-tight text-white">TRI<span class="text-vaultGold">VAULT</span><span class="text-xs block text-slate-400 font-normal tracking-widest">PROPERTY SOLUTIONS</span></span>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--primary-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        header {
+            background-color: rgba(10, 17, 24, 0.95);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .logo-area span {
+            color: var(--accent-gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        .cta-phone {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 180px 2rem 100px 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, rgba(10,17,24,0.8) 0%, rgba(18,27,36,1) 100%);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .bilingual-tag {
+            color: var(--accent-gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+        }
+
+        .hero .es-title {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: -0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            font-size: 1.1rem;
+            color: #cbd5e1;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* --- TRUST BADGES BAR --- */
+        .trust-bar {
+            background-color: var(--secondary-dark);
+            border-top: 1px solid rgba(212,175,55,0.1);
+            border-bottom: 1px solid rgba(212,175,55,0.1);
+            padding: 1.5rem 2rem;
+            text-align: center;
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .trust-item {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trust-item span {
+            color: var(--accent-gold);
+        }
+
+        /* --- DATA & METRICS SECTION --- */
+        .section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: var(--white);
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .metric-card {
+            background-color: var(--secondary-dark);
+            padding: 2.5rem 2rem;
+            border-radius: 6px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: transform 0.3s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(212,175,55,0.3);
+        }
+
+        .metric-num {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .bilingual-text p {
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .bilingual-text p.es {
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        /* --- THE TRIVAULT FRAMEWORK --- */
+        .framework-section {
+            background-color: var(--secondary-dark);
+            padding: 80px 2rem;
+        }
+
+        .step-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            position: relative;
+        }
+
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-badge {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-dark);
+            border: 2px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .step-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .step-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        /* --- INTAKE FORM --- */
+        .intake-section {
+            background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+            padding: 80px 2rem;
+        }
+
+        .form-wrapper {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: var(--primary-dark);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 3rem 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .custom-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .custom-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+        }
+
+        .custom-form-group input, 
+        .custom-form-group select, 
+        .custom-form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 4px;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        .custom-form-group input:focus, 
+        .custom-form-group select:focus, 
+        .custom-form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #05080c;
+            padding: 40px 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 1.5rem auto 0 auto;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            nav ul { display: none; }
+            .hero-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <span>🛡️</span> TRIVAULT PROPERTY SOLUTIONS
             </div>
-            <nav class="hidden md:flex space-x-8 font-semibold text-xs uppercase tracking-wider text-slate-300">
-                <a href="#market" class="hover:text-vaultGold transition-colors">The Market</a>
-                <a href="#partnership" class="hover:text-vaultGold transition-colors">Partnership</a>
-                <a href="#services" class="hover:text-vaultGold transition-colors">Services</a>
-                <a href="#samples" class="hover:text-vaultGold transition-colors">Samples</a>
-                <a href="#credentials" class="hover:text-vaultGold transition-colors">Credentials</a>
+            <nav>
+                <ul>
+                    <li><a href="#standards">Industry Standards</a></li>
+                    <li><a href="#framework">The System</a></li>
+                    <li><a href="#samples">Architecture Samples</a></li>
+                    <li><a href="#intake">Submit File</a></li>
+                    <li><a class="cta-phone" href="tel:7868791056">📞 786-879-1056</a></li>
+                </ul>
             </nav>
-            <div>
-                <a href="tel:7868791056" class="bg-vaultGold hover:bg-yellow-600 text-vaultNavy font-bold px-5 py-2.5 rounded shadow transition-all inline-block text-xs uppercase tracking-widest">
-                    Call 786-879-1056
-                </a>
-            </div>
         </div>
     </header>
 
-    <section class="relative bg-gradient-to-br from-vaultNavy via-slate-950 to-vaultNavy text-white py-24 lg:py-36 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img src="public/assets/hero-bg.png" alt="" class="w-full h-full object-cover object-center" aria-hidden="true">
-            <div class="absolute inset-0 bg-vaultNavy opacity-80"></div>
-        </div>
-        <div class="absolute inset-0 opacity-5 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] z-[1]"></div>
-        <div class="container mx-auto px-4 relative z-10 text-center max-w-4xl">
-            <span class="text-vaultGold font-bold uppercase tracking-widest text-xs bg-vaultGold/10 px-4 py-1.5 rounded-full inline-block mb-4 border border-vaultGold/20">
-                Knowledge • Protection • Precision
-            </span>
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight mb-6">
-                Your Trusted Partner in <span class="text-transparent bg-clip-text bg-gradient-to-r from-vaultGold to-amber-300">Property Claims & Inspections.</span>
-            </h1>
-            <p class="text-base sm:text-lg text-slate-400 mb-10 max-w-2xl mx-auto font-normal leading-relaxed">
-                A certified inspector and adjuster on your team means faster approvals, fewer disputes, and better outcomes for your clients.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#contact" class="w-full sm:w-auto bg-vaultGold hover:bg-yellow-600 text-vaultNavy font-bold px-8 py-4 rounded-lg shadow-lg text-center transition-colors uppercase text-xs tracking-wider">
-                    Get a Free Consult
-                </a>
-                <a href="mailto:LuisLopez@FloridaParamount.com" class="w-full sm:w-auto bg-transparent border border-slate-600 hover:border-slate-300 text-slate-300 hover:text-white font-semibold px-8 py-4 rounded-lg text-center transition-all text-xs uppercase tracking-wider">
-                    Contact Luis Lopez
-                </a>
-            </div>
+    <!-- HERO HOME VIEWPORT -->
+    <section class="hero">
+        <span class="bilingual-tag">Florida Jurisdiction • Third-Party Accuracy</span>
+        <h1>Data-Driven Property Inspections &<br><span>Xactimate Estimate Architecture</span></h1>
+        <div class="es-title">Inspecciones de Propiedad y Arquitectura de Estimados</div>
+        <p>
+            We provide independent insurance adjusting, certified field inspections, and line-item auditing designed to streamline cycle times, eliminate friction, and establish mathematical file accuracy for all industry stakeholders.
+        </p>
+        <div class="hero-btns">
+            <a href="#intake" class="btn btn-primary">Submit Intake File</a>
+            <a href="mailto:LuisLopez@FloridaParamount.com" class="btn btn-secondary">Contact Luis Lopez</a>
         </div>
     </section>
 
-    <section id="market" class="py-20 bg-white border-b border-slate-100">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Market Reality</span>
-                <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Why Claims Need an Expert</h2>
-                <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
-            </div>
-            <div class="grid md:grid-cols-3 gap-8 text-center">
-                <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100">
-                    <div class="text-6xl font-black text-vaultAlert mb-2 tracking-tight">80%</div>
-                    <p class="font-bold text-sm text-vaultNavy uppercase tracking-wider mb-2">Underpaid or Denied</p>
-                    <p class="text-xs text-slate-500 leading-relaxed">of property claims are underpaid or denied on the first submission due to improper or incomplete documentation.</p>
-                </div>
-                <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100 shadow-sm relative">
-                    <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-vaultGold text-vaultNavy text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Proven Outcome</div>
-                    <div class="text-6xl font-black text-vaultGold mb-2 tracking-tight">3X</div>
-                    <p class="font-bold text-sm text-vaultNavy uppercase tracking-wider mb-2">Higher Settlements</p>
-                    <p class="text-xs text-slate-500 leading-relaxed">achieved when a licensed adjuster and expert structural team properly represents and logs the policyholder's loss.</p>
-                </div>
-                <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100">
-                    <div class="text-5xl font-black text-vaultAlert mb-3 tracking-tight">$Billions</div>
-                    <p class="font-bold text-sm text-vaultNavy uppercase tracking-wider mb-2">Left Unclaimed</p>
-                    <p class="text-xs text-slate-500 leading-relaxed">every single year in Florida alone due to substandard physical reporting, missed code upgrades, and line-item oversight.</p>
-                </div>
-            </div>
+    <!-- TRUST BADGES BAR -->
+    <section class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item"><span>✓</span> LICENSED Insurance Adjuster</div>
+            <div class="trust-item"><span>✓</span> LICENSED Home Inspector</div>
+            <div class="trust-item"><span>✓</span> LICENSED Mold Assessor</div>
+            <div class="trust-item"><span>✓</span> CERTIFIED Xactimate Platform</div>
         </div>
     </section>
 
-    <section id="partnership" class="py-20 bg-vaultBgLight">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Operational Integrity</span>
-                <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Let's Build a Partnership That Works</h2>
-                <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
+    <!-- METRICS SECTION (ESTRATEGIA NEUTRA B2B) -->
+    <section id="standards" class="section">
+        <div class="section-header">
+            <h2>Quantifiable Accuracy. Streamlined Processing.</h2>
+            <p>Precisión cuantificable. Procesamiento optimizado.</p>
+        </div>
+        <div class="grid-3">
+            <div class="metric-card">
+                <div class="metric-num">100%</div>
+                <div class="metric-label">Line-Item Compliance</div>
+                <div class="bilingual-text">
+                    <p>of our Xactimate parameters are matched perfectly to verifiable local material standards and current policy guidelines, eliminating scope gaps.</p>
+                    <p class="es">de los parámetros de Xactimate están adaptados a las pautas vigentes, eliminando discrepancias en el alcance de obra.</p>
+                </div>
             </div>
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
-                    <div class="text-vaultGold mb-4"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Estimate Precision</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">We minimize structural and engineering technical errors to maximize your carrier approval. Clean, detailed scopes so you collect every dollar.</p>
+            <div class="metric-card">
+                <div class="metric-num">-40%</div>
+                <div class="metric-label">Cycle Time Reduction</div>
+                <div class="bilingual-text">
+                    <p>decreased administrative gridlock. Clean visual documentation ensures files route cleanly through desk adjustment without costly back-and-forth delays.</p>
+                    <p class="es">reducción en tiempos de ciclo. La documentación clara agiliza la aprobación interna en mesa de control sin demoras.</p>
                 </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
-                    <div class="text-vaultGold mb-4"><i data-lucide="clock" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Time Recovery</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Less administrative gridlock, more enterprise scale. We manage the intricate insurance maze so you focus entirely on building.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
-                    <div class="text-vaultGold mb-4"><i data-lucide="zap" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Speed & Response</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Eliminate file friction completely. We execute agile field and desk processes to deliver structural data exactly when it is requested.</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
-                    <div class="text-vaultGold mb-4"><i data-lucide="help-circle" class="w-6 h-6"></i></div>
-                    <h3 class="font-bold text-base text-vaultNavy mb-2 uppercase tracking-wide">Technical Backing</h3>
-                    <p class="text-xs text-slate-600 leading-relaxed">Certified cross-industry defense at your disposal. We back up your property data against unfair adjustment with zero financial risk.</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">0%</div>
+                <div class="metric-label">Speculative Overhead</div>
+                <div class="bilingual-text">
+                    <p>Zero approximations. Every file is backed by licensed physical field data, full interior/exterior forensic mapping, and certified mold/structural credentials.</p>
+                    <p class="es">Cero estimaciones especulativas. Cada archivo está respaldado por inspección forense de campo y licencias estatales oficiales.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="py-20 bg-white">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Our Capabilities</span>
-                <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Core Property Solutions</h2>
-                <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
+    <!-- THE TRIVAULT SYSTEM WORKFLOW -->
+    <section id="framework" class="framework-section">
+        <div class="section-header">
+            <h2>The TriVault Workflow System™</h2>
+            <p>Standardized Triangulation of Field Data, Compliance, and Delivery</p>
+        </div>
+        <div class="step-container">
+            <div class="step-card">
+                <div class="step-badge">1</div>
+                <h3>Forensic Field Intake</h3>
+                <p>Licensed structural, thermal, or mold inspection protocols capture raw, undeniable property facts.</p>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-vaultNavy text-white p-8 rounded-2xl border border-slate-800 flex flex-col justify-between shadow-lg">
-                    <div>
-                        <div class="text-vaultGold mb-4"><i data-lucide="home" class="w-7 h-7"></i></div>
-                        <h3 class="text-lg font-bold uppercase tracking-wide mb-2">Property Inspections</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Comprehensive structural, interior, and roof assessments backed by rigorous visual documentation and professional reporting.</p>
-                    </div>
-                </div>
-                <div class="bg-vaultNavy text-white p-8 rounded-2xl border border-slate-800 flex flex-col justify-between shadow-lg">
-                    <div>
-                        <div class="text-vaultGold mb-4"><i data-lucide="file-text" class="w-7 h-7"></i></div>
-                        <h3 class="text-lg font-bold uppercase tracking-wide mb-2">Insurance Adjusting</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Licensed claim representation acting dynamically to isolate loss factors and drive standardized settlements for policyholders.</p>
-                    </div>
-                </div>
-                <div class="bg-vaultNavy text-white p-8 rounded-2xl border border-slate-800 flex flex-col justify-between shadow-lg">
-                    <div>
-                        <div class="text-vaultGold mb-4"><i data-lucide="calculator" class="w-7 h-7"></i></div>
-                        <h3 class="text-lg font-bold uppercase tracking-wide mb-2">Xactimate Estimates</h3>
-                        <p class="text-slate-400 text-xs leading-relaxed">Certified estimation matrices perfectly tailored to current carrier-accepted scopes of work and market pricing.</p>
-                    </div>
-                </div>
+            <div class="step-card">
+                <div class="step-badge">2</div>
+                <h3>Guideline Audit Matrix</h3>
+                <p>Scopes are built using exact Xactimate localized database prices, removing inflated line-items or code omissions.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-badge">3</div>
+                <h3>Seamless File Resolution</h3>
+                <p>Carriers, contractors, and public adjusters receive a transparent, audit-ready package that accelerates file closure.</p>
             </div>
         </div>
     </section>
 
-    <!-- SAMPLE ESTIMATES -->
-    <section id="samples" class="py-20 bg-vaultBgLight border-t border-slate-200">
-        <div class="container mx-auto px-4 max-w-5xl">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Real Work. Real Results.</span>
-                <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Sample Estimates</h2>
-                <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
-            </div>
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-
-                <!-- Fire -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
-                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
-                        <div class="bg-vaultAlert/10 border border-vaultAlert/30 rounded-full p-3 mb-3">
-                            <i data-lucide="flame" class="w-7 h-7 text-vaultAlert"></i>
-                        </div>
-                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Fire Damage</h3>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1 justify-end">
-                        <a href="public/assets/TRIVAULT_Fire_Estimate_Sample.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
-                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Water -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
-                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
-                        <div class="bg-blue-500/10 border border-blue-400/30 rounded-full p-3 mb-3">
-                            <i data-lucide="droplets" class="w-7 h-7 text-blue-400"></i>
-                        </div>
-                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Water Damage</h3>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1 justify-end">
-                        <a href="public/assets/TRIVAULT_Water_Estimate_Sample.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
-                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Mold -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
-                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
-                        <div class="bg-emerald-500/10 border border-emerald-400/30 rounded-full p-3 mb-3">
-                            <i data-lucide="microscope" class="w-7 h-7 text-emerald-400"></i>
-                        </div>
-                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Mold Remediation</h3>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1 justify-end">
-                        <a href="public/assets/TRIVAULT_Mold_Estimate_Sample.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
-                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Roof -->
-                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
-                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
-                        <div class="bg-vaultGold/10 border border-vaultGold/30 rounded-full p-3 mb-3">
-                            <i data-lucide="triangle" class="w-7 h-7 text-vaultGold"></i>
-                        </div>
-                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Roof Damage</h3>
-                    </div>
-                    <div class="p-5 flex flex-col flex-1 justify-end">
-                        <a href="public/assets/TRIVAULT_Roof_Estimate_Sample.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
-                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <p class="text-center text-[10px] text-slate-400 uppercase tracking-widest mt-10 font-semibold">Sample files are redacted for client confidentiality · For reference purposes only</p>
+    <!-- AUDIT-READY SAMPLES SECTION -->
+    <section id="samples" class="section" style="background-color: #0d161f; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+        <div class="section-header">
+            <h2>Audit-Ready Scope Samples</h2>
+            <p>Transparent Architectural Packages • Redacted for Confidentiality</p>
         </div>
-    </section>
-
-    <section id="credentials" class="py-16 bg-vaultNavy text-white border-t border-slate-900">
-        <div class="container mx-auto px-4 max-w-4xl text-center">
-            <h2 class="text-xl md:text-2xl font-bold uppercase tracking-widest mb-10 text-white">Verified Industry Credentials</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                <div class="p-5 bg-slate-900/60 rounded-xl border border-slate-800/80">
-                    <div class="text-vaultGold font-extrabold text-xs mb-1 uppercase tracking-wider">Licensed</div>
-                    <div class="text-white text-xs font-normal tracking-wide">Insurance Adjuster</div>
+        
+        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+            <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔥</div>
+                <div class="metric-label" style="font-size: 1rem; color: var(--white);">Fire Damage Matrix</div>
+                <div class="bilingual-text" style="margin-bottom: 1.5rem;">
+                    <p>Structural soot, thermal mapping, and detailed multi-room reconstruction line-items.</p>
+                    <p class="es">Líneas de reconstrucción detallada, hollín estructural y mapeo térmico.</p>
                 </div>
-                <div class="p-5 bg-slate-900/60 rounded-xl border border-slate-800/80">
-                    <div class="text-vaultGold font-extrabold text-xs mb-1 uppercase tracking-wider">Licensed</div>
-                    <div class="text-white text-xs font-normal tracking-wide">Home Inspector</div>
-                </div>
-                <div class="p-5 bg-slate-900/60 rounded-xl border border-slate-800/80">
-                    <div class="text-vaultGold font-extrabold text-xs mb-1 uppercase tracking-wider">Licensed</div>
-                    <div class="text-white text-xs font-normal tracking-wide">Mold Assessor</div>
-                </div>
-                <div class="p-5 bg-slate-900/60 rounded-xl border border-slate-800/80">
-                    <div class="text-vaultGold font-extrabold text-xs mb-1 uppercase tracking-wider">Certified</div>
-                    <div class="text-white text-xs font-normal tracking-wide">Xactimate Platform</div>
-                </div>
+                <a href="https://floridaparamount.com/public/assets/TRIVAULT_Fire_Estimate_Sample.pdf" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
-            <p class="text-[10px] text-slate-500 mt-8 uppercase tracking-widest font-semibold">Fully Bilingual Support • Florida Jurisdiction • Licensed Expertise</p>
-        </div>
-    </section>
 
-    <section id="contact" class="py-20 bg-vaultBgLight border-t border-slate-200">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Initiate Your File Today</h2>
-                <p class="text-slate-500 text-sm mt-2 max-w-2xl mx-auto">
-                    Please fill out our secure intake framework below to submit your claim details and property data directly to our routing dispatchers.
-                </p>
+            <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💧</div>
+                <div class="metric-label" style="font-size: 1rem; color: var(--white);">Water Mitigation</div>
+                <div class="bilingual-text" style="margin-bottom: 1.5rem;">
+                    <p>Psychrometric logging and extraction parameters mapped directly to IICRC S500 standards.</p>
+                    <p class="es">Registros psicrométricos y parámetros de extracción alineados con normas IICRC.</p>
+                </div>
+                <a href="https://floridaparamount.com/public/assets/TRIVAULT_Water_Estimate_Sample.pdf" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
-            <div class="w-full bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 flex justify-center">
-                <iframe width="100%" height="600px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFUQUVUUFI0OUlHRVhTV0JHS1VKWFc2NFRJSS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; min-height:600px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+
+            <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧫</div>
+                <div class="metric-label" style="font-size: 1rem; color: var(--white);">Mold Remediation</div>
+                <div class="bilingual-text" style="margin-bottom: 1.5rem;">
+                    <p>Licensed environmental assessment protocols and containment layout pricing structures.</p>
+                    <p class="es">Protocolos de evaluación ambiental licenciados y estructuras de contención.</p>
+                </div>
+                <a href="https://floridaparamount.com/public/assets/TRIVAULT_Mold_Estimate_Sample.pdf" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
+            </div>
+
+            <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏠</div>
+                <div class="metric-label" style="font-size: 1rem; color: var(--white);">Roof Wind & Hail</div>
+                <div class="bilingual-text" style="margin-bottom: 1.5rem;">
+                    <p>Complete perimeter calculations, code-required components, and valley/flashing details.</p>
+                    <p class="es">Cálculos completos de perímetro, códigos requeridos y detalles de tapajuntas.</p>
+                </div>
+                <a href="https://floridaparamount.com/public/assets/TRIVAULT_Roof_Estimate_Sample.pdf" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-vaultNavy text-slate-500 py-12 text-xs border-t border-slate-900">
-        <div class="container mx-auto px-4 text-center space-y-4">
-            <p class="text-white font-bold tracking-wide">&copy; 2026 TriVault LLC. All Rights Reserved.</p>
-            <p class="text-slate-400 max-w-md mx-auto leading-relaxed">
-                Contact: <a href="mailto:LuisLopez@FloridaParamount.com" class="text-vaultGold hover:underline">LuisLopez@FloridaParamount.com</a> | Tel: 786-879-1056
-            </p>
-            <p class="text-slate-600 max-w-xl mx-auto text-[10px]">
-                Disclaimer: TriVault LLC operates strictly within structural assessment, independent estimation frameworks, and compliant independent insurance adjustment protocols inside the State of Florida.
-            </p>
+    <!-- SECURE B2B INTAKE SECTION WITH INTEGRATED PRE-FILL LOGIC -->
+    <section id="intake" class="intake-section">
+        <div class="section-header">
+            <h2>B2B Secure File Intake Portal</h2>
+            <p>Carriers, Public Adjusters, and Restoration Contractors can route file parameters directly into our system.</p>
         </div>
+        <div class="form-wrapper">
+            <form id="intakeForm" method="GET">
+                
+                <div class="custom-form-group">
+                    <label>Organization Type (Tipo de Organización)</label>
+                    <style>select option { background: var(--secondary-dark); }</style>
+                    <select name="organization_type" id="organization_type" required>
+                        <option value="">-- Select Stakeholder Type --</option>
+                        <option value="carrier">Insurance Carrier / TPA</option>
+                        <option value="contractor">Restoration Contractor</option>
+                        <option value="pa">Public Adjuster / Law Firm</option>
+                    </select>
+                </div>
+
+                <div class="custom-form-group">
+                    <label>Contact Name & Company (Nombre y Empresa)</label>
+                    <input type="text" name="contact_name" id="contact_name" placeholder="e.g., Claims Manager / ABC Restoration" required>
+                </div>
+
+                <div class="custom-form-group">
+                    <label>Business Email (Correo Electrónico Corporativo)</label>
+                    <input type="email" name="email" id="email" placeholder="name@yourcompany.com" required>
+                </div>
+
+                <div class="custom-form-group">
+                    <label>Direct Phone Line (Teléfono Directo)</label>
+                    <input type="tel" name="phone" id="phone" placeholder="786-879-1056" required>
+                </div>
+
+                <div class="custom-form-group">
+                    <label>Loss Property Address (Dirección de la Propiedad Afectada)</label>
+                    <input type="text" name="address" id="address" placeholder="123 Magnolia Dr, Miami, FL 33101" required>
+                </div>
+
+                <div class="custom-form-group">
+                    <label>Project Scope or Claim Reference # (Alcance o Número de Reclamación)</label>
+                    <textarea name="scope_details" id="scope_details" rows="4" placeholder="Provide damage profiles (Fire, Water, Mold), structural components, or specific dispatch guidelines..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">
+                    Proceed to Secure Document Upload ➔
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 TriVault LLC. All Rights Reserved. | Corporate Contact: <a href="mailto:LuisLopez@FloridaParamount.com">LuisLopez@FloridaParamount.com</a> | Tel: 786-879-1056</p>
+        <p class="disclaimer">
+            Regulatory Compliance Notice: TriVault LLC provides professional independent estimations, independent claim adjustments, and licensed structural/environmental home inspections conforming fully to the statutory requirements of the State of Florida.
+        </p>
     </footer>
 
+    <!-- INTERFACE ROUTING SCRIPT (OPTION B - PREFILL) -->
     <script>
-        lucide.createIcons();
+        document.getElementById('intakeForm').addEventListener('submit', function(event) {
+            // Evitamos que refresque la página o use la acción nativa básica
+            event.preventDefault();
+            
+            // Reemplaza esta URL con el enlace real de compartir que te proporciona Microsoft Forms
+            const microsoftFormBaseUrl = "https://forms.office.com/r/https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u";
+            
+            // Captura segura y mapeada de los datos del DOM de la web oscura
+            const orgType = encodeURIComponent(document.getElementById('organization_type').value);
+            const contactName = encodeURIComponent(document.getElementById('contact_name').value);
+            const businessEmail = encodeURIComponent(document.getElementById('email').value);
+            const phoneLine = encodeURIComponent(document.getElementById('phone').value);
+            const propertyAddress = encodeURIComponent(document.getElementById('address').value);
+            const fileScope = encodeURIComponent(document.getElementById('scope_details').value);
+            
+            /* 
+              Construcción del query string inteligente. 
+              Nota: Cambia r01, r02, etc., por los identificadores que te dé Microsoft Forms 
+              al activar la opción "Obtener vínculo para rellenar previamente".
+            */
+            const prefillUrl = `${microsoftFormBaseUrl}?r01=${orgType}&r02=${contactName}&r03=${businessEmail}&r04=${phoneLine}&r05=${propertyAddress}&r06=${fileScope}`;
+            
+            // Abre Microsoft Forms en una pestaña nueva con toda la data precargada limpiamente
+            window.open(prefillUrl, '_blank');
+        });
     </script>
+
 </body>
 </html>
