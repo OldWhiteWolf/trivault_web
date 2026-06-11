@@ -10,10 +10,10 @@
             theme: {
                 extend: {
                     colors: {
-                        vaultNavy: '#0A1128',   // El azul ultra profundo de Trivault 6 (Elegancia y Ley)
-                        vaultGold: '#D4AF37',   // El dorado de éxito (Para botones de acción y énfasis)
-                        vaultAlert: '#DC2626',  // El rojo del Flyer.pdf (Exclusivo para ganchos de urgencia)
-                        vaultBgLight: '#F8FAFC' // El fondo blanco/gris limpio para que la web respire
+                        vaultNavy: '#0A1128',
+                        vaultGold: '#D4AF37',
+                        vaultAlert: '#DC2626',
+                        vaultBgLight: '#F8FAFC'
                     }
                 }
             }
@@ -33,6 +33,7 @@
                 <a href="#market" class="hover:text-vaultGold transition-colors">The Market</a>
                 <a href="#partnership" class="hover:text-vaultGold transition-colors">Partnership</a>
                 <a href="#services" class="hover:text-vaultGold transition-colors">Services</a>
+                <a href="#samples" class="hover:text-vaultGold transition-colors">Samples</a>
                 <a href="#credentials" class="hover:text-vaultGold transition-colors">Credentials</a>
             </nav>
             <div>
@@ -77,7 +78,6 @@
                 <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Why Claims Need an Expert</h2>
                 <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-8 text-center">
                 <div class="p-8 bg-vaultBgLight rounded-2xl border border-slate-100">
                     <div class="text-6xl font-black text-vaultAlert mb-2 tracking-tight">80%</div>
@@ -106,7 +106,6 @@
                 <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Let's Build a Partnership That Works</h2>
                 <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
             </div>
-            
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="bg-white p-6 rounded-xl border border-slate-200/60 shadow-sm">
                     <div class="text-vaultGold mb-4"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
@@ -139,7 +138,6 @@
                 <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Core Property Solutions</h2>
                 <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
             </div>
-            
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-vaultNavy text-white p-8 rounded-2xl border border-slate-800 flex flex-col justify-between shadow-lg">
                     <div>
@@ -163,6 +161,83 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- SAMPLE ESTIMATES -->
+    <section id="samples" class="py-20 bg-vaultBgLight border-t border-slate-200">
+        <div class="container mx-auto px-4 max-w-5xl">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-widest block mb-2">Real Work. Real Results.</span>
+                <h2 class="text-3xl font-black text-vaultNavy tracking-tight">Sample Estimates</h2>
+                <div class="h-0.5 w-16 bg-vaultGold mx-auto mt-3"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Fire -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
+                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
+                        <div class="bg-vaultAlert/10 border border-vaultAlert/30 rounded-full p-3 mb-3">
+                            <i data-lucide="flame" class="w-7 h-7 text-vaultAlert"></i>
+                        </div>
+                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Fire Damage</h3>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1 justify-end">
+                        <a href="public/assets/estimate-fire.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Water -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
+                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
+                        <div class="bg-blue-500/10 border border-blue-400/30 rounded-full p-3 mb-3">
+                            <i data-lucide="droplets" class="w-7 h-7 text-blue-400"></i>
+                        </div>
+                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Water Damage</h3>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1 justify-end">
+                        <a href="public/assets/estimate-water.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Mold -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
+                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
+                        <div class="bg-emerald-500/10 border border-emerald-400/30 rounded-full p-3 mb-3">
+                            <i data-lucide="microscope" class="w-7 h-7 text-emerald-400"></i>
+                        </div>
+                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Mold Remediation</h3>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1 justify-end">
+                        <a href="public/assets/estimate-mold.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Roof -->
+                <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col hover:shadow-md hover:border-vaultGold/40 transition-all duration-200">
+                    <div class="bg-vaultNavy px-5 pt-7 pb-6 flex flex-col items-center">
+                        <div class="bg-vaultGold/10 border border-vaultGold/30 rounded-full p-3 mb-3">
+                            <i data-lucide="triangle" class="w-7 h-7 text-vaultGold"></i>
+                        </div>
+                        <h3 class="text-white font-black text-sm uppercase tracking-widest text-center">Roof Damage</h3>
+                    </div>
+                    <div class="p-5 flex flex-col flex-1 justify-end">
+                        <a href="public/assets/estimate-roof.pdf" download class="flex items-center justify-center gap-2 w-full bg-vaultNavy hover:bg-slate-800 text-white text-xs font-bold uppercase tracking-wider py-3 rounded-lg transition-colors">
+                            <i data-lucide="download" class="w-3.5 h-3.5"></i> Download PDF
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-center text-[10px] text-slate-400 uppercase tracking-widest mt-10 font-semibold">Sample files are redacted for client confidentiality · For reference purposes only</p>
         </div>
     </section>
 
@@ -199,7 +274,6 @@
                     Please fill out our secure intake framework below to submit your claim details and property data directly to our routing dispatchers.
                 </p>
             </div>
-
             <div class="w-full bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-slate-200 flex justify-center">
                 <iframe width="100%" height="600px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFUQUVUUFI0OUlHRVhTV0JHS1VKWFc2NFRJSS4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; min-height:600px;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
             </div>
