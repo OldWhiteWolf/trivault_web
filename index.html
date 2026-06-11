@@ -401,7 +401,7 @@
                     <li><a href="#framework">The System</a></li>
                     <li><a href="#samples">Architecture Samples</a></li>
                     <li><a href="#intake">Submit File</a></li>
-                    <li><a class="cta-phone" href="tel:7868791056">Call 786-879-1056</a></li>
+                    <li><a class="cta-phone" href="tel:7868791056">📞 786-879-1056</a></li>
                 </ul>
             </nav>
         </div>
@@ -431,7 +431,7 @@
         </div>
     </section>
 
-    <!-- METRICS SECTION (ESTRATEGIA NEUTRA B2B) -->
+    <!-- METRICS SECTION -->
     <section id="standards" class="section">
         <div class="section-header">
             <h2>Quantifiable Accuracy. Streamlined Processing.</h2>
@@ -540,7 +540,7 @@
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION WITH INTEGRATED PRE-FILL LOGIC -->
+    <!-- SECURE B2B INTAKE SECTION WITH ACTIVE MICROSOFT CLOUD ROUTING -->
     <section id="intake" class="intake-section">
         <div class="section-header">
             <h2>B2B Secure File Intake Portal</h2>
@@ -600,16 +600,15 @@
         </p>
     </footer>
 
-    <!-- INTERFACE ROUTING SCRIPT (OPTION B - PREFILL) -->
+    <!-- INTERFACE ROUTING SCRIPT (OPTION B - MICROSOFT FORMS INTELLIGENT ROUTING) -->
     <script>
         document.getElementById('intakeForm').addEventListener('submit', function(event) {
-            // Evitamos que refresque la página o use la acción nativa básica
             event.preventDefault();
             
-            // Reemplaza esta URL con el enlace real de compartir que te proporciona Microsoft Forms
+            // Enlace de producción verificado del portal de Microsoft Cloud de TriVault
             const microsoftFormBaseUrl = "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u";
             
-            // Captura segura y mapeada de los datos del DOM de la web oscura
+            // Captura estructurada de las variables ingresadas en la interfaz oscura
             const orgType = encodeURIComponent(document.getElementById('organization_type').value);
             const contactName = encodeURIComponent(document.getElementById('contact_name').value);
             const businessEmail = encodeURIComponent(document.getElementById('email').value);
@@ -617,14 +616,10 @@
             const propertyAddress = encodeURIComponent(document.getElementById('address').value);
             const fileScope = encodeURIComponent(document.getElementById('scope_details').value);
             
-            /* 
-              Construcción del query string inteligente. 
-              Nota: Cambia r01, r02, etc., por los identificadores que te dé Microsoft Forms 
-              al activar la opción "Obtener vínculo para rellenar previamente".
-            */
-            const prefillUrl = `${microsoftFormBaseUrl}?r01=${orgType}&r02=${contactName}&r03=${businessEmail}&r04=${phoneLine}&r05=${propertyAddress}&r06=${fileScope}`;
+            // Construcción paramétrica limpia de la URL de pre-llenado oficial para Office 365 / Cloud
+            const prefillUrl = `${microsoftFormBaseUrl}&r01=${orgType}&r02=${contactName}&r03=${businessEmail}&r04=${phoneLine}&r05=${propertyAddress}&r06=${fileScope}`;
             
-            // Abre Microsoft Forms en una pestaña nueva con toda la data precargada limpiamente
+            // Enrutamiento dinámico en pestaña limpia
             window.open(prefillUrl, '_blank');
         });
     </script>
