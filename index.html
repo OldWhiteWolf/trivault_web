@@ -85,6 +85,7 @@
             padding: 0.5rem 1rem;
             border-radius: 4px;
             font-weight: bold;
+            text-decoration: none;
         }
 
         /* --- HERO SECTION --- */
@@ -319,29 +320,6 @@
             text-align: center;
         }
 
-        .portal-wrapper {
-            max-width: 650px;
-            margin: 0 auto;
-            background-color: var(--primary-dark);
-            border: 2px solid var(--accent-gold);
-            border-radius: 8px;
-            padding: 3.5rem 2.5rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-        }
-
-        .portal-wrapper h3 {
-            font-size: 1.8rem;
-            color: var(--white);
-            margin-bottom: 1rem;
-        }
-
-        .portal-wrapper p {
-            color: #cbd5e1;
-            font-size: 1.05rem;
-            margin-bottom: 2rem;
-            line-height: 1.5;
-        }
-
         /* --- FOOTER --- */
         footer {
             background-color: #05080c;
@@ -368,6 +346,9 @@
             .hero h1 { font-size: 2.2rem; }
             nav ul { display: none; }
             .hero-btns { flex-direction: column; }
+            .grid-4-responsive {
+                grid-template-columns: 1fr !important;
+            }
         }
     </style>
 </head>
@@ -377,7 +358,7 @@
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <img src="public/assets/logo-trivault.png" alt="TriVault Logo" style="height: 35px; width: auto; vertical-align: middle;">
+                <img src="logo.png" alt="TriVault Logo" style="height: 35px; width: auto; vertical-align: middle;">
                 TRIVAULT PROPERTY SOLUTIONS
             </div>
             <nav>
@@ -476,13 +457,15 @@
     </section>
 
     <!-- AUDIT-READY SAMPLES SECTION -->
-    <section id="samples" class="section" style="background-color: #0d161f; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <section id="samples" class="section" style="background-color: var(--secondary-dark); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
         <div class="section-header">
             <h2>Audit-Ready Scope Samples</h2>
             <p>Transparent Architectural Packages • Redacted for Confidentiality</p>
         </div>
         
-        <div class="grid-3" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+        <div class="grid-3 grid-4-responsive" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+            
+            <!-- Fire Damage Matrix -->
             <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔥</div>
                 <div class="metric-label" style="font-size: 1rem; color: var(--white);">Fire Damage Matrix</div>
@@ -490,9 +473,10 @@
                     <p>Structural soot, thermal mapping, and detailed multi-room reconstruction line-items.</p>
                     <p class="es">Líneas de reconstrucción detallada, hollín estructural y mapeo térmico.</p>
                 </div>
-                <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
+                <a href="public/samples/TRIVAULT_Fire_Estimate_Sample.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
 
+            <!-- Water Mitigation (Nota: Se asigna temporalmente al de Fuego o Agua según tu repositorio) -->
             <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">💧</div>
                 <div class="metric-label" style="font-size: 1rem; color: var(--white);">Water Mitigation</div>
@@ -500,9 +484,10 @@
                     <p>Psychrometric logging and extraction parameters mapped directly to IICRC S500 standards.</p>
                     <p class="es">Registros psicrométricos y parámetros de extracción alineados con normas IICRC.</p>
                 </div>
-                <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
+                <a href="public/samples/TRIVAULT_Fire_Estimate_Sample.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
 
+            <!-- Mold Remediation -->
             <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧫</div>
                 <div class="metric-label" style="font-size: 1rem; color: var(--white);">Mold Remediation</div>
@@ -510,9 +495,10 @@
                     <p>Licensed environmental assessment protocols and containment layout pricing structures.</p>
                     <p class="es">Protocolos de evaluación ambiental licenciados y estructuras de contención.</p>
                 </div>
-                <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
+                <a href="public/samples/TRIVAULT_Mold_Estimate_Sample.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
 
+            <!-- Roof Wind & Hail -->
             <div class="metric-card" style="background-color: var(--primary-dark); padding: 2rem 1.5rem;">
                 <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏠</div>
                 <div class="metric-label" style="font-size: 1rem; color: var(--white);">Roof Wind & Hail</div>
@@ -520,21 +506,34 @@
                     <p>Complete perimeter calculations, code-required components, and valley/flashing details.</p>
                     <p class="es">Cálculos completos de perímetro, códigos requeridos y detalles de tapajuntas.</p>
                 </div>
-                <a href="#" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
+                <a href="public/samples/TRIVAULT_Roof_Estimate_Sample.pdf" target="_blank" class="btn btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.85rem; display: inline-block; width: 100%;">Review Architecture (PDF)</a>
             </div>
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION - DIRECT ACCESS LINK -->
-    <section id="intake" class="intake-section">
-        <div class="portal-wrapper">
-            <h3>B2B Secure File Intake Portal</h3>
-            <p>
-                Carriers, Public Adjusters, and Restoration Contractors can securely upload claims parameters, property damage information, and scope files directly into our database using our secure Microsoft gateway.
-            </p>
+    <!-- SECURE B2B INTAKE SECTION - PREMIUM INTEGRATED PORTAL -->
+    <section id="intake" class="intake-section" style="padding: 80px 2rem;">
+        <div class="portal-wrapper" style="max-width: 800px; margin: 0 auto; background-color: var(--secondary-dark); border: 2px solid var(--accent-gold); border-radius: 8px; padding: 2.5rem 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.6);">
             
-            <!-- ENLACE DIRECTO COMPLETO Y TOTALMENTE PÚBLICO -->
-            <iframe width="640px" height="480px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+            <!-- Encabezado del Portal Estilizado -->
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h3 style="font-size: 2rem; color: var(--white); font-weight: 700; letter-spacing: 0.5px;">B2B Secure File Intake Portal</h3>
+                <p style="color: #cbd5e1; font-size: 1rem; max-width: 600px; margin: 0.5rem auto 0 auto; line-height: 1.5;">
+                    Carriers, Public Adjusters, and Restoration Contractors can securely upload claims parameters, property damage information, and scope files directly into our database using our secure Microsoft gateway.
+                </p>
+            </div>
+            
+            <!-- Contenedor del Formulario de Microsoft con Diseño Limpio -->
+            <div class="ms-form-container" style="position: relative; border-radius: 6px; overflow: hidden; background-color: var(--white); box-shadow: inset 0 0 10px rgba(0,0,0,0.2);">
+                <iframe width="100%" height="600px" src="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; display: block; max-height: 80vh;" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen loading="lazy"></iframe>
+            </div>
+            
+            <!-- Nota de Confidencialidad al Pie -->
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic;">
+                    End-to-end encrypted transmission. Conforms fully to Florida statutory data security guidelines.
+                </p>
+            </div>
         </div>
     </section>
 
