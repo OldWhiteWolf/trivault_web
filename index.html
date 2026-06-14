@@ -30,6 +30,98 @@
             background-color: var(--primary-dark);
             color: var(--text-light);
             line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- INTRO SPLASH SCREEN EFFECT (FULLSCREEN LOGO) --- */
+        #splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--primary-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Asegura estar por encima de todo */
+            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s ease;
+        }
+
+        .splash-content {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeInScale 1.4s ease-out forwards;
+        }
+
+        /* Logo expandido a casi pantalla completa */
+        .splash-logo {
+            position: absolute;
+            height: 80vh;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.15; /* Opacidad sutil estilo marca de agua premium */
+            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.1));
+            z-index: 1;
+        }
+
+        /* Contenedor de textos centrado y superpuesto */
+        .splash-text-container {
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        /* Tipografía estilo Times New Roman para el eslogan */
+        .splash-slogan {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            color: var(--accent-gold);
+            font-size: 3.5rem; /* Tamaño imponente */
+            font-weight: 400;  /* Estilo clásico serif */
+            font-style: italic;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Subtexto en Times New Roman */
+        .splash-sub {
+            font-family: 'Times New Roman', Times, Georgia, serif;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Animación de entrada suave */
+        @keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Clase activada por JavaScript para desvanecer la intro */
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.02);
+        }
+
+        /* Bloqueo del scroll general mientras la intro esté activa */
+        body.intro-active {
+            overflow: hidden;
         }
 
         /* --- HEADER NAVIGATION --- */
@@ -58,10 +150,6 @@
             font-weight: bold;
             font-size: 1.2rem;
             letter-spacing: 1px;
-        }
-
-        .logo-area span {
-            color: var(--accent-gold);
         }
 
         nav ul {
@@ -217,19 +305,6 @@
         .section-header p {
             color: var(--text-muted);
             font-style: italic;
-        }
-        
-        .section-header .subtitle {
-            color: var(--accent-gold);
-            font-size: 1rem;
-            margin: 0;
-            font-style: italic;
-        }
-
-        .section-header .subtitle-es {
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            margin-top: 4px;
         }
 
         .grid-3 {
@@ -514,10 +589,26 @@
             .hero h1 { font-size: 2.2rem; }
             nav ul { display: none; }
             .hero-btns { flex-direction: column; }
+            .splash-slogan { font-size: 2.2rem; }
+            .splash-logo { height: 60vh; }
         }
     </style>
 </head>
-<body>
+<body class="intro-active">
+
+    <!-- PRESENTACIÓN EXTENDIDA CON LOGO COMPLETO Y TEXTO CENTRADO -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <!-- El logo actúa como marca de agua gigante de fondo -->
+            <img src="public/assets/logo-trivault.png" alt="TriVault Solutions Full Logo" class="splash-logo">
+            
+            <!-- Frase y subtexto perfectamente al medio -->
+            <div class="splash-text-container">
+                <div class="splash-slogan">We Are The Paramount</div>
+                <div class="splash-sub">Property Solutions & Intelligence</div>
+            </div>
+        </div>
+    </div>
 
     <!-- NAVIGATION HEADER -->
     <header>
@@ -763,6 +854,23 @@
             Regulatory Compliance Notice: TriVault LLC provides professional independent estimations, independent claim adjustments, and licensed structural/environmental home inspections conforming fully to the statutory requirements of the State of Florida.
         </p>
     </footer>
+
+    <!-- INTERACTION & TIMING JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Control del Splash Screen (2500ms = 2.5 segundos de exposición fija antes de desvanecer)
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.classList.add('fade-out');
+                    document.body.classList.remove('intro-active');
+                    
+                    // Remoción limpia del DOM tras terminar el segundo completo de transición CSS
+                    setTimeout(() => splash.remove(), 1000); 
+                }
+            }, 2500);
+        });
+    </script>
 
 </body>
 </html>
