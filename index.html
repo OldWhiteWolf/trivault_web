@@ -516,76 +516,6 @@
             text-align: center;
         }
 
-        .portal-vault-card {
-            max-width: 650px;
-            margin: 0 auto;
-            background-color: var(--secondary-dark);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .portal-vault-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.05);
-        }
-
-        .btn-vault-access {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            border: 1px solid var(--accent-gold);
-            padding: 1rem 2.5rem;
-            font-size: 1.05rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 6px;
-            text-decoration: none;
-            margin: 25px 0 15px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-        }
-
-        .btn-vault-access:hover {
-            background-color: transparent;
-            color: var(--accent-gold);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-            transform: translateY(-2px);
-        }
-
-        .lock-icon {
-            width: 18px;
-            height: 18px;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: #05080c;
-            padding: 40px 2rem;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        footer a {
-            color: var(--accent-gold);
-            text-decoration: none;
-        }
-
-        .disclaimer {
-            max-width: 800px;
-            margin: 1.5rem auto 0 auto;
-            font-size: 0.75rem;
-            line-height: 1.5;
-        }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             nav ul { display: none; }
@@ -821,30 +751,31 @@
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION - PREMIUM CALL TO ACTION CARD -->
-    <section id="intake" class="intake-section">
-        <div class="portal-vault-card">
+    <!-- INTEGRATED BOOKINGS & INTAKE GATEWAY SECTION -->
+    <!-- SECURE B2B INTAKE SECTION - INTEGRATED BOOKING CALENDAR -->
+    <section id="intake" class="intake-section" style="background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%); padding: 90px 2rem; text-align: center;">
+        <div class="booking-section" style="max-width: 950px; margin: 0 auto; background-color: var(--secondary-dark); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 40px 30px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);">
             
             <div class="vault-status-bar" style="display: inline-flex; align-items: center; gap: 8px; background-color: rgba(0,0,0,0.3); padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05);">
                 <span class="status-dot" style="width: 7px; height: 7px; background-color: #30b058; border-radius: 50%; box-shadow: 0 0 8px #30b058;"></span>
                 <span class="status-text" style="color: var(--text-muted); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;">SECURE SSL GATEWAY</span>
             </div>
 
-            <h2 style="font-size: 1.8rem; color: var(--white); font-weight: 700; margin-bottom: 10px;">B2B Secure File Intake Portal</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; max-width: 550px; margin: 0 auto;">
-                Carriers, Public Adjusters, and Restoration Contractors can securely upload claims parameters, property damage information, and scope files directly into our database.
+            <h2 style="font-size: 2rem; color: var(--white); font-weight: 700; margin-bottom: 10px;">B2B Secure Inspection Booking</h2>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; max-width: 650px; margin: 0 auto 30px auto;">
+                Carriers, Public Adjusters, and Restoration Contractors can schedule an inspection window in real-time. Fast, professional, and secure. After booking, you will receive an automated link to upload heavy claims files.
             </p>
 
-            <!-- BOTÓN QUE LLEVA AL FORMULARIO EXTERNO -->
-            <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=11OprSLyREu1LbQG623mk-EbW3ikLhBGhwYsJuAN6cFURThDUTlEWEI2RE9aSVBTSDBQNEpLWktVRC4u" target="_blank" class="btn-vault-access">
-                <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-                <span>Access Secure Intake</span>
-            </a>
+            <!-- CONTENEDOR RESPONSIVO DEL CALENDARIO (REEMPLAZA AL BOTÓN ANTERIOR) -->
+            <div style="position: relative; overflow: hidden; width: 100%; padding-top: 75%; background-color: #161b22; border: 1px solid #21262d; border-radius: 8px; box-shadow: inset 0 4px 20px rgba(0,0,0,0.4);">
+                <iframe 
+    src="https://outlook.office365.com/owa/calendar/TriVaultLLC@FloridaParamount.com/bookings/"
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+    allowfullscreen>
+</iframe>
+            </div>
             
-            <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 5px;">
+            <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 20px;">
                 Conforms fully to Florida statutory data security guidelines.
             </p>
         </div>
