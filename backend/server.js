@@ -4,7 +4,11 @@ import multer from "multer";
 import cors from "cors";
 import { sendMail, createEvent, uploadToOneDrive } from "./graph.js";
 
-dotenv.config();
+
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config();
+}
+
 
 const app = express();
 
