@@ -62,6 +62,12 @@ app.use((err, req, res, next) => {
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
+//---------TEST-----
+
+app.get("/test", (req, res) => {
+  res.send("VERSION NUEVA");
+});
+
 
 // ─── SUBMIT INSPECTION REQUEST ────────────────────────────────────────────────
 app.post("/submit", upload.array("documents", 10), async (req, res) => {
