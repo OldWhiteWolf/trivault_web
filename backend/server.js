@@ -15,15 +15,16 @@ const allowedOrigins = [
   "http://127.0.0.1:5500"
 ];
 
+
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes("*") || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  }
+  origin: [
+    process.env.FRONTEND_URL,
+    "http://localhost:5500",
+    "http://127.0.0.1:5500"
+  ].filter(Boolean),
+  methods: ["GET", "POST"],
 }));
+
 
 app.use(express.json());
 
