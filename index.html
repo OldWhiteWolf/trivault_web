@@ -45,7 +45,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Asegura estar por encima de todo */
+            z-index: 9999;
             transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s ease;
         }
 
@@ -61,37 +61,33 @@
             animation: fadeInScale 1.4s ease-out forwards;
         }
 
-        /* Logo expandido a casi pantalla completa */
         .splash-logo {
             position: absolute;
             height: 80vh;
             width: auto;
             object-fit: contain;
-            opacity: 0.15; /* Opacidad sutil estilo marca de agua premium */
+            opacity: 0.15;
             filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.1));
             z-index: 1;
         }
 
-        /* Contenedor de textos centrado y superpuesto */
         .splash-text-container {
             position: relative;
             z-index: 2;
             padding: 0 2rem;
         }
 
-        /* Tipografía estilo Times New Roman para el eslogan */
         .splash-slogan {
             font-family: 'Times New Roman', Times, Georgia, serif;
             color: var(--accent-gold);
-            font-size: 3.5rem; /* Tamaño imponente */
-            font-weight: 400;  /* Estilo clásico serif */
+            font-size: 3.5rem;
+            font-weight: 400;
             font-style: italic;
             letter-spacing: 3px;
             margin-bottom: 15px;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
         }
 
-        /* Subtexto en Times New Roman */
         .splash-sub {
             font-family: 'Times New Roman', Times, Georgia, serif;
             color: var(--text-light);
@@ -101,38 +97,29 @@
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
         }
 
-        /* Animación de entrada suave */
         @keyframes fadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.96);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-            }
+            0% { opacity: 0; transform: scale(0.96); }
+            100% { opacity: 1; transform: scale(1); }
         }
 
-        /* Clase activada por JavaScript para desvanecer la intro */
         .fade-out {
             opacity: 0;
             pointer-events: none;
             transform: scale(1.02);
         }
 
-        /* Bloqueo del scroll general mientras la intro esté activa */
         body.intro-active {
             overflow: hidden;
         }
 
-        /* --- HEADER NAVIGATION --- */
+        /* --- HEADER NAVIGATION (CLEANED UP & LIGHTER) --- */
         header {
             background-color: rgba(10, 17, 24, 0.95);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
         }
 
         .nav-container {
@@ -141,30 +128,37 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 0.8rem 2rem;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-weight: bold;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            gap: 12px;
+        }
+
+        .logo-area h1 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 0;
+            color: var(--white);
         }
 
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 24px;
             align-items: center;
         }
 
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
             transition: color 0.3s;
         }
 
@@ -175,10 +169,12 @@
         .cta-phone {
             background-color: var(--accent-gold);
             color: var(--primary-dark);
-            padding: 0.5rem 1rem;
+            padding: 0.5rem 1.1rem;
             border-radius: 4px;
-            font-weight: bold;
+            font-weight: 700;
             text-decoration: none;
+            text-transform: none;
+            letter-spacing: 0;
         }
 
         /* --- HERO SECTION --- */
@@ -420,6 +416,178 @@
             margin: 0;
         }
 
+        /* --- PRICING STRUCTURE SECTION --- */
+        .pricing-section {
+            padding: 80px 2rem;
+            background-color: var(--primary-dark);
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border: 1px solid var(--accent-gold);
+            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .pricing-card h3 {
+            color: var(--accent-gold);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-price {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: normal;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .pricing-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .pricing-list li {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .pricing-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+
+        .pricing-section .disclaimer-box {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 800px;
+            margin: 40px auto 0 auto;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        /* --- TERMS AND CONDITIONS MODAL WINDOW --- */
+        .legal-modal {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(5, 8, 12, 0.9);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .legal-modal-content {
+            background-color: var(--secondary-dark);
+            border: 1px solid var(--accent-gold);
+            color: var(--text-light);
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border-radius: 8px;
+            position: relative;
+            padding: 40px 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.3s;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-gold);
+        }
+
+        .legal-modal-content h2 {
+            color: var(--accent-gold);
+            font-size: 1.6rem;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .legal-modal-content h3 {
+            color: var(--white);
+            font-size: 1.15rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .legal-modal-content p, .legal-modal-content ul {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .legal-modal-content ul { padding-left: 20px; }
+        .legal-modal-content li { margin-bottom: 8px; }
+
+        .legal-modal-content blockquote {
+            background-color: var(--primary-dark);
+            border-left: 3px solid var(--accent-gold);
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
         /* --- PREMIUM SAMPLES CARDS --- */
         .samples-grid {
             display: grid;
@@ -516,159 +684,112 @@
             text-align: center;
         }
 
-        .portal-vault-card {
-            max-width: 650px;
+        .intake-form-wrapper {
+            max-width: 780px;
             margin: 0 auto;
-            background-color: var(--secondary-dark);
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: var(--secondary-dark);
+            border: 1px solid rgba(212,175,55,0.3);
             border-radius: 12px;
-            padding: 40px 30px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            padding: 40px 36px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
         }
-
-        .portal-vault-card:hover {
-            border-color: var(--accent-gold);
-            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.05);
+        .intake-form-wrapper h2 {
+            font-size: 1.6rem;
+            color: var(--white);
+            margin-bottom: 6px;
         }
-
-        .btn-vault-access {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            border: 1px solid var(--accent-gold);
-            padding: 1rem 2.5rem;
-            font-size: 1.05rem;
-            font-weight: 700;
+        .intake-form-wrapper .form-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 28px;
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-grid .full-width { grid-column: 1 / -1; }
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-radius: 6px;
-            text-decoration: none;
-            margin: 25px 0 15px 0;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-        }
-
-        .btn-vault-access:hover {
-            background-color: transparent;
             color: var(--accent-gold);
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-            transform: translateY(-2px);
         }
-
-        .lock-icon {
-            width: 18px;
-            height: 18px;
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 11px 14px;
+            outline: none;
+            transition: border-color 0.25s;
+            width: 100%;
+            font-family: inherit;
         }
-<!--
-.intake-form-wrapper {
-    max-width: 780px;
-    margin: 0 auto;
-    background: var(--secondary-dark);
-    border: 1px solid rgba(212,175,55,0.3);
-    border-radius: 12px;
-    padding: 40px 36px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-}
-.intake-form-wrapper h2 {
-    font-size: 1.6rem;
-    color: var(--white);
-    margin-bottom: 6px;
-}
-.intake-form-wrapper .form-subtitle {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 28px;
-}
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-.form-grid .full-width { grid-column: 1 / -1; }
-.form-group { display: flex; flex-direction: column; gap: 6px; }
-.form-group label {
-    font-size: 0.78rem;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    color: var(--accent-gold);
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 6px;
-    color: var(--text-light);
-    font-size: 0.95rem;
-    padding: 11px 14px;
-    outline: none;
-    transition: border-color 0.25s;
-    width: 100%;
-    font-family: inherit;
-}
-.form-group select option { background: #121b24; }
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus { border-color: var(--accent-gold); }
-.form-group input::placeholder,
-.form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
-.form-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
-.drop-zone {
-    border: 2px dashed rgba(212,175,55,0.35);
-    border-radius: 8px;
-    padding: 28px 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: border-color 0.25s, background 0.25s;
-    position: relative;
-}
-.drop-zone.drag-over {
-    border-color: var(--accent-gold);
-    background: rgba(212,175,55,0.05);
-}
-.drop-zone input[type="file"] {
-    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
-}
-.drop-zone p { color: var(--text-muted); font-size: 0.88rem; margin: 6px 0 0; pointer-events: none; }
-.drop-zone strong { color: var(--text-light); font-size: 0.95rem; pointer-events: none; }
-.file-list { margin-top: 10px; }
-.file-chip {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25);
-    border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: var(--text-light);
-    margin: 4px 3px;
-}
-.file-chip button {
-    background: none; border: none; color: var(--text-muted); cursor: pointer;
-    font-size: 1rem; line-height: 1; padding: 0; margin-left: 2px;
-}
-.file-chip button:hover { color: #e53e3e; }
-.btn-submit-intake {
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    background: var(--accent-gold); color: var(--primary-dark);
-    border: 1px solid var(--accent-gold); padding: 14px 36px;
-    font-size: 1rem; font-weight: 700; border-radius: 6px;
-    cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 8px;
-    text-transform: uppercase; letter-spacing: 0.5px;
-}
-.btn-submit-intake:hover:not(:disabled) {
-    background: transparent; color: var(--accent-gold); box-shadow: 0 4px 20px rgba(212,175,55,0.4);
-}
-.btn-submit-intake:disabled { opacity: 0.6; cursor: not-allowed; }
-.form-notice { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 10px; font-style: italic; }
-.intake-msg {
-    border-radius: 8px; padding: 14px 18px; font-size: 0.92rem;
-    margin-top: 16px; display: none;
-}
-.intake-msg.success { background: rgba(48,176,88,0.12); border: 1px solid #30b058; color: #4ade80; }
-.intake-msg.error   { background: rgba(229,62,62,0.12);  border: 1px solid #e53e3e; color: #fc8181; }
-@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
--->
+        .form-group select option { background: #121b24; }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { border-color: var(--accent-gold); }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+        .form-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+        
+        .drop-zone {
+            border: 2px dashed rgba(212,175,55,0.35);
+            border-radius: 8px;
+            padding: 28px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.25s, background 0.25s;
+            position: relative;
+        }
+        .drop-zone.drag-over {
+            border-color: var(--accent-gold);
+            background: rgba(212,175,55,0.05);
+        }
+        .drop-zone input[type="file"] {
+            position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+        }
+        .drop-zone p { color: var(--text-muted); font-size: 0.88rem; margin: 6px 0 0; pointer-events: none; }
+        .drop-zone strong { color: var(--text-light); font-size: 0.95rem; pointer-events: none; }
+        .file-list { margin-top: 10px; }
+        .file-chip {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25);
+            border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: var(--text-light);
+            margin: 4px 3px;
+        }
+        .file-chip button {
+            background: none; border: none; color: var(--text-muted); cursor: pointer;
+            font-size: 1rem; line-height: 1; padding: 0; margin-left: 2px;
+        }
+        .file-chip button:hover { color: #e53e3e; }
+        
+        .btn-submit-intake {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            background: var(--accent-gold); color: var(--primary-dark);
+            border: 1px solid var(--accent-gold); padding: 14px 36px;
+            font-size: 1rem; font-weight: 700; border-radius: 6px;
+            cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 8px;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .btn-submit-intake:hover:not(:disabled) {
+            background: transparent; color: var(--accent-gold); box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+        }
+        .btn-submit-intake:disabled { opacity: 0.6; cursor: not-allowed; }
+        .form-notice { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 10px; font-style: italic; }
+        
+        .intake-msg {
+            border-radius: 8px; padding: 14px 18px; font-size: 0.92rem;
+            margin-top: 16px; display: none;
+        }
+        .intake-msg.success { background: rgba(48,176,88,0.12); border: 1px solid #30b058; color: #4ade80; }
+        .intake-msg.error   { background: rgba(229,62,62,0.12);  border: 1px solid #e53e3e; color: #fc8181; }
 
         /* --- FOOTER --- */
         footer {
@@ -683,6 +804,7 @@
         footer a {
             color: var(--accent-gold);
             text-decoration: none;
+            cursor: pointer;
         }
 
         .disclaimer {
@@ -695,21 +817,18 @@
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             nav ul { display: none; }
-            .hero-btns { flex-direction: column; }
             .splash-slogan { font-size: 2.2rem; }
             .splash-logo { height: 60vh; }
+            .form-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body class="intro-active">
 
-    <!-- PRESENTACIÓN EXTENDIDA CON LOGO COMPLETO Y TEXTO CENTRADO -->
+    <!-- PRESENTACIÓN EXTENDIDA CON LOGO COMPLETO -->
     <div id="splash-screen">
         <div class="splash-content">
-            <!-- El logo actúa como marca de agua gigante de fondo -->
             <img src="public/assets/logo-trivault.png" alt="TriVault Solutions Full Logo" class="splash-logo">
-            
-            <!-- Frase y subtexto perfectamente al medio -->
             <div class="splash-text-container">
                 <div class="splash-slogan">We Are The Paramount</div>
                 <div class="splash-sub">Property Solutions & Intelligence</div>
@@ -717,19 +836,16 @@
         </div>
     </div>
 
-    <!-- NAVIGATION HEADER -->
+    <!-- CLEANED & STRUCTURAL HEADER -->
     <header>
         <div class="nav-container">
             <div class="logo-area">
-                <img src="public/assets/logo-trivault.png" alt="TriVault Logo" style="height: 35px; width: auto; vertical-align: middle;">
-                    <h1 style="font-size: 22px; font-weight: 600; margin: 0;">
-  		                TRIVAULT PROPERTY SOLUTIONS
-		            </h1>
+                <img src="public/assets/logo-trivault.png" alt="TriVault Logo" style="height: 32px; width: auto; vertical-align: middle;">
+                <h1>TRIVAULT PROPERTY SOLUTIONS</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#standards">Industry Standards</a></li>
-                    <li><a href="#framework">The System</a></li>
+                    <li><a href="#pricing">Fee Structure</a></li>
                     <li><a href="#samples">Architecture Samples</a></li>
                     <li><a href="#intake">Submit File</a></li>
                     <li><a class="cta-phone" href="tel:7868791056">Call 786-879-1056</a></li>
@@ -800,11 +916,9 @@
         <div class="section-header">
             <h2>The TriVault Workflow System™</h2>
             <p class="subtitle">Standardized Triangulation of Field Data, Compliance, and Delivery</p>
-            <p class="subtitle-es">Triangulación Estandarizada de Datos de Campo, Cumplimiento y Entrega</p>
         </div>
         
         <div class="workflow-grid">
-            <!-- Paso 1 -->
             <div class="workflow-card">
                 <div class="step-number">01</div>
                 <div class="workflow-icon">
@@ -817,7 +931,6 @@
                 <p>Licensed structural, thermal, or mold inspection protocols capture raw, undeniable property facts.</p>
             </div>
 
-            <!-- Paso 2 -->
             <div class="workflow-card">
                 <div class="step-number">02</div>
                 <div class="workflow-icon">
@@ -826,14 +939,12 @@
                         <polyline points="14 2 14 8 20 8"/>
                         <line x1="16" y1="13" x2="8" y2="13"/>
                         <line x1="16" y1="17" x2="8" y2="17"/>
-                        <polyline points="10 9 9 9 8 9"/>
                     </svg>
                 </div>
                 <h3>Guideline Audit Matrix</h3>
                 <p>Scopes are built using exact Xactimate localized database prices, removing inflated line-items or code omissions.</p>
             </div>
 
-            <!-- Paso 3 -->
             <div class="workflow-card">
                 <div class="step-number">03</div>
                 <div class="workflow-icon">
@@ -848,6 +959,42 @@
         </div>
     </section>
 
+    <!-- PRICING SECTION (UPDATED TO 2% / $200) -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-header">
+            <h2>Fee Structure</h2>
+            <p>Transparent, compliant, and data-driven Xactimate estimate architecture.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- Next Day Card -->
+            <div class="pricing-card featured">
+                <h3>Next Day Turnaround</h3>
+                <div class="pricing-price">2%<span>of estimate total</span></div>
+                <ul class="pricing-list">
+                    <li><strong>$200 Minimum</strong> non-refundable deposit required to commence drafting.</li>
+                    <li>Delivered systematically by close of the next business day.*</li>
+                    <li>Includes comprehensive line-item audits and compliance mapping.</li>
+                </ul>
+            </div>
+
+            <!-- Supplemental Card -->
+            <div class="pricing-card">
+                <h3>Supplemental Rewrites</h3>
+                <div class="pricing-price" style="font-size: 2.2rem; margin: 15px 0 33px 0;">$200 Min.<span>+ 2% of supplement value</span></div>
+                <ul class="pricing-list">
+                    <li>Applies to scope modifications or carrier rewrite mandates.</li>
+                    <li>Standard processing covers up to 100 line items.</li>
+                    <li><em>Files over 100 lines:</em> Budgeted at an additional +$2 per scope line.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="disclaimer-box">
+            *All files must be fully uploaded to the intake portal with actionable documentation before 2:00 PM Eastern Time to qualify for next business day delivery. Deposits paid at intake are strictly non-refundable and cover initial file triage protocols. Estimates exceeding $25,000 may require an additional upfront deposit of up to 2/3 of the anticipated final invoice value.
+        </div>
+    </section>
+
     <!-- AUDIT-READY SAMPLES SECTION -->
     <section id="samples" class="section" style="background-color: var(--secondary-dark); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
         <div class="section-header">
@@ -856,7 +1003,6 @@
         </div>
         
         <div class="samples-grid">
-            <!-- Fire Damage Matrix -->
             <div class="sample-card">
                 <div class="sample-icon-wrapper fire-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -872,7 +1018,6 @@
                 </a>
             </div>
 
-            <!-- Water Mitigation -->
             <div class="sample-card">
                 <div class="sample-icon-wrapper water-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -888,15 +1033,10 @@
                 </a>
             </div>
 
-            <!-- Mold Remediation -->
             <div class="sample-card">
                 <div class="sample-icon-wrapper mold-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <circle cx="12" cy="12" r="10"/>
-                        <circle cx="8" cy="9" r="1.5" fill="currentColor"/>
-                        <circle cx="15" cy="10" r="1" fill="currentColor"/>
-                        <circle cx="10" cy="15" r="2" fill="currentColor"/>
-                        <circle cx="15" cy="15" r="1.5" fill="currentColor"/>
                     </svg>
                 </div>
                 <h3>MOLD REMEDIATION</h3>
@@ -908,12 +1048,10 @@
                 </a>
             </div>
 
-            <!-- Roof Wind & Hail -->
             <div class="sample-card">
                 <div class="sample-icon-wrapper roof-icon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                        <polyline points="9 22 9 12 15 12 15 22"/>
                     </svg>
                 </div>
                 <h3>ROOF WIND & HAIL</h3>
@@ -927,241 +1065,253 @@
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION - PREMIUM CALL TO ACTION CARD -->
+    <!-- SECURE B2B INTAKE SECTION -->
     <section id="intake" class="intake-section">
-    <div class="intake-form-wrapper">
+        <div class="intake-form-wrapper">
+            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:6px 16px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.05);">
+                <span style="width:7px;height:7px;background:#30b058;border-radius:50%;box-shadow:0 0 8px #30b058;display:inline-block;"></span>
+                <span style="color:var(--text-muted);font-size:0.7rem;font-weight:700;letter-spacing:1px;">SECURE SSL GATEWAY</span>
+            </div>
 
-        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:6px 16px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.05);">
-            <span style="width:7px;height:7px;background:#30b058;border-radius:50%;box-shadow:0 0 8px #30b058;display:inline-block;"></span>
-            <span style="color:var(--text-muted);font-size:0.7rem;font-weight:700;letter-spacing:1px;">SECURE SSL GATEWAY</span>
-        </div>
+            <h2>B2B Secure File Intake</h2>
+            <p class="form-subtitle">Complete the form below to schedule an inspection/estimate and upload your claim/case documents directly to our secure OneDrive.</p>
 
-        <h2>B2B Secure File Intake</h2>
-        <p class="form-subtitle">Complete the form below to schedule an inspection/estimate and upload your claim/case documents directly to our secure OneDrive.</p>
-
-        <form id="intakeForm" novalidate>
-            <div class="form-grid">
-
-                <!-- Client Type -->
-                <div class="form-group full-width">
-                    <label for="clientType">Client Type <span style="color:#e53e3e">*</span></label>
-                    <select id="clientType" name="clientType" required>
-                        <option value="" disabled selected>— Select client type —</option>
-                        <option value="Insurance Carrier">Insurance Carrier</option>
-                        <option value="Public Adjuster">Public Adjuster</option>
-                        <option value="Contractor">Contractor</option>
-                        <option value="Homeowner">Homeowner</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <!-- Company -->
-                <div class="form-group">
-                    <label for="company">Company / Organization</label>
-                    <input type="text" id="company" name="company" placeholder="ABC Insurance Co.">
-                </div>
-
-                <!-- Contact Person -->
-                <div class="form-group">
-                    <label for="contactPerson">Contact Person <span style="color:#e53e3e">*</span></label>
-                    <input type="text" id="contactPerson" name="contactPerson" placeholder="John Smith" required>
-                </div>
-
-                <!-- Email -->
-                <div class="form-group">
-                    <label for="email">Email Address <span style="color:#e53e3e">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="john@company.com" required>
-                </div>
-
-                <!-- Phone -->
-                <div class="form-group">
-                    <label for="phone">Phone Number <span style="color:#e53e3e">*</span></label>
-                    <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required>
-                </div>
-
-                <!-- Property Address -->
-                <div class="form-group full-width">
-                    <label for="propertyAddress">Property Address <span style="color:#e53e3e">*</span></label>
-                    <input type="text" id="propertyAddress" name="propertyAddress" placeholder="1234 SW 8th St, Miami, FL 33135" required>
-                </div>
-
-                <!-- Claim / Case Number -->
-                <div class="form-group">
-                    <label for="claimNumber">Claim / Case Number <span style="color:#e53e3e">*</span></label>
-                    <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
-                </div>
-
-                <!-- Preferred Date & Time -->
-                <div class="form-group">
-                    <label for="date">Preferred Date & Time <span style="color:#e53e3e">*</span></label>
-                    <input type="datetime-local" id="date" name="date" required>
-                </div>
-
-                <!-- Job Description -->
-                <div class="form-group full-width">
-                    <label for="jobDescription">Work Description / Scope of Claim</label>
-                    <textarea id="jobDescription" name="jobDescription" rows="5"
-                        placeholder="Briefly describe the nature of the damage, scope of work requested, or any relevant details about the claim (e.g. wind damage to roof, water intrusion in master bathroom, mold found in attic…)"></textarea>
-                </div>
-
-                <!-- Document Upload -->
-                <div class="form-group full-width">
-                    <label>Supporting Documents</label>
-                    <div class="drop-zone" id="dropZone">
-                        <input type="file" id="docFiles" name="documents" multiple
-                            accept=".pdf,.jpg,.jpeg,.png,.heic,.webp,.doc,.docx,.xls,.xlsx">
-                        <strong>📎 Drag & drop files here or click to browse</strong>
-                        <p>PDF, images, Word, Excel — up to 50 MB each. Files are labeled with your Claim #.</p>
+            <form id="intakeForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="clientType">Client Type <span style="color:#e53e3e">*</span></label>
+                        <select id="clientType" name="clientType" required>
+                            <option value="" disabled selected>— Select client type —</option>
+                            <option value="Insurance Carrier">Insurance Carrier</option>
+                            <option value="Public Adjuster">Public Adjuster</option>
+                            <option value="Contractor">Contractor</option>
+                            <option value="Homeowner">Homeowner</option>
+                            <option value="Other">Other</option>
+                        </select>
                     </div>
-                    <div class="file-list" id="fileList"></div>
+
+                    <div class="form-group">
+                        <label for="company">Company / Organization</label>
+                        <input type="text" id="company" name="company" placeholder="ABC Insurance Co.">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactPerson">Contact Person <span style="color:#e53e3e">*</span></label>
+                        <input type="text" id="contactPerson" name="contactPerson" placeholder="John Smith" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span style="color:#e53e3e">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number <span style="color:#e53e3e">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="propertyAddress">Property Address <span style="color:#e53e3e">*</span></label>
+                        <input type="text" id="propertyAddress" name="propertyAddress" placeholder="1234 SW 8th St, Miami, FL 33135" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="claimNumber">Claim / Case Number <span style="color:#e53e3e">*</span></label>
+                        <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="date">Preferred Date & Time <span style="color:#e53e3e">*</span></label>
+                        <input type="datetime-local" id="date" name="date" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="jobDescription">Work Description / Scope of Claim</label>
+                        <textarea id="jobDescription" name="jobDescription" rows="5" placeholder="Briefly describe the nature of the damage..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Supporting Documents</label>
+                        <div class="drop-zone" id="dropZone">
+                            <input type="file" id="docFiles" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png,.heic,.webp,.doc,.docx,.xls,.xlsx">
+                            <strong>📎 Drag & drop files here or click to browse</strong>
+                            <p>PDF, images, Word, Excel — up to 50 MB each.</p>
+                        </div>
+                        <div class="file-list" id="fileList"></div>
+                    </div>
+
+                    <!-- CLICK-WRAP COMPLIANT CHECKBOX (UPDATED TO 2% / $200) -->
+                    <div class="form-group full-width" style="margin: 10px 0 15px 0; text-align: left;">
+                        <label style="display: flex; align-items: flex-start; gap: 10px; transform: none; color: var(--text-light); font-size: 0.88rem; font-weight: normal; text-transform: none; cursor: pointer;">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required style="width: auto; margin-top: 4px; cursor: pointer;">
+                            <span>I have read and agree to the <a href="#" class="open-terms-link" style="color: var(--accent-gold); text-decoration: underline;">Terms of Service & Estimate Architecture Agreement</a>, including the 2% fee structure and the non-refundable $200 triage deposit policy.</span>
+                        </label>
+                    </div>
                 </div>
 
-            </div><!-- /form-grid -->
+                <button type="submit" class="btn-submit-intake" id="submitBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span id="submitLabel">Submit Secure Intake</span>
+                </button>
 
-            <button type="submit" class="btn-submit-intake" id="submitBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px">
-                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
-                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
-                </svg>
-                <span id="submitLabel">Submit Secure Intake</span>
-            </button>
+                <p class="form-notice">Conforms fully to Florida statutory data security guidelines. Documents are encrypted in transit.</p>
+                <div class="intake-msg" id="intakeMsg"></div>
+            </form>
+        </div>
+    </section>
 
-            <p class="form-notice">Conforms fully to Florida statutory data security guidelines. Documents are encrypted in transit.</p>
+    <!-- INTAKE PORTAL BACKEND SCRIPT -->
+    <script>
+    (function () {
+        const BACKEND_URL = "https://trivaultweb-production.up.railway.app";
+        const form      = document.getElementById("intakeForm");
+        const fileInput = document.getElementById("docFiles");
+        const fileList  = document.getElementById("fileList");
+        const dropZone  = document.getElementById("dropZone");
+        const submitBtn = document.getElementById("submitBtn");
+        const submitLbl = document.getElementById("submitLabel");
+        const msg       = document.getElementById("intakeMsg");
 
-            <div class="intake-msg" id="intakeMsg"></div>
-        </form>
-    </div>
-</section>
+        let selectedFiles = [];
 
-<!-- ─── INTAKE FORM JAVASCRIPT ──────────────────────────────── -->
-<script>
-(function () {
-    // ⚠️ CHANGE THIS to your Railway/Render backend URL before deploying
-    const BACKEND_URL = "https://trivaultweb-production.up.railway.app";
-
-    const form      = document.getElementById("intakeForm");
-    const fileInput = document.getElementById("docFiles");
-    const fileList  = document.getElementById("fileList");
-    const dropZone  = document.getElementById("dropZone");
-    const submitBtn = document.getElementById("submitBtn");
-    const submitLbl = document.getElementById("submitLabel");
-    const msg       = document.getElementById("intakeMsg");
-
-    let selectedFiles = [];
-
-    // ── Drag & Drop ──────────────────────────────────────────
-    dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
-    dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
-    dropZone.addEventListener("drop", e => {
-        e.preventDefault();
-        dropZone.classList.remove("drag-over");
-        addFiles([...e.dataTransfer.files]);
-    });
-
-    fileInput.addEventListener("change", () => {
-        addFiles([...fileInput.files]);
-        fileInput.value = ""; // reset so same file can be re-added
-    });
-
-    function addFiles(newFiles) {
-        newFiles.forEach(f => {
-            if (!selectedFiles.find(x => x.name === f.name && x.size === f.size)) {
-                selectedFiles.push(f);
-            }
+        dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
+        dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+        dropZone.addEventListener("drop", e => {
+            e.preventDefault();
+            dropZone.classList.remove("drag-over");
+            addFiles([...e.dataTransfer.files]);
         });
-        renderFileList();
-    }
 
-    function renderFileList() {
-        fileList.innerHTML = "";
-        selectedFiles.forEach((f, i) => {
-            const chip = document.createElement("span");
-            chip.className = "file-chip";
-            chip.innerHTML = `📄 ${f.name} <button type="button" aria-label="Remove" data-i="${i}">×</button>`;
-            fileList.appendChild(chip);
+        fileInput.addEventListener("change", () => {
+            addFiles([...fileInput.files]);
+            fileInput.value = "";
         });
-        fileList.querySelectorAll("button").forEach(btn => {
-            btn.addEventListener("click", () => {
-                selectedFiles.splice(Number(btn.dataset.i), 1);
-                renderFileList();
+
+        function addFiles(newFiles) {
+            newFiles.forEach(f => {
+                if (!selectedFiles.find(x => x.name === f.name && x.size === f.size)) {
+                    selectedFiles.push(f);
+                }
             });
-        });
-    }
+            renderFileList();
+        }
 
-    // ── Form Submit ──────────────────────────────────────────
-    form.addEventListener("submit", async e => {
-        e.preventDefault();
-        msg.style.display = "none";
+        function renderFileList() {
+            fileList.innerHTML = "";
+            selectedFiles.forEach((f, i) => {
+                const chip = document.createElement("span");
+                chip.className = "file-chip";
+                chip.innerHTML = `📄 ${f.name} <button type="button" aria-label="Remove" data-i="${i}">×</button>`;
+                fileList.appendChild(chip);
+            });
+            fileList.querySelectorAll("button").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    selectedFiles.splice(Number(btn.dataset.i), 1);
+                    renderFileList();
+                });
+            });
+        }
 
-        // Basic validation
-        const required = ["clientType","contactPerson","email","phone","propertyAddress","claimNumber","date"];
-        for (const id of required) {
-            const el = document.getElementById(id);
-            if (!el.value.trim()) {
-                showMsg("error", `Please fill in: ${el.previousElementSibling.textContent.replace("*","").trim()}`);
-                el.focus();
+        form.addEventListener("submit", async e => {
+            e.preventDefault();
+            msg.style.display = "none";
+
+            const required = ["clientType","contactPerson","email","phone","propertyAddress","claimNumber","date"];
+            for (const id of required) {
+                const el = document.getElementById(id);
+                if (!el.value.trim()) {
+                    showMsg("error", `Please fill in: ${el.previousElementSibling.textContent.replace("*","").trim()}`);
+                    el.focus();
+                    return;
+                }
+            }
+
+            if (!document.getElementById("agreeTerms").checked) {
+                showMsg("error", "You must agree to the Terms of Service to submit your files.");
                 return;
             }
-        }
 
-        setLoading(true);
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("clientType",      document.getElementById("clientType").value);
+            formData.append("company",         document.getElementById("company").value);
+            formData.append("contactPerson",   document.getElementById("contactPerson").value);
+            formData.append("email",           document.getElementById("email").value);
+            formData.append("phone",           document.getElementById("phone").value);
+            formData.append("propertyAddress", document.getElementById("propertyAddress").value);
+            formData.append("claimNumber",     document.getElementById("claimNumber").value);
+            formData.append("date",            document.getElementById("date").value);
+            formData.append("jobDescription",  document.getElementById("jobDescription").value);
+            selectedFiles.forEach(f => formData.append("documents", f));
 
-        const formData = new FormData();
-        formData.append("clientType",      document.getElementById("clientType").value);
-        formData.append("company",         document.getElementById("company").value);
-        formData.append("contactPerson",   document.getElementById("contactPerson").value);
-        formData.append("email",           document.getElementById("email").value);
-        formData.append("phone",           document.getElementById("phone").value);
-        formData.append("propertyAddress", document.getElementById("propertyAddress").value);
-        formData.append("claimNumber",     document.getElementById("claimNumber").value);
-        formData.append("date",            document.getElementById("date").value);
-        formData.append("jobDescription",  document.getElementById("jobDescription").value);
-        selectedFiles.forEach(f => formData.append("documents", f));
+            try {
+                const res = await fetch(`${BACKEND_URL}/submit`, { method: "POST", body: formData });
+                const data = await res.json();
 
-        try {
-            const res = await fetch(`${BACKEND_URL}/submit`, {
-                method: "POST",
-                body: formData
-            });
-
-            const data = await res.json();
-
-            if (res.ok && data.success) {
-                const filesNote = data.filesUploaded > 0
-                    ? ` ${data.filesUploaded} document(s) uploaded to OneDrive.`
-                    : "";
-                showMsg("success", `✅ Appointment submitted successfully.${filesNote} You will receive a confirmation email shortly.`);
-                form.reset();
-                selectedFiles = [];
-                renderFileList();
-            } else {
-                showMsg("error", data.error || "Submission failed. Please try again.");
+                if (res.ok && data.success) {
+                    const filesNote = data.filesUploaded > 0 ? ` ${data.filesUploaded} document(s) uploaded.` : "";
+                    showMsg("success", `✅ Appointment submitted successfully.${filesNote}`);
+                    form.reset();
+                    selectedFiles = [];
+                    renderFileList();
+                } else {
+                    showMsg("error", data.error || "Submission failed.");
+                }
+            } catch (err) {
+                showMsg("error", "Could not reach the server. Please call us at 786-879-1056.");
             }
-        } catch (err) {
-            showMsg("error", "Could not reach the server. Please call us at 786-879-1056.");
+            setLoading(false);
+        });
+
+        function setLoading(on) {
+            submitBtn.disabled = on;
+            submitLbl.textContent = on ? "Submitting…" : "Submit Secure Intake";
         }
 
-        setLoading(false);
-    });
+        function showMsg(type, text) {
+            msg.className = `intake-msg ${type}`;
+            msg.textContent = text;
+            msg.style.display = "block";
+            msg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    })();
+    </script>
 
-    function setLoading(on) {
-        submitBtn.disabled = on;
-        submitLbl.textContent = on ? "Submitting…" : "Submit Secure Intake";
-    }
+    <!-- LEGAL MODAL POPUP WINDOW (UPDATED TO 2% / $200) -->
+    <div id="legalModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="close-modal" id="closeTermsBtn">&times;</span>
+            <h2>Terms of Service & Estimate Architecture Agreement</h2>
+            <p style="color: var(--text-muted); font-style: italic;">Effective Date: June 2026</p>
 
-    function showMsg(type, text) {
-        msg.className = `intake-msg ${type}`;
-        msg.textContent = text;
-        msg.style.display = "block";
-        msg.scrollIntoView({ behavior: "smooth", block: "nearest" });
-    }
-})();
-</script>
+            <h3>1. Professional Scope of Services</h3>
+            <p>TriVault Property Solutions LLC provides line-item auditing, independent property estimating, and technological data architecture using Xactimate® platform software. All data entries, sketches, and cost models are synthesized exclusively from source materials—including structural dimensions, field photography, moisture logs, or material reports—provided directly by the Client.</p>
 
+            <h3>2. Payment Terms, Triage Deposits & Revisions</h3>
+            <ul>
+                <li><strong>Non-Refundable Intake Deposit:</strong> A minimum payment of $200 is processed at checkout to secure file triage, engineering allocation, and initial data verification. This deposit is non-refundable.</li>
+                <li><strong>Final Invoicing Parameters:</strong> The final billing balance is dynamically adjusted to exactly 2% of the gross total value calculated in the finalized Xactimate® document.</li>
+                <li><strong>Review Window & Automatic Finalization:</strong> Upon electronic delivery of the preliminary draft, the Client has exactly <strong>seven (7) calendar days</strong> to request corrections or line-item edits. If no written modification directives are logged within this 7-day window, the file is automatically flagged as <em>Approved as Written</em>, and the remaining balance will be immediately processed using the card on file.</li>
+            </ul>
+
+            <h3>3. Third-Party Accuracy & Indemnification</h3>
+            <p>TriVault acts strictly as an objective technical data provider. The Client bears sole legal and operational responsibility for verifying that all field data, loss details, and measurements provided to TriVault are factual, accurate, and fully honest.</p>
+
+            <h3>4. Regulatory Disclosure & Non-Representation</h3>
+            <p>The Client explicitly acknowledges that compiling technical Xactimate® documents under this agreement does not constitute public adjusting services, statutory legal counsel, or public claim representation.</p>
+
+            <h3>5. Florida Jurisdiction & Choice of Law</h3>
+            <p>This Agreement, along with all operational intake files and technical transactions, shall be exclusively governed by and construed under the laws of the <strong>State of Florida</strong>. Any formal legal complaints, structural arbitration, or collection actions arising directly from this contract shall be filed and litigated strictly within courts of proper jurisdiction located in <strong>Miami-Dade County, Florida</strong>.</p>
+        </div>
+    </div>
 
     <!-- FOOTER -->
     <footer>
         <p>© 2026 TriVault LLC. All Rights Reserved. | Corporate Contact: <a href="mailto:TriVault@FloridaParamount.com">TriVault@FloridaParamount.com</a> | Tel: 786-879-1056</p>
+        <p style="margin-top: 10px;"><a href="#" class="open-terms-link">Terms & Conditions</a></p>
         <p class="disclaimer">
             Regulatory Compliance Notice: TriVault LLC provides professional independent estimations, independent claim adjustments, and licensed structural/environmental home inspections conforming fully to the statutory requirements of the State of Florida.
         </p>
@@ -1170,17 +1320,30 @@
     <!-- INTERACTION & TIMING JAVASCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Control del Splash Screen (2500ms = 2.5 segundos de exposición fija antes de desvanecer)
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 if (splash) {
                     splash.classList.add('fade-out');
                     document.body.classList.remove('intro-active');
-                    
-                    // Remoción limpia del DOM tras terminar el segundo completo de transición CSS
                     setTimeout(() => splash.remove(), 1000); 
                 }
             }, 2500);
+
+            const modal = document.getElementById("legalModal");
+            const openLinks = document.querySelectorAll(".open-terms-link");
+            const closeBtn = document.getElementById("closeTermsBtn");
+
+            openLinks.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    modal.style.display = "flex";
+                });
+            });
+
+            closeBtn.addEventListener("click", function() { modal.style.display = "none"; });
+            window.addEventListener("click", function(e) {
+                if (e.target === modal) { modal.style.display = "none"; }
+            });
         });
     </script>
 
