@@ -12,6 +12,14 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
+//----------TEST------------
+
+app.use((req, res, next) => {
+  console.log("REQUEST:", req.method, req.url);
+  next();
+});
+
+
 // ─── CORS: allow your GitHub Pages domain ────────────────────────────────────
 const allowedOrigins = [
   process.env.FRONTEND_URL || "*",   // e.g. https://yourusername.github.io
@@ -73,15 +81,13 @@ app.use((err, req, res, next) => {
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
-//---------TEST-----
-
-app.get("/test", (req, res) => {
-  res.send("VERSION NUEVA");
-});
 
 
 // ─── SUBMIT INSPECTION REQUEST ────────────────────────────────────────────────
 app.post("/submit", upload.array("documents", 10), async (req, res) => {
+  //-----TEST-------
+  console.log("SUBMIT HIT");
+  //----------------
   try {
     const {
       clientType,
