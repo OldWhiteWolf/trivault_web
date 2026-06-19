@@ -516,6 +516,182 @@
             text-align: center;
         }
 
+        .portal-vault-card {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .portal-vault-card:hover {
+            border-color: var(--accent-gold);
+            box-shadow: 0 15px 45px rgba(212, 175, 55, 0.05);
+        }
+
+        .btn-vault-access {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border: 1px solid var(--accent-gold);
+            padding: 1rem 2.5rem;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin: 25px 0 15px 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-vault-access:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .lock-icon {
+            width: 18px;
+            height: 18px;
+        }
+<!--
+.intake-form-wrapper {
+    max-width: 780px;
+    margin: 0 auto;
+    background: var(--secondary-dark);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 12px;
+    padding: 40px 36px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+.intake-form-wrapper h2 {
+    font-size: 1.6rem;
+    color: var(--white);
+    margin-bottom: 6px;
+}
+.intake-form-wrapper .form-subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+}
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.form-grid .full-width { grid-column: 1 / -1; }
+.form-group { display: flex; flex-direction: column; gap: 6px; }
+.form-group label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    color: var(--text-light);
+    font-size: 0.95rem;
+    padding: 11px 14px;
+    outline: none;
+    transition: border-color 0.25s;
+    width: 100%;
+    font-family: inherit;
+}
+.form-group select option { background: #121b24; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--accent-gold); }
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
+.form-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+.drop-zone {
+    border: 2px dashed rgba(212,175,55,0.35);
+    border-radius: 8px;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s;
+    position: relative;
+}
+.drop-zone.drag-over {
+    border-color: var(--accent-gold);
+    background: rgba(212,175,55,0.05);
+}
+.drop-zone input[type="file"] {
+    position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.drop-zone p { color: var(--text-muted); font-size: 0.88rem; margin: 6px 0 0; pointer-events: none; }
+.drop-zone strong { color: var(--text-light); font-size: 0.95rem; pointer-events: none; }
+.file-list { margin-top: 10px; }
+.file-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: var(--text-light);
+    margin: 4px 3px;
+}
+.file-chip button {
+    background: none; border: none; color: var(--text-muted); cursor: pointer;
+    font-size: 1rem; line-height: 1; padding: 0; margin-left: 2px;
+}
+.file-chip button:hover { color: #e53e3e; }
+.btn-submit-intake {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    background: var(--accent-gold); color: var(--primary-dark);
+    border: 1px solid var(--accent-gold); padding: 14px 36px;
+    font-size: 1rem; font-weight: 700; border-radius: 6px;
+    cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 8px;
+    text-transform: uppercase; letter-spacing: 0.5px;
+}
+.btn-submit-intake:hover:not(:disabled) {
+    background: transparent; color: var(--accent-gold); box-shadow: 0 4px 20px rgba(212,175,55,0.4);
+}
+.btn-submit-intake:disabled { opacity: 0.6; cursor: not-allowed; }
+.form-notice { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 10px; font-style: italic; }
+.intake-msg {
+    border-radius: 8px; padding: 14px 18px; font-size: 0.92rem;
+    margin-top: 16px; display: none;
+}
+.intake-msg.success { background: rgba(48,176,88,0.12); border: 1px solid #30b058; color: #4ade80; }
+.intake-msg.error   { background: rgba(229,62,62,0.12);  border: 1px solid #e53e3e; color: #fc8181; }
+@media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+-->
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #05080c;
+            padding: 40px 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 1.5rem auto 0 auto;
+            font-size: 0.75rem;
+            line-height: 1.5;
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.2rem; }
             nav ul { display: none; }
@@ -751,35 +927,237 @@
         </div>
     </section>
 
-    <!-- INTEGRATED BOOKINGS & INTAKE GATEWAY SECTION -->
-    <!-- SECURE B2B INTAKE SECTION - INTEGRATED BOOKING CALENDAR -->
-    <section id="intake" class="intake-section" style="background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%); padding: 90px 2rem; text-align: center;">
-        <div class="booking-section" style="max-width: 950px; margin: 0 auto; background-color: var(--secondary-dark); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 12px; padding: 40px 30px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);">
-            
-            <div class="vault-status-bar" style="display: inline-flex; align-items: center; gap: 8px; background-color: rgba(0,0,0,0.3); padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.05);">
-                <span class="status-dot" style="width: 7px; height: 7px; background-color: #30b058; border-radius: 50%; box-shadow: 0 0 8px #30b058;"></span>
-                <span class="status-text" style="color: var(--text-muted); font-size: 0.7rem; font-weight: 700; letter-spacing: 1px;">SECURE SSL GATEWAY</span>
-            </div>
+    <!-- SECURE B2B INTAKE SECTION - PREMIUM CALL TO ACTION CARD -->
+    <section id="intake" class="intake-section">
+    <div class="intake-form-wrapper">
 
-            <h2 style="font-size: 2rem; color: var(--white); font-weight: 700; margin-bottom: 10px;">B2B Secure Inspection Booking</h2>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; max-width: 650px; margin: 0 auto 30px auto;">
-                Carriers, Public Adjusters, and Restoration Contractors can schedule an inspection window in real-time. Fast, professional, and secure. After booking, you will receive an automated link to upload heavy claims files.
-            </p>
-
-            <!-- CONTENEDOR RESPONSIVO DEL CALENDARIO (REEMPLAZA AL BOTÓN ANTERIOR) -->
-            <div style="position: relative; overflow: hidden; width: 100%; padding-top: 75%; background-color: #161b22; border: 1px solid #21262d; border-radius: 8px; box-shadow: inset 0 4px 20px rgba(0,0,0,0.4);">
-                <iframe 
-    src="https://outlook.office.com/book/TriVaultLLCBooking@FloridaParamount.com/?ismsaljsauthenabled"
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
-    allowfullscreen>
-</iframe>
-            </div>
-            
-            <p style="font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 20px;">
-                Conforms fully to Florida statutory data security guidelines.
-            </p>
+        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:6px 16px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.05);">
+            <span style="width:7px;height:7px;background:#30b058;border-radius:50%;box-shadow:0 0 8px #30b058;display:inline-block;"></span>
+            <span style="color:var(--text-muted);font-size:0.7rem;font-weight:700;letter-spacing:1px;">SECURE SSL GATEWAY</span>
         </div>
-    </section>
+
+        <h2>B2B Secure File Intake</h2>
+        <p class="form-subtitle">Complete the form below to schedule an inspection/estimate and upload your claim/case documents directly to our secure OneDrive.</p>
+
+        <form id="intakeForm" novalidate>
+            <div class="form-grid">
+
+                <!-- Client Type -->
+                <div class="form-group full-width">
+                    <label for="clientType">Client Type <span style="color:#e53e3e">*</span></label>
+                    <select id="clientType" name="clientType" required>
+                        <option value="" disabled selected>— Select client type —</option>
+                        <option value="Insurance Carrier">Insurance Carrier</option>
+                        <option value="Public Adjuster">Public Adjuster</option>
+                        <option value="Contractor">Contractor</option>
+                        <option value="Homeowner">Homeowner</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <!-- Company -->
+                <div class="form-group">
+                    <label for="company">Company / Organization</label>
+                    <input type="text" id="company" name="company" placeholder="ABC Insurance Co.">
+                </div>
+
+                <!-- Contact Person -->
+                <div class="form-group">
+                    <label for="contactPerson">Contact Person <span style="color:#e53e3e">*</span></label>
+                    <input type="text" id="contactPerson" name="contactPerson" placeholder="John Smith" required>
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email Address <span style="color:#e53e3e">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                </div>
+
+                <!-- Phone -->
+                <div class="form-group">
+                    <label for="phone">Phone Number <span style="color:#e53e3e">*</span></label>
+                    <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required>
+                </div>
+
+                <!-- Property Address -->
+                <div class="form-group full-width">
+                    <label for="propertyAddress">Property Address <span style="color:#e53e3e">*</span></label>
+                    <input type="text" id="propertyAddress" name="propertyAddress" placeholder="1234 SW 8th St, Miami, FL 33135" required>
+                </div>
+
+                <!-- Claim / Case Number -->
+                <div class="form-group">
+                    <label for="claimNumber">Claim / Case Number <span style="color:#e53e3e">*</span></label>
+                    <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
+                </div>
+
+                <!-- Preferred Date & Time -->
+                <div class="form-group">
+                    <label for="date">Preferred Date & Time <span style="color:#e53e3e">*</span></label>
+                    <input type="datetime-local" id="date" name="date" required>
+                </div>
+
+                <!-- Job Description -->
+                <div class="form-group full-width">
+                    <label for="jobDescription">Work Description / Scope of Claim</label>
+                    <textarea id="jobDescription" name="jobDescription" rows="5"
+                        placeholder="Briefly describe the nature of the damage, scope of work requested, or any relevant details about the claim (e.g. wind damage to roof, water intrusion in master bathroom, mold found in attic…)"></textarea>
+                </div>
+
+                <!-- Document Upload -->
+                <div class="form-group full-width">
+                    <label>Supporting Documents</label>
+                    <div class="drop-zone" id="dropZone">
+                        <input type="file" id="docFiles" name="documents" multiple
+                            accept=".pdf,.jpg,.jpeg,.png,.heic,.webp,.doc,.docx,.xls,.xlsx">
+                        <strong>📎 Drag & drop files here or click to browse</strong>
+                        <p>PDF, images, Word, Excel — up to 50 MB each. Files are labeled with your Claim #.</p>
+                    </div>
+                    <div class="file-list" id="fileList"></div>
+                </div>
+
+            </div><!-- /form-grid -->
+
+            <button type="submit" class="btn-submit-intake" id="submitBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                <span id="submitLabel">Submit Secure Intake</span>
+            </button>
+
+            <p class="form-notice">Conforms fully to Florida statutory data security guidelines. Documents are encrypted in transit.</p>
+
+            <div class="intake-msg" id="intakeMsg"></div>
+        </form>
+    </div>
+</section>
+
+<!-- ─── INTAKE FORM JAVASCRIPT ──────────────────────────────── -->
+<script>
+(function () {
+    // ⚠️ CHANGE THIS to your Railway/Render backend URL before deploying
+    const BACKEND_URL = "https://YOUR-BACKEND.railway.app";
+
+    const form      = document.getElementById("intakeForm");
+    const fileInput = document.getElementById("docFiles");
+    const fileList  = document.getElementById("fileList");
+    const dropZone  = document.getElementById("dropZone");
+    const submitBtn = document.getElementById("submitBtn");
+    const submitLbl = document.getElementById("submitLabel");
+    const msg       = document.getElementById("intakeMsg");
+
+    let selectedFiles = [];
+
+    // ── Drag & Drop ──────────────────────────────────────────
+    dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
+    dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+    dropZone.addEventListener("drop", e => {
+        e.preventDefault();
+        dropZone.classList.remove("drag-over");
+        addFiles([...e.dataTransfer.files]);
+    });
+
+    fileInput.addEventListener("change", () => {
+        addFiles([...fileInput.files]);
+        fileInput.value = ""; // reset so same file can be re-added
+    });
+
+    function addFiles(newFiles) {
+        newFiles.forEach(f => {
+            if (!selectedFiles.find(x => x.name === f.name && x.size === f.size)) {
+                selectedFiles.push(f);
+            }
+        });
+        renderFileList();
+    }
+
+    function renderFileList() {
+        fileList.innerHTML = "";
+        selectedFiles.forEach((f, i) => {
+            const chip = document.createElement("span");
+            chip.className = "file-chip";
+            chip.innerHTML = `📄 ${f.name} <button type="button" aria-label="Remove" data-i="${i}">×</button>`;
+            fileList.appendChild(chip);
+        });
+        fileList.querySelectorAll("button").forEach(btn => {
+            btn.addEventListener("click", () => {
+                selectedFiles.splice(Number(btn.dataset.i), 1);
+                renderFileList();
+            });
+        });
+    }
+
+    // ── Form Submit ──────────────────────────────────────────
+    form.addEventListener("submit", async e => {
+        e.preventDefault();
+        msg.style.display = "none";
+
+        // Basic validation
+        const required = ["clientType","contactPerson","email","phone","propertyAddress","claimNumber","date"];
+        for (const id of required) {
+            const el = document.getElementById(id);
+            if (!el.value.trim()) {
+                showMsg("error", `Please fill in: ${el.previousElementSibling.textContent.replace("*","").trim()}`);
+                el.focus();
+                return;
+            }
+        }
+
+        setLoading(true);
+
+        const formData = new FormData();
+        formData.append("clientType",      document.getElementById("clientType").value);
+        formData.append("company",         document.getElementById("company").value);
+        formData.append("contactPerson",   document.getElementById("contactPerson").value);
+        formData.append("email",           document.getElementById("email").value);
+        formData.append("phone",           document.getElementById("phone").value);
+        formData.append("propertyAddress", document.getElementById("propertyAddress").value);
+        formData.append("claimNumber",     document.getElementById("claimNumber").value);
+        formData.append("date",            document.getElementById("date").value);
+        formData.append("jobDescription",  document.getElementById("jobDescription").value);
+        selectedFiles.forEach(f => formData.append("documents", f));
+
+        try {
+            const res = await fetch(`${BACKEND_URL}/submit`, {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await res.json();
+
+            if (res.ok && data.success) {
+                const filesNote = data.filesUploaded > 0
+                    ? ` ${data.filesUploaded} document(s) uploaded to OneDrive.`
+                    : "";
+                showMsg("success", `✅ Appointment submitted successfully.${filesNote} You will receive a confirmation email shortly.`);
+                form.reset();
+                selectedFiles = [];
+                renderFileList();
+            } else {
+                showMsg("error", data.error || "Submission failed. Please try again.");
+            }
+        } catch (err) {
+            showMsg("error", "Could not reach the server. Please call us at 786-879-1056.");
+        }
+
+        setLoading(false);
+    });
+
+    function setLoading(on) {
+        submitBtn.disabled = on;
+        submitLbl.textContent = on ? "Submitting…" : "Submit Secure Intake";
+    }
+
+    function showMsg(type, text) {
+        msg.className = `intake-msg ${type}`;
+        msg.textContent = text;
+        msg.style.display = "block";
+        msg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+})();
+</script>
+
 
     <!-- FOOTER -->
     <footer>
