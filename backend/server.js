@@ -53,6 +53,18 @@ const upload = multer({
   }
 });
 
+
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    return res.status(400).json({ error: err.message });
+  }
+  if (err) {
+    return res.status(400).json({ error: err.message });
+  }
+  next();
+});
+
+
 // ─── HEALTH CHECK ─────────────────────────────────────────────────────────────
 app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
@@ -115,6 +127,7 @@ app.post("/submit", upload.array("documents", 10), async (req, res) => {
     res.status(500).json({ error: "Internal server error. Please try again or call us directly." });
   }
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ TriVault backend running on port ${PORT}`));
