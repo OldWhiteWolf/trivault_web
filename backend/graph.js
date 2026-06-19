@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
-import msal from "@azure/msal-node";
+import { ConfidentialClientApplication } from "@azure/msal-node";
 
-const cca = new msal.ConfidentialClientApplication({
+const cca = new ConfidentialClientApplication({
   auth: {
     clientId: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
