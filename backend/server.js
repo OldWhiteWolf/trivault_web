@@ -23,10 +23,6 @@ const allowedOrigins = [
 app.use(cors({
   origin: [
     process.env.FRONTEND_URL,
-    
-"https://floridaparamount.com",
-    "https://www.floridaparamount.com",
-
     "http://localhost:5500",
     "http://127.0.0.1:5500"
   ].filter(Boolean),
