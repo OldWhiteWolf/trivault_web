@@ -12,13 +12,6 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 
-//----------TEST------------
-
-app.use((req, res, next) => {
-  console.log("REQUEST:", req.method, req.url);
-  next();
-});
-
 
 // ─── CORS: allow your GitHub Pages domain ────────────────────────────────────
 const allowedOrigins = [
@@ -28,18 +21,17 @@ const allowedOrigins = [
 ];
 
 
-//app.use(cors({
-  //origin: [
-    //process.env.FRONTEND_URL,
-    //"http://localhost:5500",
-    //"http://127.0.0.1:5500"
-  //].filter(Boolean),
-  //methods: ["GET", "POST"],
-//}));
+app.use(cors({
+  origin: [
+    process.env.FRONTEND_URL,
+    "http://localhost:5500",
+    "http://127.0.0.1:5500"
+  ].filter(Boolean),
+  methods: ["GET", "POST"],
+}));
 
 
-//-------TEST------
-app.use(cors());
+//-------TEST------app.use(cors());
 
 
 app.use(express.json());
@@ -85,8 +77,7 @@ app.get("/health", (req, res) => {
 
 // ─── SUBMIT INSPECTION REQUEST ────────────────────────────────────────────────
 app.post("/submit", upload.array("documents", 10), async (req, res) => {
-  //-----TEST-------
-  console.log("SUBMIT HIT");
+  //-----TEST-------console.log("SUBMIT HIT");
   //----------------
   try {
     const {
