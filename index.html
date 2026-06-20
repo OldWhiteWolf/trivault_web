@@ -10,21 +10,25 @@
     
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* --- BRAND THEME & LOGO VARIABLES --- */
+        /* --- BRAND THEME & CORPORATE VARIABLES --- */
         :root {
-            --primary-dark: #0a1118;   /* Executive Slate/Navy */
-            --secondary-dark: #121b24; /* Card & Section Backgrounds */
-            --accent-gold: #d4af37;    /* Premium Classic Gold Accent */
-            --text-light: #f5f6f7;     /* High-contrast crisp text */
-            --text-muted: #a0aec0;     /* Bilingual subtext and captions */
+            --primary-dark: #070d14;    /* Deep Executive Navy */
+            --secondary-dark: #0d1622;  /* Solid Structural Steel Blue */
+            --card-bg: #121d2a;         /* High-Contrast Technical Blue */
+            --accent-gold: #c5a059;     /* Premium Tailored Muted Gold */
+            --accent-gold-hover: #e5c17b;
+            --text-light: #f1f5f9;      /* Clean Architectural White */
+            --text-muted: #8a99ad;      /* Technical Slate Subtext */
             --white: #ffffff;
+            --border-alpha: rgba(197, 160, 89, 0.15);
+            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-main);
         }
 
         body {
@@ -32,9 +36,10 @@
             color: var(--text-light);
             line-height: 1.6;
             overflow-x: hidden;
+            letter-spacing: 0.2px;
         }
 
-        /* --- INTRO SPLASH SCREEN EFFECT (FULLSCREEN LOGO) --- */
+        /* --- INTRO SPLASH SCREEN EFFECT --- */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -46,7 +51,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
-            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s ease;
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s ease;
         }
 
         .splash-content {
@@ -58,16 +63,16 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            animation: fadeInScale 1.4s ease-out forwards;
+            animation: fadeInScale 1s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
         }
 
         .splash-logo {
             position: absolute;
-            height: 80vh;
+            height: 75vh;
             width: auto;
             object-fit: contain;
-            opacity: 0.15;
-            filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.1));
+            opacity: 0.08;
+            filter: drop-shadow(0 0 40px rgba(197, 160, 89, 0.05));
             z-index: 1;
         }
 
@@ -80,67 +85,70 @@
         .splash-slogan {
             font-family: 'Times New Roman', Times, Georgia, serif;
             color: var(--accent-gold);
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 400;
             font-style: italic;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
         }
 
         .splash-sub {
-            font-family: 'Times New Roman', Times, Georgia, serif;
+            font-family: var(--font-main);
             color: var(--text-light);
-            font-size: 1.1rem;
-            letter-spacing: 6px;
+            font-size: 1rem;
+            letter-spacing: 8px;
             text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+            font-weight: 600;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
         }
 
         @keyframes fadeInScale {
-            0% { opacity: 0; transform: scale(0.96); }
+            0% { opacity: 0; transform: scale(0.98); }
             100% { opacity: 1; transform: scale(1); }
         }
 
         .fade-out {
             opacity: 0;
             pointer-events: none;
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
         body.intro-active {
             overflow: hidden;
         }
 
-        /* --- HEADER NAVIGATION (CLEANED UP & LIGHTER) --- */
+        /* --- HEADER NAVIGATION --- */
         header {
-            background-color: rgba(10, 17, 24, 0.95);
+            background-color: rgba(7, 13, 20, 0.96);
+            backdrop-filter: blur(8px);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            border-bottom: 1px solid var(--border-alpha);
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.8rem 2rem;
+            padding: 1.1rem 2rem;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
 
         .logo-area h1 {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             margin: 0;
             color: var(--white);
         }
@@ -148,277 +156,351 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 24px;
+            gap: 32px;
             align-items: center;
         }
 
         nav a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: color 0.3s;
+            letter-spacing: 1px;
+            transition: color 0.25s ease;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: width 0.25s ease;
         }
 
         nav a:hover {
             color: var(--accent-gold);
         }
 
+        nav a:hover::after {
+            width: 100%;
+        }
+
         .cta-phone {
-            background-color: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 0.5rem 1.1rem;
-            border-radius: 4px;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold) !important;
+            padding: 0.6rem 1.3rem !important;
             font-weight: 700;
             text-decoration: none;
-            text-transform: none;
-            letter-spacing: 0;
+            text-transform: uppercase;
+            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+
+        .cta-phone::after { display: none !important; }
+
+        .cta-phone:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark) !important;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 180px 2rem 100px 2rem;
+            padding: 220px 2rem 140px 2rem;
             text-align: center;
-            background: linear-gradient(180deg, rgba(10,17,24,0.8) 0%, rgba(18,27,36,1) 100%);
-            max-width: 1200px;
+            background: radial-gradient(circle at top, #111d2c 0%, var(--primary-dark) 75%);
+            max-width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .hero-inner {
+            max-width: 1100px;
             margin: 0 auto;
         }
 
         .bilingual-tag {
             color: var(--accent-gold);
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.8rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-            display: block;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bilingual-tag::before, .bilingual-tag::after {
+            content: '';
+            width: 15px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            opacity: 0.5;
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: 3.4rem;
             font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            color: var(--white);
         }
 
         .hero h1 span {
             color: var(--accent-gold);
+            font-weight: 700;
         }
 
         .hero .es-title {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
-            font-style: italic;
-            margin-top: -0.5rem;
-            margin-bottom: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
         }
 
         .hero p {
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
-            font-size: 1.1rem;
+            max-width: 820px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.15rem;
             color: #cbd5e1;
-        }
-
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 5px;
+            line-height: 1.7;
         }
 
         .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            font-weight: 600;
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn-primary {
             background-color: var(--accent-gold);
             color: var(--primary-dark);
             border: 1px solid var(--accent-gold);
-            display: inline-block;
         }
 
         .btn-primary:hover {
             background-color: transparent;
             color: var(--accent-gold);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.15);
         }
 
         /* --- TRUST BADGES BAR --- */
         .trust-bar {
             background-color: var(--secondary-dark);
-            border-top: 1px solid rgba(212,175,55,0.1);
-            border-bottom: 1px solid rgba(212,175,55,0.1);
-            padding: 1.5rem 2rem;
-            text-align: center;
+            border-top: 1px solid var(--border-alpha);
+            border-bottom: 1px solid var(--border-alpha);
+            padding: 1.8rem 2rem;
         }
 
         .trust-container {
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 24px;
         }
 
         .trust-item {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #e2e8f0;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cbd5e1;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
         .trust-item span {
             color: var(--accent-gold);
+            font-size: 1.1rem;
         }
 
-        /* --- DATA & METRICS SECTION --- */
+        /* --- SECTION STRUCTURE --- */
         .section {
-            padding: 80px 2rem;
-            max-width: 1200px;
+            padding: 100px 2rem;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 60px;
+            position: relative;
         }
 
         .section-header h2 {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
+            font-weight: 800;
             color: var(--white);
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
         }
 
         .section-header p {
-            color: var(--text-muted);
-            font-style: italic;
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
+        /* --- METRIC CARDS --- */
         .metric-card {
             background-color: var(--secondary-dark);
-            padding: 2.5rem 2rem;
-            border-radius: 6px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: transform 0.3s;
+            padding: 3.5rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: left;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 0;
+            background-color: var(--accent-gold);
+            transition: height 0.35s ease;
         }
 
         .metric-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(212,175,55,0.3);
+            transform: translateY(-4px);
+            background-color: var(--card-bg);
+            border-color: rgba(197, 160, 89, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .metric-card:hover::before {
+            height: 100%;
         }
 
         .metric-num {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             color: var(--accent-gold);
             line-height: 1;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-variant-numeric: lining-nums;
         }
 
         .metric-label {
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
             font-size: 0.9rem;
+            color: var(--white);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 10px;
         }
 
         .bilingual-text p {
-            font-size: 0.95rem;
-            margin-bottom: 0.5rem;
+            font-size: 0.98rem;
+            margin-bottom: 0.8rem;
+            color: #cbd5e1;
+            line-height: 1.6;
         }
 
         .bilingual-text p.es {
             color: var(--text-muted);
-            font-style: italic;
+            font-size: 0.88rem;
+            border-left: 2px solid rgba(197, 160, 89, 0.3);
+            padding-left: 10px;
+            margin-top: 0.5rem;
         }
 
         /* --- MODERN WORKFLOW SYSTEM --- */
         .workflow-section {
-            background-color: var(--secondary-dark);
-            padding: 80px 2rem;
+            background-color: #04080e;
+            padding: 100px 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
         }
         
         .workflow-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         
         .workflow-card {
-            background-color: var(--primary-dark);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 35px 25px;
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
             position: relative;
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .workflow-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-4px);
+            background-color: var(--card-bg);
             border-color: var(--accent-gold);
-            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
         
         .step-number {
             position: absolute;
-            top: 15px;
-            right: 25px;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.02);
-            transition: color 0.3s ease;
-            user-select: none;
+            top: 25px;
+            right: 30px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: rgba(197, 160, 89, 0.06);
+            transition: color 0.35s ease;
+            font-variant-numeric: lining-nums;
         }
         
         .workflow-card:hover .step-number {
-            color: rgba(212, 175, 55, 0.05);
+            color: rgba(197, 160, 89, 0.15);
         }
         
         .workflow-icon {
             color: var(--accent-gold);
-            width: 42px;
-            height: 42px;
-            margin-bottom: 20px;
+            width: 36px;
+            height: 36px;
+            margin-bottom: 25px;
         }
         
         .workflow-card h3 {
             color: var(--white);
-            font-size: 1.25rem;
-            margin: 0 0 10px 0;
-            font-weight: 600;
+            font-size: 1.3rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+            letter-spacing: -0.3px;
         }
         
         .workflow-card p {
-            color: var(--text-muted);
+            color: #cbd5e1;
             font-size: 0.95rem;
-            line-height: 1.5;
-            margin: 0;
+            line-height: 1.6;
         }
 
         /* --- PRICING STRUCTURE SECTION --- */
         .pricing-section {
-            padding: 80px 2rem;
+            padding: 100px 2rem;
             background-color: var(--primary-dark);
         }
 
@@ -426,125 +508,137 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            max-width: 900px;
+            gap: 35px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .pricing-card {
             background-color: var(--secondary-dark);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 8px;
-            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 50px 40px;
             width: 100%;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            max-width: 460px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
         }
 
         .pricing-card.featured {
             border: 1px solid var(--accent-gold);
-            box-shadow: 0 10px 35px rgba(212, 175, 55, 0.05);
+            background-color: rgba(18, 29, 42, 0.4);
         }
 
         .pricing-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
             border-color: var(--accent-gold);
         }
 
         .pricing-card h3 {
-            color: var(--accent-gold);
-            font-size: 1.6rem;
-            margin-bottom: 15px;
-            font-weight: 600;
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-card.featured h3 {
+            color: var(--accent-gold);
         }
 
         .pricing-price {
-            font-size: 3.2rem;
+            font-size: 4rem;
             font-weight: 800;
             color: var(--white);
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             line-height: 1;
+            letter-spacing: -1px;
+            font-variant-numeric: lining-nums;
         }
 
         .pricing-price span {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            font-weight: normal;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             display: block;
-            margin-top: 5px;
+            margin-top: 8px;
         }
 
         .pricing-list {
             list-style: none;
             text-align: left;
             margin-bottom: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 25px;
         }
 
         .pricing-list li {
-            font-size: 0.95rem;
+            font-size: 0.98rem;
             color: #cbd5e1;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             position: relative;
-            padding-left: 20px;
+            padding-left: 24px;
+            line-height: 1.5;
         }
 
         .pricing-list li::before {
-            content: "✓";
+            content: "■";
             position: absolute;
             left: 0;
+            top: 2px;
             color: var(--accent-gold);
-            font-weight: bold;
+            font-size: 0.7rem;
         }
 
         .pricing-section .disclaimer-box {
             font-size: 0.85rem;
             color: var(--text-muted);
-            max-width: 800px;
-            margin: 40px auto 0 auto;
+            max-width: 900px;
+            margin: 50px auto 0 auto;
             text-align: center;
-            line-height: 1.5;
+            line-height: 1.6;
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            background-color: rgba(0,0,0,0.1);
         }
 
         /* --- TERMS AND CONDITIONS MODAL WINDOW --- */
         .legal-modal {
             display: none; 
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(5, 8, 12, 0.9);
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(4, 7, 11, 0.95);
             z-index: 10000;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            backdrop-filter: blur(5px);
         }
 
         .legal-modal-content {
             background-color: var(--secondary-dark);
             border: 1px solid var(--accent-gold);
             color: var(--text-light);
-            max-width: 800px;
+            max-width: 850px;
             width: 100%;
-            max-height: 80vh;
+            max-height: 85vh;
             overflow-y: auto;
-            border-radius: 8px;
             position: relative;
-            padding: 40px 30px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            padding: 50px 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
         }
 
         .close-modal {
             position: absolute;
-            top: 20px;
-            right: 25px;
-            font-size: 2rem;
+            top: 25px;
+            right: 30px;
+            font-size: 1.8rem;
             color: var(--text-muted);
             cursor: pointer;
-            transition: color 0.3s;
+            transition: color 0.25s;
             line-height: 1;
         }
 
@@ -553,75 +647,68 @@
         }
 
         .legal-modal-content h2 {
-            color: var(--accent-gold);
-            font-size: 1.6rem;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 800;
+            border-bottom: 1px solid var(--border-alpha);
+            padding-bottom: 16px;
+            margin-bottom: 25px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .legal-modal-content h3 {
-            color: var(--white);
-            font-size: 1.15rem;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-weight: 600;
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .legal-modal-content p, .legal-modal-content ul {
             color: #cbd5e1;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.65;
             margin-bottom: 15px;
-        }
-
-        .legal-modal-content ul { padding-left: 20px; }
-        .legal-modal-content li { margin-bottom: 8px; }
-
-        .legal-modal-content blockquote {
-            background-color: var(--primary-dark);
-            border-left: 3px solid var(--accent-gold);
-            padding: 15px;
-            margin: 20px 0;
-            font-size: 0.9rem;
-            color: var(--white);
         }
 
         /* --- PREMIUM SAMPLES CARDS --- */
         .samples-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1300px;
             margin: 0 auto;
         }
         
         .sample-card {
-            background-color: var(--primary-dark);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            padding: 25px;
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 35px 25px;
             display: flex;
             flex-direction: column;
-            transition: border-color 0.3s ease, transform 0.3s ease;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
         
         .sample-card:hover {
-            border-color: var(--accent-gold);
-            transform: translateY(-3px);
+            border-color: var(--border-alpha);
+            background-color: var(--card-bg);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
         }
         
         .sample-icon-wrapper {
-            width: 40px;
-            height: 40px;
-            margin-bottom: 15px;
+            width: 32px;
+            height: 32px;
+            margin-bottom: 20px;
         }
         
-        .fire-icon { color: #ff6b6b; }
-        .water-icon { color: #4dadf7; }
-        .mold-icon { color: #51cf66; }
-        .roof-icon { color: #fcc419; }
+        .fire-icon { color: #e05e5e; }
+        .water-icon { color: #4396d8; }
+        .mold-icon { color: #49b65c; }
+        .roof-icon { color: #e0af16; }
         
         .sample-card h3 {
             color: var(--white);
@@ -629,20 +716,21 @@
             font-weight: 700;
             letter-spacing: 0.5px;
             margin: 0 0 12px 0;
+            text-transform: uppercase;
         }
         
         .sample-card .desc-en {
             color: #cbd5e1;
-            font-size: 0.9rem;
-            line-height: 1.4;
-            margin: 0 0 6px 0;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin: 0 0 8px 0;
         }
         
         .sample-card .desc-es {
             color: var(--text-muted);
-            font-size: 0.8rem;
+            font-size: 0.82rem;
             line-height: 1.4;
-            margin: 0 0 20px 0;
+            margin: 0 0 25px 0;
             font-style: italic;
         }
         
@@ -652,174 +740,214 @@
             align-items: center;
             justify-content: space-between;
             background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 10px 14px;
-            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
             color: var(--accent-gold);
             text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: background-color 0.3s ease, border-color 0.3s ease;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
         }
         
         .sample-card:hover .download-btn {
-            background-color: rgba(212, 175, 55, 0.06);
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
             border-color: var(--accent-gold);
         }
         
         .btn-arrow {
             width: 14px;
             height: 14px;
-            transition: transform 0.3s ease;
+            transition: transform 0.25s ease;
         }
         
-        .download-btn:hover .btn-arrow {
-            transform: translateX(3px);
+        .sample-card:hover .btn-arrow {
+            transform: translateX(2px);
+            stroke: var(--primary-dark);
         }
 
-        /* --- INTAKE PORTAL CALL TO ACTION CARD --- */
+        /* --- SECURE INTAKE PORTAL GATEWAY --- */
         .intake-section {
-            background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
-            padding: 90px 2rem;
+            background: linear-gradient(180deg, #04080e 0%, var(--primary-dark) 100%);
+            padding: 110px 2rem;
             text-align: center;
         }
 
         .intake-form-wrapper {
-            max-width: 780px;
+            max-width: 840px;
             margin: 0 auto;
             background: var(--secondary-dark);
-            border: 1px solid rgba(212,175,55,0.3);
-            border-radius: 12px;
-            padding: 40px 36px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-alpha);
+            padding: 55px 45px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            text-align: left;
         }
+        
         .intake-form-wrapper h2 {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
+            font-weight: 800;
             color: var(--white);
-            margin-bottom: 6px;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
         }
+        
         .intake-form-wrapper .form-subtitle {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 28px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+            line-height: 1.5;
         }
+        
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 16px;
+            gap: 20px;
         }
+        
         .form-grid .full-width { grid-column: 1 / -1; }
-        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        
         .form-group label {
-            font-size: 0.78rem;
-            font-weight: 600;
-            letter-spacing: 0.8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
             text-transform: uppercase;
             color: var(--accent-gold);
         }
+        
         .form-group input,
         .form-group select,
         .form-group textarea {
-            background: rgba(255,255,255,0.04);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             color: var(--text-light);
             font-size: 0.95rem;
-            padding: 11px 14px;
+            padding: 13px 16px;
             outline: none;
-            transition: border-color 0.25s;
+            transition: all 0.25s ease;
             width: 100%;
-            font-family: inherit;
         }
-        .form-group select option { background: #121b24; }
+        
+        .form-group select option { background: var(--secondary-dark); }
+        
         .form-group input:focus,
         .form-group select:focus,
-        .form-group textarea:focus { border-color: var(--accent-gold); }
-        .form-group input::placeholder,
-        .form-group textarea::placeholder { color: rgba(255,255,255,0.25); }
-        .form-group textarea { resize: vertical; min-height: 110px; line-height: 1.6; }
+        .form-group textarea:focus { 
+            border-color: var(--accent-gold); 
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+        }
         
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.2); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        
+        /* TECHNICAL DROP ZONE */
         .drop-zone {
-            border: 2px dashed rgba(212,175,55,0.35);
-            border-radius: 8px;
-            padding: 28px 20px;
+            border: 1px dashed rgba(197, 160, 89, 0.4);
+            background: rgba(0, 0, 0, 0.15);
+            padding: 35px 20px;
             text-align: center;
             cursor: pointer;
-            transition: border-color 0.25s, background 0.25s;
+            transition: all 0.25s ease;
             position: relative;
         }
+        
         .drop-zone.drag-over {
             border-color: var(--accent-gold);
-            background: rgba(212,175,55,0.05);
+            background: rgba(197, 160, 89, 0.05);
         }
+        
         .drop-zone input[type="file"] {
             position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
         }
-        .drop-zone p { color: var(--text-muted); font-size: 0.88rem; margin: 6px 0 0; pointer-events: none; }
-        .drop-zone strong { color: var(--text-light); font-size: 0.95rem; pointer-events: none; }
-        .file-list { margin-top: 10px; }
+        
+        .drop-zone p { color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 0; }
+        .drop-zone strong { color: var(--white); font-size: 0.95rem; font-weight: 600; }
+        
+        .file-list { margin-top: 12px; }
         .file-chip {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: rgba(212,175,55,0.1); border: 1px solid rgba(212,175,55,0.25);
-            border-radius: 20px; padding: 4px 12px; font-size: 0.8rem; color: var(--text-light);
-            margin: 4px 3px;
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 6px 14px; font-size: 0.8rem; color: var(--text-light);
+            margin: 4px 4px 4px 0; font-weight: 600;
         }
+        
         .file-chip button {
             background: none; border: none; color: var(--text-muted); cursor: pointer;
-            font-size: 1rem; line-height: 1; padding: 0; margin-left: 2px;
+            font-size: 1.1rem; padding: 0; margin-left: 4px; line-height: 1;
         }
-        .file-chip button:hover { color: #e53e3e; }
+        .file-chip button:hover { color: #ef4444; }
         
         .btn-submit-intake {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
             background: var(--accent-gold); color: var(--primary-dark);
-            border: 1px solid var(--accent-gold); padding: 14px 36px;
-            font-size: 1rem; font-weight: 700; border-radius: 6px;
-            cursor: pointer; transition: all 0.3s; width: 100%; margin-top: 8px;
-            text-transform: uppercase; letter-spacing: 0.5px;
+            border: 1px solid var(--accent-gold); padding: 16px 40px;
+            font-size: 0.9rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+            width: 100%; margin-top: 10px;
+            text-transform: uppercase; letter-spacing: 1.5px;
         }
-        .btn-submit-intake:hover:not(:disabled) {
-            background: transparent; color: var(--accent-gold); box-shadow: 0 4px 20px rgba(212,175,55,0.4);
-        }
-        .btn-submit-intake:disabled { opacity: 0.6; cursor: not-allowed; }
-        .form-notice { color: var(--text-muted); font-size: 0.78rem; text-align: center; margin-top: 10px; font-style: italic; }
         
-        .intake-msg {
-            border-radius: 8px; padding: 14px 18px; font-size: 0.92rem;
-            margin-top: 16px; display: none;
+        .btn-submit-intake:hover:not(:disabled) {
+            background: transparent; color: var(--accent-gold); 
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
         }
-        .intake-msg.success { background: rgba(48,176,88,0.12); border: 1px solid #30b058; color: #4ade80; }
-        .intake-msg.error   { background: rgba(229,62,62,0.12);  border: 1px solid #e53e3e; color: #fc8181; }
+        
+        .btn-submit-intake:disabled { opacity: 0.5; cursor: not-allowed; }
+        .form-notice { color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 14px; font-style: italic; }
+        
+        .intake-msg { border-left: 3px solid transparent; padding: 15px 20px; font-size: 0.95rem; margin-top: 20px; display: none; }
+        .intake-msg.success { background: rgba(34, 197, 94, 0.08); border-color: #22c55e; color: #4ade80; }
+        .intake-msg.error   { background: rgba(239, 68, 68, 0.08); border-color: #ef4444; color: #fca5a5; }
 
         /* --- FOOTER --- */
         footer {
-            background-color: #05080c;
-            padding: 40px 2rem;
+            background-color: #03060a;
+            padding: 60px 2rem;
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
             font-size: 0.85rem;
             color: var(--text-muted);
+            line-height: 1.7;
         }
 
         footer a {
             color: var(--accent-gold);
             text-decoration: none;
-            cursor: pointer;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-gold-hover);
+            text-decoration: underline;
         }
 
         .disclaimer {
-            max-width: 800px;
-            margin: 1.5rem auto 0 auto;
-            font-size: 0.75rem;
-            line-height: 1.5;
+            max-width: 900px;
+            margin: 2rem auto 0 auto;
+            font-size: 0.78rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.6rem; }
+            .nav-container { padding: 1rem; }
+            nav ul { gap: 16px; }
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.1rem; }
             nav ul { display: none; }
-            .splash-slogan { font-size: 2.2rem; }
-            .splash-logo { height: 60vh; }
+            .splash-slogan { font-size: 2.4rem; }
+            .splash-logo { height: 50vh; }
             .form-grid { grid-template-columns: 1fr; }
+            .intake-form-wrapper { padding: 35px 20px; }
+            .section { padding: 70px 1rem; }
         }
     </style>
 </head>
@@ -856,24 +984,26 @@
 
     <!-- HERO HOME VIEWPORT -->
     <section class="hero">
-        <span class="bilingual-tag">Florida Jurisdiction • Third-Party Accuracy</span>
-        <h1>Data-Driven Property Inspections &<br><span>Xactimate Estimate Architecture</span></h1>
-        <div class="es-title">Inspecciones de Propiedad y Arquitectura de Estimados</div>
-        <p>
-            We provide independent insurance adjusting, certified field inspections, and line-item auditing designed to streamline cycle times, eliminate friction, and establish mathematical file accuracy for all industry stakeholders.
-        </p>
-        <div class="hero-btns">
-            <a href="#intake" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1rem; letter-spacing: 0.5px;">Launch Secure Intake Portal</a>
+        <div class="hero-inner">
+            <span class="bilingual-tag">Florida Jurisdiction • Third-Party Accuracy</span>
+            <h1>Data-Driven Property Inspections &<br><span>Xactimate Estimate Architecture</span></h1>
+            <div class="es-title">Inspecciones de Propiedad y Arquitectura de Estimados</div>
+            <p>
+                We provide independent insurance adjusting, certified field inspections, and line-item auditing designed to streamline cycle times, eliminate friction, and establish mathematical file accuracy for all industry stakeholders.
+            </p>
+            <div class="hero-btns">
+                <a href="#intake" class="btn btn-primary" style="padding: 1.1rem 3.5rem; font-size: 0.9rem;">Launch Secure Intake Portal</a>
+            </div>
         </div>
     </section>
 
     <!-- TRUST BADGES BAR -->
     <section class="trust-bar">
         <div class="trust-container">
-            <div class="trust-item"><span>✓</span> LICENSED Insurance Adjuster</div>
-            <div class="trust-item"><span>✓</span> LICENSED Home Inspector</div>
-            <div class="trust-item"><span>✓</span> LICENSED Mold Assessor</div>
-            <div class="trust-item"><span>✓</span> CERTIFIED Xactimate Platform</div>
+            <div class="trust-item"><span>■</span> LICENSED Insurance Adjuster</div>
+            <div class="trust-item"><span>■</span> LICENSED Home Inspector</div>
+            <div class="trust-item"><span>■</span> LICENSED Mold Assessor</div>
+            <div class="trust-item"><span>■</span> CERTIFIED Xactimate Platform</div>
         </div>
     </section>
 
@@ -915,7 +1045,7 @@
     <section id="framework" class="workflow-section">
         <div class="section-header">
             <h2>The TriVault Workflow System™</h2>
-            <p class="subtitle">Standardized Triangulation of Field Data, Compliance, and Delivery</p>
+            <p>Standardized Triangulation of Field Data, Compliance, and Delivery</p>
         </div>
         
         <div class="workflow-grid">
@@ -959,7 +1089,7 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION (UPDATED TO 2% / $200) -->
+    <!-- PRICING SECTION -->
     <section id="pricing" class="pricing-section">
         <div class="section-header">
             <h2>Fee Structure</h2>
@@ -981,7 +1111,7 @@
             <!-- Supplemental Card -->
             <div class="pricing-card">
                 <h3>Supplemental Rewrites</h3>
-                <div class="pricing-price" style="font-size: 2.2rem; margin: 15px 0 33px 0;">$200 Min.<span>+ 2% of supplement value</span></div>
+                <div class="pricing-price" style="font-size: 2.5rem; margin-bottom: 45px;">$200 Min.<span>+ 2% of supplement value</span></div>
                 <ul class="pricing-list">
                     <li>Applies to scope modifications or carrier rewrite mandates.</li>
                     <li>Standard processing covers up to 100 line items.</li>
@@ -996,7 +1126,7 @@
     </section>
 
     <!-- AUDIT-READY SAMPLES SECTION -->
-    <section id="samples" class="section" style="background-color: var(--secondary-dark); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+    <section id="samples" class="section" style="background-color: var(--secondary-dark); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02);">
         <div class="section-header">
             <h2>Audit-Ready Scope Samples</h2>
             <p>Transparent Architectural Packages • Redacted for Confidentiality</p>
@@ -1068,9 +1198,9 @@
     <!-- SECURE B2B INTAKE SECTION -->
     <section id="intake" class="intake-section">
         <div class="intake-form-wrapper">
-            <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:6px 16px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.05);">
-                <span style="width:7px;height:7px;background:#30b058;border-radius:50%;box-shadow:0 0 8px #30b058;display:inline-block;"></span>
-                <span style="color:var(--text-muted);font-size:0.7rem;font-weight:700;letter-spacing:1px;">SECURE SSL GATEWAY</span>
+            <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,0.4);padding:6px 16px;margin-bottom:24px;border:1px solid var(--border-alpha);">
+                <span style="width:6px;height:6px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;display:inline-block;"></span>
+                <span style="color:var(--text-muted);font-size:0.7rem;font-weight:700;letter-spacing:1.5px;">SECURE SSL GATEWAY</span>
             </div>
 
             <h2>B2B Secure File Intake</h2>
@@ -1079,7 +1209,7 @@
             <form id="intakeForm" novalidate>
                 <div class="form-grid">
                     <div class="form-group full-width">
-                        <label for="clientType">Client Type <span style="color:#e53e3e">*</span></label>
+                        <label for="clientType">Client Type <span style="color:#ef4444">*</span></label>
                         <select id="clientType" name="clientType" required>
                             <option value="" disabled selected>— Select client type —</option>
                             <option value="Insurance Carrier">Insurance Carrier</option>
@@ -1096,32 +1226,32 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="contactPerson">Contact Person <span style="color:#e53e3e">*</span></label>
+                        <label for="contactPerson">Contact Person <span style="color:#ef4444">*</span></label>
                         <input type="text" id="contactPerson" name="contactPerson" placeholder="John Smith" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Email Address <span style="color:#e53e3e">*</span></label>
+                        <label for="email">Email Address <span style="color:#ef4444">*</span></label>
                         <input type="email" id="email" name="email" placeholder="john@company.com" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="phone">Phone Number <span style="color:#e53e3e">*</span></label>
+                        <label for="phone">Phone Number <span style="color:#ef4444">*</span></label>
                         <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required>
                     </div>
 
                     <div class="form-group full-width">
-                        <label for="propertyAddress">Property Address <span style="color:#e53e3e">*</span></label>
+                        <label for="propertyAddress">Property Address <span style="color:#ef4444">*</span></label>
                         <input type="text" id="propertyAddress" name="propertyAddress" placeholder="1234 SW 8th St, Miami, FL 33135" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="claimNumber">Claim / Case Number <span style="color:#e53e3e">*</span></label>
+                        <label for="claimNumber">Claim / Case Number <span style="color:#ef4444">*</span></label>
                         <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="date">Preferred Date & Time <span style="color:#e53e3e">*</span></label>
+                        <label for="date">Preferred Date & Time <span style="color:#ef4444">*</span></label>
                         <input type="datetime-local" id="date" name="date" required>
                     </div>
 
@@ -1140,17 +1270,17 @@
                         <div class="file-list" id="fileList"></div>
                     </div>
 
-                    <!-- CLICK-WRAP COMPLIANT CHECKBOX (UPDATED TO 2% / $200) -->
-                    <div class="form-group full-width" style="margin: 10px 0 15px 0; text-align: left;">
-                        <label style="display: flex; align-items: flex-start; gap: 10px; transform: none; color: var(--text-light); font-size: 0.88rem; font-weight: normal; text-transform: none; cursor: pointer;">
+                    <!-- CLICK-WRAP COMPLIANT CHECKBOX -->
+                    <div class="form-group full-width" style="margin: 15px 0; text-align: left;">
+                        <label style="display: flex; align-items: flex-start; gap: 12px; color: var(--text-light); font-size: 0.9rem; font-weight: normal; text-transform: none; cursor: pointer;">
                             <input type="checkbox" id="agreeTerms" name="agreeTerms" required style="width: auto; margin-top: 4px; cursor: pointer;">
-                            <span>I have read and agree to the <a href="#" class="open-terms-link" style="color: var(--accent-gold); text-decoration: underline;">Terms of Service & Estimate Architecture Agreement</a>, including the 2% fee structure and the non-refundable $200 triage deposit policy.</span>
+                            <span>I have read and agree to the <a href="#" class="open-terms-link" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;">Terms of Service & Estimate Architecture Agreement</a>, including the 2% fee structure and the non-refundable $200 triage deposit policy.</span>
                         </label>
                     </div>
                 </div>
 
                 <button type="submit" class="btn-submit-intake" id="submitBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                         <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                     </svg>
@@ -1280,7 +1410,7 @@
     })();
     </script>
 
-    <!-- LEGAL MODAL POPUP WINDOW (UPDATED TO 2% / $200) -->
+    <!-- LEGAL MODAL POPUP WINDOW -->
     <div id="legalModal" class="legal-modal">
         <div class="legal-modal-content">
             <span class="close-modal" id="closeTermsBtn">&times;</span>
