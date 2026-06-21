@@ -3,347 +3,1609 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TriVault LLC provides professional property inspections, independent claim adjustments, and Xactimate-certified estimates for contractors, restoration companies, and insurance professionals. Reliable, licensed, and trusted across Florida.">
     <title>TriVault LLC | Property Claims, Inspections & Estimates</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="public/assets/logo-trivault-gold.png"> 
+    
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* --- BRAND THEME & CORPORATE VARIABLES --- */
         :root {
-            --primary-blue: #0a192f;
-            --accent-gold: #d4af37;
-            --accent-gold-hover: #b89428;
-            --text-light: #f4f4f4;
-            --bg-dark: #060d1a;
-            --card-bg: #0d1e36;
-            --border-color: #1e3a5f;
+            --primary-dark: #070d14;    /* Deep Executive Navy */
+            --secondary-dark: #0d1622;  /* Solid Structural Steel Blue */
+            --card-bg: #121d2a;         /* High-Contrast Technical Blue */
+            --accent-gold: #c5a059;     /* Premium Tailored Muted Gold */
+            --accent-gold-hover: #e5c17b;
+            --text-light: #f1f5f9;      /* Clean Architectural White */
+            --text-muted: #8a99ad;      /* Technical Slate Subtext */
+            --white: #ffffff;
+            --border-alpha: rgba(197, 160, 89, 0.15);
+            --font-main: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--font-main);
         }
 
         body {
-            background-color: var(--bg-dark);
+            background-color: var(--primary-dark);
             color: var(--text-light);
             line-height: 1.6;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            overflow-x: hidden;
+            letter-spacing: 0.2px;
         }
 
-        .container {
-            max-width: 750px;
-            width: 100%;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid var(--border-color);
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .logo-placeholder {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--accent-gold);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-        }
-
-        .header p {
-            color: #a0aec0;
-            font-size: 14px;
-        }
-
-        h2 {
-            color: var(--accent-gold);
-            margin-bottom: 25px;
-            font-size: 22px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .form-row {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-size: 13px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            color: #cbd5e0;
-        }
-
-        label span {
-            color: #e53e3e;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="datetime-local"],
-        select,
-        textarea {
-            background-color: var(--primary-blue);
-            border: 1px solid var(--border-color);
-            color: var(--text-light);
-            padding: 12px 15px;
-            border-radius: 6px;
-            font-size: 15px;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-
-        input:focus, select:focus, textarea:focus {
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.2);
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .file-drop-area {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 30px;
-            border: 2px dashed var(--border-color);
-            border-radius: 8px;
-            background-color: rgba(6, 13, 26, 0.4);
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            margin-bottom: 25px;
-        }
-
-        .file-drop-area:hover {
-            background-color: rgba(212, 175, 55, 0.05);
-            border-color: var(--accent-gold);
-        }
-
-        .file-drop-area p {
-            font-size: 14px;
-            color: #a0aec0;
-            margin-top: 8px;
-        }
-
-        .file-input {
-            position: absolute;
-            left: 0;
+        /* --- INTRO SPLASH SCREEN EFFECT --- */
+        #splash-screen {
+            position: fixed;
             top: 0;
-            height: 100%;
+            left: 0;
             width: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .checkbox-group {
+            height: 100vh;
+            background-color: var(--primary-dark);
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 30px;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s ease;
         }
 
-        .checkbox-group input {
-            margin-top: 4px;
-            transform: scale(1.2);
-            accent-color: var(--accent-gold);
+        .splash-content {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            animation: fadeInScale 1s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
         }
 
-        .checkbox-group label {
-            text-transform: none;
-            font-size: 14px;
-            color: #a0aec0;
-            line-height: 1.4;
+        .splash-logo {
+            position: absolute;
+            height: 75vh;
+            width: auto;
+            object-fit: contain;
+            opacity: 0.08;
+            filter: drop-shadow(0 0 40px rgba(197, 160, 89, 0.05));
+            z-index: 1;
         }
 
-        .checkbox-group label a {
+        .splash-text-container {
+            position: relative;
+            z-index: 2;
+            padding: 0 2rem;
+        }
+
+        .splash-slogan {
+            font-family: 'Times New Roman', Times, Georgia, serif;
             color: var(--accent-gold);
+            font-size: 3.8rem;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 24px rgba(0, 0, 0, 0.9);
+        }
+
+        .splash-sub {
+            font-family: var(--font-main);
+            color: var(--text-light);
+            font-size: 1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+            text-shadow: 0 2px 12px rgba(0, 0, 0, 0.9);
+        }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.98); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .fade-out {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.01);
+        }
+
+        body.intro-active {
+            overflow: hidden;
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        header {
+            background-color: rgba(7, 13, 20, 0.96);
+            backdrop-filter: blur(8px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-alpha);
+        }
+
+        .nav-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.1rem 2rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo-area h1 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin: 0;
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-light);
             text-decoration: none;
-        }
-
-        .checkbox-group label a:hover {
-            text-decoration: underline;
-        }
-
-        .btn-submit {
-            background-color: var(--accent-gold);
-            color: var(--bg-dark);
-            border: none;
-            padding: 15px 30px;
-            font-size: 16px;
+            font-size: 0.8rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 6px;
-            cursor: pointer;
+            transition: color 0.25s ease;
+            position: relative;
+            padding: 4px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-gold);
+            transition: width 0.25s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-gold);
+        }
+
+        nav a:hover::after {
             width: 100%;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-            display: flex;
+        }
+
+        .cta-phone {
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold) !important;
+            padding: 0.6rem 1.3rem !important;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            transition: all 0.25s cubic-bezier(0.25, 1, 0.5, 1) !important;
+        }
+
+        .cta-phone::after { display: none !important; }
+
+        .cta-phone:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark) !important;
+            box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 220px 2rem 140px 2rem;
+            text-align: center;
+            background: radial-gradient(circle at top, #111d2c 0%, var(--primary-dark) 75%);
+            max-width: 100%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .hero-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .bilingual-tag {
+            color: var(--accent-gold);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .bilingual-tag::before, .bilingual-tag::after {
+            content: '';
+            width: 15px;
+            height: 1px;
+            background-color: var(--accent-gold);
+            opacity: 0.5;
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            margin-bottom: 0.8rem;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+            color: var(--white);
+        }
+
+        .hero h1 span {
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+
+        .hero .es-title {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            max-width: 820px;
+            margin: 0 auto 3rem auto;
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border: 1px solid var(--accent-gold);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent-gold);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.15);
+        }
+
+        /* --- TRUST BADGES BAR --- */
+        .trust-bar {
+            background-color: var(--secondary-dark);
+            border-top: 1px solid var(--border-alpha);
+            border-bottom: 1px solid var(--border-alpha);
+            padding: 1.8rem 2rem;
+        }
+
+        .trust-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .trust-item {
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #cbd5e1;
+            display: flex;
             align-items: center;
             gap: 10px;
         }
 
-        .btn-submit:hover {
-            background-color: var(--accent-gold-hover);
+        .trust-item span {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
         }
 
-        .btn-submit:active {
-            transform: scale(0.99);
+        /* --- SECTION STRUCTURE --- */
+        .section {
+            padding: 100px 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
         }
 
-        .footer-note {
+        .section-header {
             text-align: center;
-            font-size: 12px;
-            color: #718096;
-            margin-top: 20px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            color: var(--accent-gold);
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- METRIC CARDS --- */
+        .metric-card {
+            background-color: var(--secondary-dark);
+            padding: 3.5rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            text-align: left;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 3px; height: 0;
+            background-color: var(--accent-gold);
+            transition: height 0.35s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--card-bg);
+            border-color: rgba(197, 160, 89, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .metric-card:hover::before {
+            height: 100%;
+        }
+
+        .metric-num {
+            font-size: 4rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-variant-numeric: lining-nums;
+        }
+
+        .metric-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--white);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 10px;
+        }
+
+        .bilingual-text p {
+            font-size: 0.98rem;
+            margin-bottom: 0.8rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        .bilingual-text p.es {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border-left: 2px solid rgba(197, 160, 89, 0.3);
+            padding-left: 10px;
+            margin-top: 0.5rem;
+        }
+
+        /* --- MODERN WORKFLOW SYSTEM --- */
+        .workflow-section {
+            background-color: #04080e;
+            padding: 100px 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .workflow-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 40px 30px;
+            position: relative;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .workflow-card:hover {
+            transform: translateY(-4px);
+            background-color: var(--card-bg);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        
+        .step-number {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: rgba(197, 160, 89, 0.06);
+            transition: color 0.35s ease;
+            font-variant-numeric: lining-nums;
+        }
+        
+        .workflow-card:hover .step-number {
+            color: rgba(197, 160, 89, 0.15);
+        }
+        
+        .workflow-icon {
+            color: var(--accent-gold);
+            width: 36px;
+            height: 36px;
+            margin-bottom: 25px;
+        }
+        
+        .workflow-card h3 {
+            color: var(--white);
+            font-size: 1.3rem;
+            margin: 0 0 12px 0;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        
+        .workflow-card p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- PRICING STRUCTURE SECTION --- */
+        .pricing-section {
+            padding: 100px 2rem;
+            background-color: var(--primary-dark);
+        }
+
+        .pricing-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 270px;
+            max-width: 310px;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card.featured {
+            border: 1px solid var(--accent-gold);
+            background-color: rgba(18, 29, 42, 0.4);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+            border-color: var(--accent-gold);
+        }
+
+        .pricing-card h3 {
+            color: var(--white);
+            font-size: 1.15rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .pricing-card.featured h3 {
+            color: var(--accent-gold);
+        }
+
+        .pricing-price {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 20px;
+            line-height: 1;
+            letter-spacing: -1px;
+            font-variant-numeric: lining-nums;
+        }
+
+        .pricing-price span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: block;
+            margin-top: 6px;
+        }
+
+        .pricing-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 15px;
+            flex-grow: 1;
+        }
+
+        .pricing-list li {
+            font-size: 0.9rem;
+            color: #cbd5e1;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 20px;
+            line-height: 1.4;
+        }
+
+        .pricing-list li::before {
+            content: "■";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--accent-gold);
+            font-size: 0.65rem;
+        }
+
+        .pricing-section .disclaimer-box {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            max-width: 1000px;
+            margin: 50px auto 0 auto;
+            text-align: center;
+            line-height: 1.6;
+            border: 1px dashed rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        /* --- TERMS AND CONDITIONS MODAL WINDOW --- */
+        .legal-modal {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(4, 7, 11, 0.95);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .legal-modal-content {
+            background-color: var(--secondary-dark);
+            border: 1px solid var(--accent-gold);
+            color: var(--text-light);
+            max-width: 850px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            padding: 50px 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            font-size: 1.8rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: color 0.25s;
+            line-height: 1;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-gold);
+        }
+
+        .legal-modal-content h2 {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 800;
+            border-bottom: 1px solid var(--border-alpha);
+            padding-bottom: 16px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .legal-modal-content h3 {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .legal-modal-content p, .legal-modal-content ul {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            margin-bottom: 15px;
+        }
+
+        /* --- PREMIUM SAMPLES CARDS --- */
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        .sample-card {
+            background-color: var(--secondary-dark);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .sample-card:hover {
+            border-color: var(--border-alpha);
+            background-color: var(--card-bg);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .sample-icon-wrapper {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .fire-icon { color: #e05e5e; }
+        .water-icon { color: #4396d8; }
+        .mold-icon { color: #49b65c; }
+        .roof-icon { color: #e0af16; }
+        
+        .sample-card h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin: 0 0 12px 0;
+            text-transform: uppercase;
+        }
+        
+        .sample-card .desc-en {
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            margin: 0 0 8px 0;
+        }
+        
+        .sample-card .desc-es {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            line-height: 1.4;
+            margin: 0 0 25px 0;
             font-style: italic;
         }
+        
+        .download-btn {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 16px;
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.25s ease;
+        }
+        
+        .sample-card:hover .download-btn {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border-color: var(--accent-gold);
+        }
+        
+        .btn-arrow {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.25s ease;
+        }
+        
+        .sample-card:hover .btn-arrow {
+            transform: translateX(2px);
+            stroke: var(--primary-dark);
+        }
 
-        @media (max-width: 600px) {
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-            body {
-                padding: 10px;
-            }
-            .container {
-                padding: 20px;
-            }
+        /* --- SECURE INTAKE PORTAL GATEWAY --- */
+        .intake-section {
+            background: linear-gradient(180deg, #04080e 0%, var(--primary-dark) 100%);
+            padding: 110px 2rem;
+            text-align: center;
+        }
+
+        .intake-form-wrapper {
+            max-width: 840px;
+            margin: 0 auto;
+            background: var(--secondary-dark);
+            border: 1px solid var(--border-alpha);
+            padding: 55px 45px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            text-align: left;
+        }
+        
+        .intake-form-wrapper h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+        
+        .intake-form-wrapper .form-subtitle {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            margin-bottom: 35px;
+            line-height: 1.5;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .form-grid .full-width { grid-column: 1 / -1; }
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-light);
+            font-size: 0.95rem;
+            padding: 13px 16px;
+            outline: none;
+            transition: all 0.25s ease;
+            width: 100%;
+        }
+        
+        .form-group select option { background: var(--secondary-dark); }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus { 
+            border-color: var(--accent-gold); 
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 10px rgba(197, 160, 89, 0.1);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.2); }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        
+        /* TECHNICAL DROP ZONE */
+        .drop-zone {
+            border: 1px dashed rgba(197, 160, 89, 0.4);
+            background: rgba(0, 0, 0, 0.15);
+            padding: 35px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+        
+        .drop-zone.drag-over {
+            border-color: var(--accent-gold);
+            background: rgba(197, 160, 89, 0.05);
+        }
+        
+        .drop-zone input[type="file"] {
+            position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+        }
+        
+        .drop-zone p { color: var(--text-muted); font-size: 0.85rem; margin: 8px 0 0; }
+        .drop-zone strong { color: var(--white); font-size: 0.95rem; font-weight: 600; }
+        
+        .file-list { margin-top: 12px; }
+        .file-chip {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(197, 160, 89, 0.08); border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 6px 14px; font-size: 0.8rem; color: var(--text-light);
+            margin: 4px 4px 4px 0; font-weight: 600;
+        }
+        
+        .file-chip button {
+            background: none; border: none; color: var(--text-muted); cursor: pointer;
+            font-size: 1.1rem; padding: 0; margin-left: 4px; line-height: 1;
+        }
+        .file-chip button:hover { color: #ef4444; }
+        
+        .btn-submit-intake {
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+            background: var(--accent-gold); color: var(--primary-dark);
+            border: 1px solid var(--accent-gold); padding: 16px 40px;
+            font-size: 0.9rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+            width: 100%; margin-top: 10px;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+        
+        .btn-submit-intake:hover:not(:disabled) {
+            background: transparent; color: var(--accent-gold); 
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.2);
+        }
+        
+        .btn-submit-intake:disabled { opacity: 0.5; cursor: not-allowed; }
+        .form-notice { color: var(--text-muted); font-size: 0.8rem; text-align: center; margin-top: 14px; font-style: italic; }
+        
+        .intake-msg { border-left: 3px solid transparent; padding: 15px 20px; font-size: 0.95rem; margin-top: 20px; display: none; }
+        .intake-msg.success { background: rgba(34, 197, 94, 0.08); border-color: #22c55e; color: #4ade80; }
+        .intake-msg.error   { background: rgba(239, 68, 68, 0.08); border-color: #ef4444; color: #fca5a5; }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #03060a;
+            padding: 60px 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        footer a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--accent-gold-hover);
+            text-decoration: underline;
+        }
+
+        .disclaimer {
+            max-width: 900px;
+            margin: 2rem auto 0 auto;
+            font-size: 0.78rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 1200px) {
+            .pricing-grid { justify-content: center; }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 2.6rem; }
+            .nav-container { padding: 1rem; }
+            nav ul { gap: 16px; }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.1rem; }
+            nav ul { display: none; }
+            .splash-slogan { font-size: 2.4rem; }
+            .splash-logo { height: 50vh; }
+            .form-grid { grid-template-columns: 1fr; }
+            .intake-form-wrapper { padding: 35px 20px; }
+            .section { padding: 70px 1rem; }
+            .pricing-card { max-width: 100%; }
         }
     </style>
 </head>
-<body>
+<body class="intro-active">
 
-    <div class="container">
-        <div class="header">
-            <div class="logo-placeholder">TriVault Property Solutions</div>
-            <p>Secure B2B Claims Intake & Architecture Portal</p>
+    <!-- PRESENTACIÓN EXTENDIDA CON LOGO COMPLETO -->
+    <div id="splash-screen">
+        <div class="splash-content">
+            <img src="public/assets/logo-trivault-gold.png" alt="TriVault Solutions Full Logo" class="splash-logo">
+            <div class="splash-text-container">
+                <div class="splash-slogan">We Are The Paramount</div>
+                <div class="splash-sub">Property Solutions & Intelligence</div>
+            </div>
         </div>
-
-        <form id="intakeForm" onsubmit="handleFormSubmit(event)">
-            
-            <h2>Contact & Carrier Information</h2>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="companyName">Your Company Name <span>*</span></label>
-                    <input type="text" id="companyName" required placeholder="e.g., Paramount Insurance">
-                </div>
-                <div class="form-group">
-                    <label for="contactEmail">Contact Email <span>*</span></label>
-                    <input type="email" id="contactEmail" required placeholder="name@company.com">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="carrier">Insurance Carrier <span>*</span></label>
-                    <input type="text" id="carrier" required placeholder="e.g., Citizens, State Farm">
-                </div>
-                <div class="form-group">
-                    <label for="policyNumber">Policy Number</label>
-                    <input type="text" id="policyNumber" placeholder="POL-123456">
-                </div>
-            </div>
-
-            <h2>Risk Location & Claim Details</h2>
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="insuredName">Insured / Property Owner <span>*</span></label>
-                    <input type="text" id="insuredName" required placeholder="Full Name">
-                </div>
-                <div class="form-group">
-                    <label for="propertyAddress">Property Address <span>*</span></label>
-                    <input type="text" id="propertyAddress" required placeholder="Street, City, State, ZIP">
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label for="claimNumber">Claim / Case Number <span>*</span></label>
-                    <input type="text" id="claimNumber" required placeholder="CLM-2026-00001">
-                </div>
-                <div class="form-group">
-                    <label for="preferredDateTime">Preferred Date & Time <span>*</span></label>
-                    <input type="datetime-local" id="preferredDateTime" required>
-                </div>
-            </div>
-
-            <div class="form-group" style="margin-bottom: 25px;">
-                <label for="scopeDetails">Work Description / Scope of Claim</label>
-                <textarea id="scopeDetails" placeholder="Briefly describe the nature of the damage..."></textarea>
-            </div>
-
-            <h2>Supporting Documents</h2>
-            <div class="file-drop-area">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
-                <p><strong>Drag & drop files here</strong> or click to browse</p>
-                <p style="font-size: 11px; margin-top: 4px;">PDF, images, Word, Excel — up to 50 MB each.</p>
-                <input class="file-input" type="file" id="fileUpload" multiple>
-            </div>
-
-            <div class="checkbox-group">
-                <input type="checkbox" id="termsAgreement" required>
-                <label for="termsAgreement">
-                    I have read and agree to the <a href="#">Terms of Service & Estimate Architecture Agreement</a>, including the 1% fee matrix and supplement parameters.
-                </label>
-            </div>
-
-            <button type="submit" class="btn-submit">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-                Submit Secure Intake
-            </button>
-
-            <p class="footer-note">Conforms fully to Florida statutory data security guidelines. Documents are encrypted in transit.</p>
-        </form>
     </div>
 
-    <script>
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            // Recopilación básica de datos del formulario
-            const formData = {
-                companyName: document.getElementById('companyName').value,
-                contactEmail: document.getElementById('contactEmail').value,
-                carrier: document.getElementById('carrier').value,
-                policyNumber: document.getElementById('policyNumber').value,
-                insuredName: document.getElementById('insuredName').value,
-                propertyAddress: document.getElementById('propertyAddress').value,
-                claimNumber: document.getElementById('claimNumber').value,
-                preferredDateTime: document.getElementById('preferredDateTime').value,
-                scopeDetails: document.getElementById('scopeDetails').value
-            };
+    <!-- CLEANED & STRUCTURAL HEADER -->
+    <header>
+        <div class="nav-container">
+            <div class="logo-area">
+                <img src="public/assets/logo-trivault-gold.png" alt="TriVault Logo" style="height: 32px; width: auto; vertical-align: middle;">
+                <h1>TRIVAULT PROPERTY SOLUTIONS</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#pricing">Fee Structure</a></li>
+                    <li><a href="#samples">Architecture Samples</a></li>
+                    <li><a href="#intake">Submit File</a></li>
+                    <li><a class="cta-phone" href="tel:7868791056">Call 786-879-1056</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-            console.log('Formulario enviado con éxito:', formData);
-            alert('Service request submitted successfully. Our team will review the documentation shortly.');
-            
-            // Aquí se conecta con el webhook de Power Automate o el backend en producción.
+    <!-- HERO HOME VIEWPORT -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="bilingual-tag">Florida Jurisdiction • Third-Party Accuracy</span>
+            <h1>Data-Driven Property Inspections &<br><span>Xactimate Estimate Architecture</span></h1>
+            <div class="es-title">Inspecciones de Propiedad y Arquitectura de Estimados</div>
+            <p>
+                We provide independent insurance adjusting, certified field inspections, and line-item auditing designed to streamline cycle times, eliminate friction, and establish mathematical file accuracy for all industry stakeholders.
+            </p>
+            <div class="hero-btns">
+                <a href="#intake" class="btn btn-primary" style="padding: 1.1rem 3.5rem; font-size: 0.9rem;">Launch Secure Intake Portal</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BADGES BAR -->
+    <section class="trust-bar">
+        <div class="trust-container">
+            <div class="trust-item"><span>■</span> LICENSED Insurance Adjuster</div>
+            <div class="trust-item"><span>■</span> LICENSED Home Inspector</div>
+            <div class="trust-item"><span>■</span> LICENSED Mold Assessor</div>
+            <div class="trust-item"><span>■</span> CERTIFIED Xactimate Platform</div>
+        </div>
+    </section>
+
+    <!-- METRICS SECTION -->
+    <section id="standards" class="section">
+        <div class="section-header">
+            <h2>Quantifiable Accuracy. Streamlined Processing.</h2>
+            <p>Precisión cuantificable. Procesamiento optimizado.</p>
+        </div>
+        <div class="grid-3">
+            <div class="metric-card">
+                <div class="metric-num">100%</div>
+                <div class="metric-label">Line-Item Compliance</div>
+                <div class="bilingual-text">
+                    <p>of our Xactimate parameters are matched perfectly to verifiable local material standards and current policy guidelines, eliminating scope gaps.</p>
+                    <p class="es">de los parámetros de Xactimate están adaptados a las pautas vigentes, eliminando discrepancies en el alcance de obra.</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">-40%</div>
+                <div class="metric-label">Cycle Time Reduction</div>
+                <div class="bilingual-text">
+                    <p>decreased administrative gridlock. Clean visual documentation ensures files route cleanly through desk adjustment without costly back-and-forth delays.</p>
+                    <p class="es">reducción en tiempos de ciclo. La documentación clara agiliza la aprobación interna en mesa de control sin demoras.</p>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-num">0%</div>
+                <div class="metric-label">Speculative Overhead</div>
+                <div class="bilingual-text">
+                    <p>Zero approximations. Every file is backed by licensed physical field data, full interior/exterior forensic mapping, and certified mold/structural credentials.</p>
+                    <p class="es">Cero estimaciones especulativas. Cada archivo está respaldado por inspección forense de campo y licencias estatales oficiales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- THE TRIVAULT SYSTEM WORKFLOW -->
+    <section id="framework" class="workflow-section">
+        <div class="section-header">
+            <h2>The TriVault Workflow System™</h2>
+            <p>Standardized Triangulation of Field Data, Compliance, and Delivery</p>
+        </div>
+        
+        <div class="workflow-grid">
+            <div class="workflow-card">
+                <div class="step-number">01</div>
+                <div class="workflow-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M12 9v6M9 12h6"/>
+                    </svg>
+                </div>
+                <h3>Forensic Field Intake</h3>
+                <p>Licensed structural, thermal, or mold inspection protocols capture raw, undeniable property facts.</p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="step-number">02</div>
+                <div class="workflow-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3>Guideline Audit Matrix</h3>
+                <p>Scopes are built using exact Xactimate localized database prices, removing inflated line-items or code omissions.</p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="step-number">03</div>
+                <div class="workflow-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3>Seamless File Resolution</h3>
+                <p>Carriers, contractors, and public adjusters receive a transparent, audit-ready package that accelerates file closure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION - SIMPLIFIED TO 3 CARDS WITH UPDATED BASE RATES -->
+    <section id="pricing" class="pricing-section">
+        <div class="section-header">
+            <h2>Fee Structure</h2>
+            <p>Transparent, compliant, and data-driven Xactimate estimate architecture.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <!-- 1. Baseline Estimate Pricing Card -->
+            <div class="pricing-card featured">
+                <h3>Standard Estimate</h3>
+                <div class="pricing-price">$100<span>Minimum Fee</span></div>
+                <ul class="pricing-list">
+                    <li><strong>Under $10,000:</strong> Flat baseline fee of only $100.</li>
+                    <li><strong>Over $10,000:</strong> Adjusted to 1% of the total calculated estimate volume.</li>
+                    <li>Written from scratch by certified experts matched to local database pricing.</li>
+                </ul>
+            </div>
+
+            <!-- 2. Field Inspection Base Card (UPDATED TO $200 + MILEAGE NOTICE) -->
+            <div class="pricing-card">
+                <h3>Field Inspection</h3>
+                <div class="pricing-price">$200<span>Base Fee</span></div>
+                <ul class="pricing-list">
+                    <li>Comprehensive physical field mapping, forensic data logging and high-res photography.</li>
+                    <li>Includes standard travel overhead inside <strong>Miami-Dade & Broward Counties</strong>.</li>
+                    <li><strong style="color: var(--accent-gold);">Notice:</strong> Final invoice is subject to modifications depending on total mileage for extended service areas.</li>
+                </ul>
+            </div>
+
+            <!-- 3. Estimate Supplements Card -->
+            <div class="pricing-card">
+                <h3>Supplements</h3>
+                <div class="pricing-price">$100<span>Per Iteration</span></div>
+                <ul class="pricing-list">
+                    <li><strong>New Supplement Scopes:</strong> Invoiced at 1% of the newly added line-item value.</li>
+                    <li><strong>Minimum Standard:</strong> A baseline $100 fee applies to individual supplement file iterations.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="disclaimer-box">
+            *You will typically receive your finalized estimate as a secure PDF attachment by return email usually within 1-3 days, except Sundays and holidays. Extended field inspections in Palm Beach or Monroe County are subject to mileage adjustments and might shift logistics slightly depending on active field deployments. If you are sweating an urgent deadline, please give us a call directly.
+        </div>
+    </section>
+
+    <!-- AUDIT-READY SAMPLES SECTION -->
+    <section id="samples" class="section" style="background-color: var(--secondary-dark); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02);">
+        <div class="section-header">
+            <h2>Audit-Ready Scope Samples</h2>
+            <p>Transparent Architectural Packages • Redacted for Confidentiality</p>
+        </div>
+        
+        <div class="samples-grid">
+            <div class="sample-card">
+                <div class="sample-icon-wrapper fire-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 3.5z"/>
+                    </svg>
+                </div>
+                <h3>FIRE DAMAGE MATRIX</h3>
+                <p class="desc-en">Structural soot, thermal mapping, and detailed multi-room reconstruction line-items.</p>
+                <p class="desc-es">Líneas de reconstrucción detallada, hollín estructural y mapeo térmico.</p>
+                <a href="public/samples/TRIVAULT_Fire_Estimate_Sample.pdf" target="_blank" class="download-btn">
+                    <span>Review Architecture (PDF)</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="sample-card">
+                <div class="sample-icon-wrapper water-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M12 22a7 7 0 0 0 7-7c0-4.3-7-11-7-11S5 10.7 5 15a7 7 0 0 0 7 7z"/>
+                    </svg>
+                </div>
+                <h3>WATER MITIGATION</h3>
+                <p class="desc-en">Psychrometric logging and extraction parameters mapped directly to IICRC S500 standards.</p>
+                <p class="desc-es">Registros psicrométricos y parámetros de extracción alineados con normas IICRC.</p>
+                <a href="public/samples/TRIVAULT_Fire_Estimate_Sample.pdf" target="_blank" class="download-btn">
+                    <span>Review Architecture (PDF)</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="sample-card">
+                <div class="sample-icon-wrapper mold-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/>
+                    </svg>
+                </div>
+                <h3>MOLD REMEDIATION</h3>
+                <p class="desc-en">Licensed environmental assessment protocols and containment layout pricing structures.</p>
+                <p class="desc-es">Protocolos de evaluación ambiental licenciados y estructuras de contención.</p>
+                <a href="public/samples/TRIVAULT_Mold_Estimate_Sample.pdf" target="_blank" class="download-btn">
+                    <span>Review Architecture (PDF)</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <div class="sample-card">
+                <div class="sample-icon-wrapper roof-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    </svg>
+                </div>
+                <h3>ROOF WIND & HAIL</h3>
+                <p class="desc-en">Complete perimeter calculations, code-required components, and valley/flashing details.</p>
+                <p class="desc-es">Cálculos completos de perímetro, códigos requeridos y detalles de tapajuntas.</p>
+                <a href="public/samples/TRIVAULT_Roof_Estimate_Sample.pdf" target="_blank" class="download-btn">
+                    <span>Review Architecture (PDF)</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-arrow"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECURE B2B INTAKE SECTION WITH AUTOMATED TRAVEL MATRIX LÓGICA -->
+    <section id="intake" class="intake-section">
+        <div class="intake-form-wrapper">
+            <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,0.4);padding:6px 16px;margin-bottom:24px;border:1px solid var(--border-alpha);">
+                <span style="width:6px;height:6px;background:#22c55e;border-radius:50%;box-shadow:0 0 8px #22c55e;display:inline-block;"></span>
+                <span style="color:var(--text-muted);font-size:0.7rem;font-weight:700;letter-spacing:1.5px;">SECURE SSL GATEWAY</span>
+            </div>
+
+            <h2>B2B Secure File Intake</h2>
+            <p class="form-subtitle">Complete the form below to schedule an inspection/estimate and upload your claim/case documents.</p>
+
+            <form id="intakeForm" novalidate>
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="serviceType">Requested Service <span style="color:#ef4444">*</span></label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="" disabled selected>— Select requested service —</option>
+                            <option value="Field Inspection">Field Inspection ($200 Base)</option>
+                            <option value="Estimation">Estimation ($100 Base — No Inspection Required)</option>
+                            <option value="Field Inspection and estimation">Field Inspection and Estimation ($300 Base)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grid full-width" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; margin: 0;">
+                        <div class="form-group">
+                            <label for="clientType">Client Type <span style="color:#ef4444">*</span></label>
+                            <select id="clientType" name="clientType" required>
+                                <option value="" disabled selected>— Select client type —</option>
+                                <option value="Insurance Carrier">Insurance Carrier</option>
+                                <option value="Public Adjuster">Public Adjuster</option>
+                                <option value="Contractor">Contractor</option>
+                                <option value="Homeowner">Homeowner</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="company">Company / Organization</label>
+                            <input type="text" id="company" name="company" placeholder="ABC Insurance Co.">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contactPerson">Contact Person <span style="color:#ef4444">*</span></label>
+                        <input type="text" id="contactPerson" name="contactPerson" placeholder="John Smith" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span style="color:#ef4444">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="john@company.com" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="phone">Phone Number <span style="color:#ef4444">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="(305) 000-0000" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="propertyAddress">Property Address <span style="color:#ef4444">*</span></label>
+                        <input type="text" id="propertyAddress" name="propertyAddress" placeholder="Enter full address (City, Zip Code, County)" required>
+                    </div>
+
+                    <div class="form-grid full-width" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; margin: 0;">
+                        <div class="form-group">
+                            <label for="claimNumber">Claim / Case Number <span style="color:#ef4444">*</span></label>
+                            <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
+                        </div>
+
+                        <div class="form-group" id="dateGroup">
+                            <label for="date">Preferred Date & Time <span style="color:#ef4444">*</span></label>
+                            <input type="datetime-local" id="date" name="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label id="scopeLabel">Work Description / Scope of Claim</label>
+                        <textarea id="jobDescription" name="jobDescription" rows="5" placeholder="Briefly describe the nature of the damage..."></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Supporting Documents</label>
+                        <div class="drop-zone" id="dropZone">
+                            <input type="file" id="docFiles" name="documents" multiple accept=".pdf,.jpg,.jpeg,.png,.heic,.webp,.doc,.docx,.xls,.xlsx">
+                            <strong>📎 Drag & drop files here or click to browse</strong>
+                            <p>PDF, images, Word, Excel — up to 50 MB each.</p>
+                        </div>
+                        <div class="file-list" id="fileList"></div>
+                    </div>
+
+                    <div class="form-group full-width" style="margin: 15px 0; text-align: left;">
+                        <label style="display: flex; align-items: flex-start; gap: 12px; color: var(--text-light); font-size: 0.9rem; font-weight: normal; text-transform: none; cursor: pointer;">
+                            <input type="checkbox" id="agreeTerms" name="agreeTerms" required style="width: auto; margin-top: 4px; cursor: pointer;">
+                            <span>I have read and agree to the <a href="#" class="open-terms-link" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;">Terms of Service & Estimate Architecture Agreement</a>, including the 1% fee matrix, supplement parameters, and jurisdictional travel rules.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- BOTÓN DINÁMICO QUE CALCULA EL TOTAL SEGÚN SERVICIO Y MILLAJE -->
+                <button type="submit" class="btn-submit-intake" id="submitBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span id="submitLabel">Submit Secure Intake</span>
+                </button>
+
+                <p class="form-notice">Conforms fully to Florida statutory data security guidelines. Documents are encrypted in transit.</p>
+                <div class="intake-msg" id="intakeMsg"></div>
+            </form>
+        </div>
+    </section>
+
+    <!-- INTAKE PORTAL BACKEND SCRIPT WITH TRAVEL FEES MATIX AND TIMESTAMPS -->
+    <script>
+    (function () {
+        const BACKEND_URL     = "https://trivaultweb-production.up.railway.app";
+        const form            = document.getElementById("intakeForm");
+        const serviceType     = document.getElementById("serviceType");
+        const propertyAddress = document.getElementById("propertyAddress");
+        const dateGroup       = document.getElementById("dateGroup");
+        const dateInput       = document.getElementById("date");
+        const fileInput       = document.getElementById("docFiles");
+        const fileList        = document.getElementById("fileList");
+        const dropZone        = document.getElementById("dropZone");
+        const submitBtn       = document.getElementById("submitBtn");
+        const submitLbl       = document.getElementById("submitLabel");
+        const msg             = document.getElementById("intakeMsg");
+        const scopeLabel      = document.getElementById("scopeLabel");
+
+        let selectedFiles = [];
+        let activeTravelSurcharge = 0;
+
+        // FUNCIÓN CENTRAL: CALCULA EL PRECIO BASE Y SÚMA DE SURCHARGE POR UBICACIÓN
+        function calculateDynamicPricing() {
+            let baseFee = 0;
+            let currentService = serviceType.value;
+
+            if (currentService === "Field Inspection") {
+                baseFee = 200;
+            } else if (currentService === "Field Inspection and estimation") {
+                baseFee = 300;
+            } else if (currentService === "Estimation") {
+                baseFee = 100;
+            }
+
+            // Verificar ubicación geográfica solo si requiere traslado físico
+            activeTravelSurcharge = 0;
+            if (currentService && currentService !== "Estimation") {
+                const addressText = propertyAddress.value.toLowerCase();
+                
+                // Mapeo inteligente de palabras claves para Monroe y Palm Beach Counties
+                const isExtendedZone = /palm beach|pbc|west palm|jupiter|boca raton|delray|boynton|monroe|marathon|key largo|islamorada|key west|cayos|keys/i.test(addressText);
+                
+                if (isExtendedZone) {
+                    activeTravelSurcharge = 125;
+                }
+            }
+
+            // Actualizar etiqueta del botón de envíos reflectando los costos calculados
+            if (!currentService) {
+                submitLbl.textContent = "Submit Secure Intake";
+            } else {
+                let totalText = `Submit Secure Intake ($${baseFee + activeTravelSurcharge} Total Base)`;
+                if (activeTravelSurcharge > 0) {
+                    totalText += ` *Includes $125 Extended Travel Surcharge`;
+                }
+                submitLbl.textContent = totalText;
+            }
         }
+
+        // CONTROLADORES DE EVENTO DINÁMICOS
+        serviceType.addEventListener("change", function() {
+            if (this.value === "Estimation") {
+                dateGroup.style.display = "none";
+                dateInput.removeAttribute("required");
+                dateInput.value = ""; 
+                scopeLabel.innerHTML = 'Work Description / Scope of Claim <span style="color:#ef4444">*</span>';
+            } else {
+                dateGroup.style.display = "flex";
+                dateInput.setAttribute("required", "required");
+                scopeLabel.innerHTML = 'Work Description / Scope of Claim';
+            }
+            calculateDynamicPricing();
+        });
+
+        propertyAddress.addEventListener("input", calculateDynamicPricing);
+
+        // DRAG & DROP LOGIC
+        dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
+        dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
+        dropZone.addEventListener("drop", e => {
+            e.preventDefault();
+            dropZone.classList.remove("drag-over");
+            addFiles([...e.dataTransfer.files]);
+        });
+
+        fileInput.addEventListener("change", () => {
+            addFiles([...fileInput.files]);
+            fileInput.value = "";
+        });
+
+        function addFiles(newFiles) {
+            newFiles.forEach(f => {
+                if (!selectedFiles.find(x => x.name === f.name && x.size === f.size)) {
+                    selectedFiles.push(f);
+                }
+            });
+            renderFileList();
+        }
+
+        function renderFileList() {
+            fileList.innerHTML = "";
+            selectedFiles.forEach((f, i) => {
+                const chip = document.createElement("span");
+                chip.className = "file-chip";
+                chip.innerHTML = `📄 ${f.name} <button type="button" aria-label="Remove" data-i="${i}">×</button>`;
+                fileList.appendChild(chip);
+            });
+            fileList.querySelectorAll("button").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    selectedFiles.splice(Number(btn.dataset.i), 1);
+                    renderFileList();
+                });
+            });
+        }
+
+        // SUBMISSION HANDLER
+        form.addEventListener("submit", async e => {
+            e.preventDefault();
+            msg.style.display = "none";
+
+            if (!serviceType.value) {
+                showMsg("error", "Please select a Requested Service.");
+                serviceType.focus();
+                return;
+            }
+
+            const required = ["clientType","contactPerson","email","phone","propertyAddress","claimNumber"];
+            for (const id of required) {
+                const el = document.getElementById(id);
+                if (!el.value.trim()) {
+                    showMsg("error", `Please fill in: ${el.previousElementSibling.textContent.replace("*","").trim()}`);
+                    el.focus();
+                    return;
+                }
+            }
+
+            if (serviceType.value === "Estimation" && !document.getElementById("jobDescription").value.trim()) {
+                showMsg("error", "Please provide a Work Description / Scope of Claim. This field is required when no physical inspection is requested.");
+                document.getElementById("jobDescription").focus();
+                return;
+            }
+
+            if (serviceType.value !== "Estimation" && !dateInput.value) {
+                showMsg("error", "Please select a Preferred Date & Time for the inspection.");
+                dateInput.focus();
+                return;
+            }
+
+            if (!document.getElementById("agreeTerms").checked) {
+                showMsg("error", "You must agree to the Terms of Service to submit your files.");
+                return;
+            }
+
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("serviceType",          serviceType.value);
+            formData.append("clientType",           document.getElementById("clientType").value);
+            formData.append("company",              document.getElementById("company").value);
+            formData.append("contactPerson",        document.getElementById("contactPerson").value);
+            formData.append("email",                document.getElementById("email").value);
+            formData.append("phone",                document.getElementById("phone").value);
+            formData.append("propertyAddress",      propertyAddress.value);
+            formData.append("claimNumber",          document.getElementById("claimNumber").value);
+            formData.append("jobDescription",       document.getElementById("jobDescription").value);
+            formData.append("calculatedTravelFee",  activeTravelSurcharge.toString());
+            
+            if (serviceType.value === "Estimation") {
+                formData.append("date", new Date().toISOString()); 
+                formData.append("isSubmissionTimestamp", "true"); 
+            } else {
+                formData.append("date", dateInput.value); 
+                formData.append("isSubmissionTimestamp", "false");
+            }
+
+            selectedFiles.forEach(f => formData.append("documents", f));
+
+            try {
+                const res = await fetch(`${BACKEND_URL}/submit`, { method: "POST", body: formData });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    const filesNote = data.filesUploaded > 0 ? ` ${data.filesUploaded} document(s) uploaded.` : "";
+                    showMsg("success", `✅ Service request submitted successfully.${filesNote}`);
+                    form.reset();
+                    dateGroup.style.display = "flex";
+                    dateInput.setAttribute("required", "required");
+                    scopeLabel.innerHTML = 'Work Description / Scope of Claim';
+                    selectedFiles = [];
+                    renderFileList();
+                    calculateDynamicPricing();
+                } else {
+                    showMsg("error", data.error || "Submission failed.");
+                }
+            } catch (err) {
+                showMsg("error", "Could not reach the server. Please call us at 786-879-1056.");
+            }
+            setLoading(false);
+        });
+
+        function setLoading(on) {
+            submitBtn.disabled = on;
+            if (!on) calculateDynamicPricing();
+            else submitLbl.textContent = "Submitting…";
+        }
+
+        function showMsg(type, text) {
+            msg.className = `intake-msg ${type}`;
+            msg.textContent = text;
+            msg.style.display = "block";
+            msg.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    })();
     </script>
+
+    <!-- LEGAL MODAL POPUP WINDOW -->
+    <div id="legalModal" class="legal-modal">
+        <div class="legal-modal-content">
+            <span class="close-modal" id="closeTermsBtn">&times;</span>
+            <h2>Terms of Service & Estimate Architecture Agreement</h2>
+            <p style="color: var(--text-muted); font-style: italic;">Effective Date: June 2026</p>
+
+            <h3>1. Professional Scope of Services</h3>
+            <p>TriVault Property Solutions LLC provides line-item auditing, independent property estimating, and technological data architecture using Xactimate® platform software. All data entries, sketches, and cost models are synthesized exclusively from source materials—including structural dimensions, field photography, moisture logs, or material reports—provided directly by the Client.</p>
+
+            <h3>2. Payment Terms, Triage Deposits & Revisions</h3>
+            <ul>
+                <li><strong>Baseline Processing Fee:</strong> Any individual estimate with a gross calculated value under $10,000 is billed at a flat architectural rate of $100. For estimates exceeding a gross calculation of $10,000, the fee is adjusted to exactly 1% of the total calculated value.</li>
+                <li><strong>Field Deployment Surcharges:</strong> Travel coordinates extending outside our Tri-County base territory (Miami-Dade and Broward) into Palm Beach County or Monroe County are subject to a flat travel and mileage surcharge of $125.00 to offset highway logistics, fuel assets, and toll infrastructure costs.</li>
+                <li><strong>Supplement Processing Rules:</strong> Any file structural revisions, additional scope items discovered during progression, or line-item supplement architectures requested after initial file completion will be invoiced at 1% of the newly calculated added volume, subject to a standard $100 baseline minimum fee per iteration.</li>
+                <li><strong>Review Window & Automatic Finalization:</strong> Upon electronic delivery of the preliminary draft, the Client has exactly <strong>seven (7) calendar days</strong> to request corrections or line-item edits. If no written modification directives are logged within this 7-day window, the file is automatically flagged as <em>Approved as Written</em>, and the remaining balance will be immediately processed using the card on file.</li>
+            </ul>
+
+            <h3>3. Third-Party Accuracy & Indemnification</h3>
+            <p>TriVault acts strictly as an objective technical data provider. The Client bears sole legal and operational responsibility for verifying that all field data, loss details, and measurements provided to TriVault are factual, accurate, and fully honest.</p>
+
+            <h3>4. Regulatory Disclosure & Non-Representation</h3>
+            <p>The Client explicitly acknowledges that compiling technical Xactimate® documents under this agreement does not constitute public adjusting services, statutory legal counsel, or public claim representation.</p>
+
+            <h3>5. Florida Jurisdiction & Choice of Law</h3>
+            <p>This Agreement, along with all operational intake files and technical transactions, shall be exclusively governed by and construed under the laws of the <strong>State of Florida</strong>. Any formal legal complaints, structural arbitration, or collection actions arising directly from this contract shall be filed and litigated strictly within courts of proper jurisdiction located in <strong>Miami-Dade County, Florida</strong>.</p>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 TriVault LLC. All Rights Reserved. | Corporate Contact: <a href="mailto:TriVault@FloridaParamount.com">TriVault@FloridaParamount.com</a> | Tel: 786-879-1056</p>
+        <p style="margin-top: 10px;"><a href="#" class="open-terms-link">Terms & Conditions</a></p>
+        <p class="disclaimer">
+            Regulatory Compliance Notice: TriVault LLC provides professional independent estimations, independent claim adjustments, and licensed structural/environmental home inspections conforming fully to the statutory requirements of the State of Florida.
+        </p>
+    </footer>
+
+    <!-- INTERACTION & TIMING JAVASCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                const splash = document.getElementById('splash-screen');
+                if (splash) {
+                    splash.classList.add('fade-out');
+                    document.body.classList.remove('intro-active');
+                    setTimeout(() => splash.remove(), 1000); 
+                }
+            }, 2500);
+
+            const modal = document.getElementById("legalModal");
+            const openLinks = document.querySelectorAll(".open-terms-link");
+            const closeBtn = document.getElementById("closeTermsBtn");
+
+            openLinks.forEach(link => {
+                link.addEventListener("click", function(e) {
+                    e.preventDefault();
+                    modal.style.display = "flex";
+                });
+            });
+
+            closeBtn.addEventListener("click", function() { modal.style.display = "none"; });
+            window.addEventListener("click", function(e) {
+                if (e.target === modal) { modal.style.display = "none"; }
+            });
+        });
+    </script>
+
 </body>
 </html>
