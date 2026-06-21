@@ -508,19 +508,22 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 35px;
-            max-width: 1000px;
+            gap: 25px;
+            max-width: 1300px;
             margin: 0 auto;
         }
 
         .pricing-card {
             background-color: var(--secondary-dark);
             border: 1px solid rgba(255, 255, 255, 0.04);
-            padding: 50px 40px;
-            width: 100%;
-            max-width: 460px;
+            padding: 40px 30px;
+            flex: 1;
+            min-width: 270px;
+            max-width: 310px;
             transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .pricing-card.featured {
@@ -536,8 +539,8 @@
 
         .pricing-card h3 {
             color: var(--white);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            font-size: 1.15rem;
+            margin-bottom: 15px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -548,40 +551,41 @@
         }
 
         .pricing-price {
-            font-size: 4rem;
+            font-size: 2.8rem;
             font-weight: 800;
             color: var(--white);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             line-height: 1;
             letter-spacing: -1px;
             font-variant-numeric: lining-nums;
         }
 
         .pricing-price span {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
             display: block;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .pricing-list {
             list-style: none;
             text-align: left;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
-            padding-top: 25px;
+            padding-top: 15px;
+            flex-grow: 1;
         }
 
         .pricing-list li {
-            font-size: 0.98rem;
+            font-size: 0.9rem;
             color: #cbd5e1;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
             position: relative;
-            padding-left: 24px;
-            line-height: 1.5;
+            padding-left: 20px;
+            line-height: 1.4;
         }
 
         .pricing-list li::before {
@@ -590,13 +594,13 @@
             left: 0;
             top: 2px;
             color: var(--accent-gold);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
         }
 
         .pricing-section .disclaimer-box {
             font-size: 0.85rem;
             color: var(--text-muted);
-            max-width: 900px;
+            max-width: 1000px;
             margin: 50px auto 0 auto;
             text-align: center;
             line-height: 1.6;
@@ -934,6 +938,10 @@
             padding-top: 20px;
         }
 
+        @media (max-width: 1200px) {
+            .pricing-grid { justify-content: center; }
+        }
+
         @media (max-width: 992px) {
             .hero h1 { font-size: 2.6rem; }
             .nav-container { padding: 1rem; }
@@ -948,6 +956,7 @@
             .form-grid { grid-template-columns: 1fr; }
             .intake-form-wrapper { padding: 35px 20px; }
             .section { padding: 70px 1rem; }
+            .pricing-card { max-width: 100%; }
         }
     </style>
 </head>
@@ -1019,7 +1028,7 @@
                 <div class="metric-label">Line-Item Compliance</div>
                 <div class="bilingual-text">
                     <p>of our Xactimate parameters are matched perfectly to verifiable local material standards and current policy guidelines, eliminating scope gaps.</p>
-                    <p class="es">de los parámetros de Xactimate están adaptados a las pautas vigentes, eliminando discrepancias en el alcance de obra.</p>
+                    <p class="es">de los parámetros de Xactimate están adaptados a las pautas vigentes, eliminando discrepancies en el alcance de obra.</p>
                 </div>
             </div>
             <div class="metric-card">
@@ -1089,7 +1098,7 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION -->
+    <!-- PRICING SECTION - SIMPLIFIED TO 3 CARDS WITH UPDATED BASE RATES -->
     <section id="pricing" class="pricing-section">
         <div class="section-header">
             <h2>Fee Structure</h2>
@@ -1097,31 +1106,41 @@
         </div>
         
         <div class="pricing-grid">
-            <!-- Next Day Card -->
+            <!-- 1. Baseline Estimate Pricing Card -->
             <div class="pricing-card featured">
-                <h3>Next Day Turnaround</h3>
-                <div class="pricing-price">2%<span>of estimate total</span></div>
+                <h3>Standard Estimate</h3>
+                <div class="pricing-price">$100<span>Minimum Fee</span></div>
                 <ul class="pricing-list">
-                    <li><strong>$200 Minimum</strong> non-refundable deposit required to commence drafting.</li>
-                    <li>Delivered systematically by close of the next business day.*</li>
-                    <li>Includes comprehensive line-item audits and compliance mapping.</li>
+                    <li><strong>Under $10,000:</strong> Flat baseline fee of only $100.</li>
+                    <li><strong>Over $10,000:</strong> Adjusted to 1% of the total calculated estimate volume.</li>
+                    <li>Written from scratch by certified experts matched to local database pricing.</li>
                 </ul>
             </div>
 
-            <!-- Supplemental Card -->
+            <!-- 2. Field Inspection Base Card (UPDATED TO $200 + MILEAGE NOTICE) -->
             <div class="pricing-card">
-                <h3>Supplemental Rewrites</h3>
-                <div class="pricing-price" style="font-size: 2.5rem; margin-bottom: 45px;">$200 Min.<span>+ 2% of supplement value</span></div>
+                <h3>Field Inspection</h3>
+                <div class="pricing-price">$200<span>Base Fee</span></div>
                 <ul class="pricing-list">
-                    <li>Applies to scope modifications or carrier rewrite mandates.</li>
-                    <li>Standard processing covers up to 100 line items.</li>
-                    <li><em>Files over 100 lines:</em> Budgeted at an additional +$2 per scope line.</li>
+                    <li>Comprehensive physical field mapping, forensic data logging and high-res photography.</li>
+                    <li>Includes standard travel overhead inside <strong>Miami-Dade & Broward Counties</strong>.</li>
+                    <li><strong style="color: var(--accent-gold);">Notice:</strong> Final invoice is subject to modifications depending on total mileage for extended service areas.</li>
+                </ul>
+            </div>
+
+            <!-- 3. Estimate Supplements Card -->
+            <div class="pricing-card">
+                <h3>Supplements</h3>
+                <div class="pricing-price">$100<span>Per Iteration</span></div>
+                <ul class="pricing-list">
+                    <li><strong>New Supplement Scopes:</strong> Invoiced at 1% of the newly added line-item value.</li>
+                    <li><strong>Minimum Standard:</strong> A baseline $100 fee applies to individual supplement file iterations.</li>
                 </ul>
             </div>
         </div>
         
         <div class="disclaimer-box">
-            *All files must be fully uploaded to the intake portal with actionable documentation before 2:00 PM Eastern Time to qualify for next business day delivery. Deposits paid at intake are strictly non-refundable and cover initial file triage protocols. Estimates exceeding $25,000 may require an additional upfront deposit of up to 2/3 of the anticipated final invoice value.
+            *You will typically receive your finalized estimate as a secure PDF attachment by return email usually within 1-3 days, except Sundays and holidays. Extended field inspections in Palm Beach or Monroe County are subject to mileage adjustments and might shift logistics slightly depending on active field deployments. If you are sweating an urgent deadline, please give us a call directly.
         </div>
     </section>
 
@@ -1195,7 +1214,7 @@
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION -->
+    <!-- SECURE B2B INTAKE SECTION WITH AUTOMATED TRAVEL MATRIX LÓGICA -->
     <section id="intake" class="intake-section">
         <div class="intake-form-wrapper">
             <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,0.4);padding:6px 16px;margin-bottom:24px;border:1px solid var(--border-alpha);">
@@ -1209,6 +1228,16 @@
             <form id="intakeForm" novalidate>
                 <div class="form-grid">
                     <div class="form-group full-width">
+                        <label for="serviceType">Requested Service <span style="color:#ef4444">*</span></label>
+                        <select id="serviceType" name="serviceType" required>
+                            <option value="" disabled selected>— Select requested service —</option>
+                            <option value="Field Inspection">Field Inspection ($150 Base)</option>
+                            <option value="Estimation">Estimation ($100 Base — No Inspection Required)</option>
+                            <option value="Field Inspection and estimation">Field Inspection and Estimation ($250 Base)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
                         <label for="clientType">Client Type <span style="color:#ef4444">*</span></label>
                         <select id="clientType" name="clientType" required>
                             <option value="" disabled selected>— Select client type —</option>
@@ -1242,7 +1271,7 @@
 
                     <div class="form-group full-width">
                         <label for="propertyAddress">Property Address <span style="color:#ef4444">*</span></label>
-                        <input type="text" id="propertyAddress" name="propertyAddress" placeholder="1234 SW 8th St, Miami, FL 33135" required>
+                        <input type="text" id="propertyAddress" name="propertyAddress" placeholder="Enter full address (City, Zip Code, County)" required>
                     </div>
 
                     <div class="form-group">
@@ -1250,7 +1279,7 @@
                         <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group" id="dateGroup">
                         <label for="date">Preferred Date & Time <span style="color:#ef4444">*</span></label>
                         <input type="datetime-local" id="date" name="date" required>
                     </div>
@@ -1270,15 +1299,15 @@
                         <div class="file-list" id="fileList"></div>
                     </div>
 
-                    <!-- CLICK-WRAP COMPLIANT CHECKBOX -->
                     <div class="form-group full-width" style="margin: 15px 0; text-align: left;">
                         <label style="display: flex; align-items: flex-start; gap: 12px; color: var(--text-light); font-size: 0.9rem; font-weight: normal; text-transform: none; cursor: pointer;">
                             <input type="checkbox" id="agreeTerms" name="agreeTerms" required style="width: auto; margin-top: 4px; cursor: pointer;">
-                            <span>I have read and agree to the <a href="#" class="open-terms-link" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;">Terms of Service & Estimate Architecture Agreement</a>, including the 2% fee structure and the non-refundable $200 triage deposit policy.</span>
+                            <span>I have read and agree to the <a href="#" class="open-terms-link" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;">Terms of Service & Estimate Architecture Agreement</a>, including the 1% fee matrix, supplement parameters, and jurisdictional travel rules.</span>
                         </label>
                     </div>
                 </div>
 
+                <!-- BOTÓN DINÁMICO QUE CALCULA EL TOTAL SEGÚN SERVICIO Y MILLAJE -->
                 <button type="submit" class="btn-submit-intake" id="submitBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -1293,20 +1322,79 @@
         </div>
     </section>
 
-    <!-- INTAKE PORTAL BACKEND SCRIPT -->
+    <!-- INTAKE PORTAL BACKEND SCRIPT WITH TRAVEL FEES MATIX AND TIMESTAMPS -->
     <script>
     (function () {
-        const BACKEND_URL = "https://trivaultweb-production.up.railway.app";
-        const form      = document.getElementById("intakeForm");
-        const fileInput = document.getElementById("docFiles");
-        const fileList  = document.getElementById("fileList");
-        const dropZone  = document.getElementById("dropZone");
-        const submitBtn = document.getElementById("submitBtn");
-        const submitLbl = document.getElementById("submitLabel");
-        const msg       = document.getElementById("intakeMsg");
+        const BACKEND_URL     = "https://trivaultweb-production.up.railway.app";
+        const form            = document.getElementById("intakeForm");
+        const serviceType     = document.getElementById("serviceType");
+        const propertyAddress = document.getElementById("propertyAddress");
+        const dateGroup       = document.getElementById("dateGroup");
+        const dateInput       = document.getElementById("date");
+        const fileInput       = document.getElementById("docFiles");
+        const fileList        = document.getElementById("fileList");
+        const dropZone        = document.getElementById("dropZone");
+        const submitBtn       = document.getElementById("submitBtn");
+        const submitLbl       = document.getElementById("submitLabel");
+        const msg             = document.getElementById("intakeMsg");
 
         let selectedFiles = [];
+        let activeTravelSurcharge = 0;
 
+        // FUNCIÓN CENTRAL: CALCULA EL PRECIO BASE Y SÚMA DE SURCHARGE POR UBICACIÓN
+        function calculateDynamicPricing() {
+            let baseFee = 0;
+            let currentService = serviceType.value;
+
+            if (currentService === "Field Inspection") {
+                baseFee = 150;
+            } else if (currentService === "Field Inspection and estimation") {
+                baseFee = 250;
+            } else if (currentService === "Estimation") {
+                baseFee = 100;
+            }
+
+            // Verificar ubicación geográfica solo si requiere traslado físico
+            activeTravelSurcharge = 0;
+            if (currentService && currentService !== "Estimation") {
+                const addressText = propertyAddress.value.toLowerCase();
+                
+                // Mapeo inteligente de palabras claves para Monroe y Palm Beach Counties
+                const isExtendedZone = /palm beach|pbc|west palm|jupiter|boca raton|delray|boynton|monroe|marathon|key largo|islamorada|key west|cayos|keys/i.test(addressText);
+                
+                if (isExtendedZone) {
+                    activeTravelSurcharge = 125;
+                }
+            }
+
+            // Actualizar etiqueta del botón de envíos reflectando los costos calculados
+            if (!currentService) {
+                submitLbl.textContent = "Submit Secure Intake";
+            } else {
+                let totalText = `Submit Secure Intake ($${baseFee + activeTravelSurcharge} Total Base)`;
+                if (activeTravelSurcharge > 0) {
+                    totalText += ` *Includes $125 Extended Travel Surcharge`;
+                }
+                submitLbl.textContent = totalText;
+            }
+        }
+
+        // CONTROLADORES DE EVENTO DINÁMICOS
+        serviceType.addEventListener("change", function() {
+            if (this.value === "Estimation") {
+                dateGroup.style.display = "none";
+                dateInput.removeAttribute("required");
+                dateInput.value = ""; 
+            } else {
+                dateGroup.style.display = "flex";
+                dateInput.setAttribute("required", "required");
+            }
+            calculateDynamicPricing();
+        });
+
+        propertyAddress.addEventListener("input", calculateDynamicPricing);
+
+        // DRAG & DROP LOGIC
         dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
         dropZone.addEventListener("dragleave", () => dropZone.classList.remove("drag-over"));
         dropZone.addEventListener("drop", e => {
@@ -1345,11 +1433,18 @@
             });
         }
 
+        // SUBMISSION HANDLER
         form.addEventListener("submit", async e => {
             e.preventDefault();
             msg.style.display = "none";
 
-            const required = ["clientType","contactPerson","email","phone","propertyAddress","claimNumber","date"];
+            if (!serviceType.value) {
+                showMsg("error", "Please select a Requested Service.");
+                serviceType.focus();
+                return;
+            }
+
+            const required = ["clientType","contactPerson","email","phone","propertyAddress","claimNumber"];
             for (const id of required) {
                 const el = document.getElementById(id);
                 if (!el.value.trim()) {
@@ -1359,6 +1454,12 @@
                 }
             }
 
+            if (serviceType.value !== "Estimation" && !dateInput.value) {
+                showMsg("error", "Please select a Preferred Date & Time for the inspection.");
+                dateInput.focus();
+                return;
+            }
+
             if (!document.getElementById("agreeTerms").checked) {
                 showMsg("error", "You must agree to the Terms of Service to submit your files.");
                 return;
@@ -1366,15 +1467,25 @@
 
             setLoading(true);
             const formData = new FormData();
-            formData.append("clientType",      document.getElementById("clientType").value);
-            formData.append("company",         document.getElementById("company").value);
-            formData.append("contactPerson",   document.getElementById("contactPerson").value);
-            formData.append("email",           document.getElementById("email").value);
-            formData.append("phone",           document.getElementById("phone").value);
-            formData.append("propertyAddress", document.getElementById("propertyAddress").value);
-            formData.append("claimNumber",     document.getElementById("claimNumber").value);
-            formData.append("date",            document.getElementById("date").value);
-            formData.append("jobDescription",  document.getElementById("jobDescription").value);
+            formData.append("serviceType",          serviceType.value);
+            formData.append("clientType",           document.getElementById("clientType").value);
+            formData.append("company",              document.getElementById("company").value);
+            formData.append("contactPerson",        document.getElementById("contactPerson").value);
+            formData.append("email",                document.getElementById("email").value);
+            formData.append("phone",                document.getElementById("phone").value);
+            formData.append("propertyAddress",      propertyAddress.value);
+            formData.append("claimNumber",          document.getElementById("claimNumber").value);
+            formData.append("jobDescription",       document.getElementById("jobDescription").value);
+            formData.append("calculatedTravelFee",  activeTravelSurcharge.toString());
+            
+            if (serviceType.value === "Estimation") {
+                formData.append("date", new Date().toISOString()); 
+                formData.append("isSubmissionTimestamp", "true"); 
+            } else {
+                formData.append("date", dateInput.value); 
+                formData.append("isSubmissionTimestamp", "false");
+            }
+
             selectedFiles.forEach(f => formData.append("documents", f));
 
             try {
@@ -1383,10 +1494,13 @@
 
                 if (res.ok && data.success) {
                     const filesNote = data.filesUploaded > 0 ? ` ${data.filesUploaded} document(s) uploaded.` : "";
-                    showMsg("success", `✅ Appointment submitted successfully.${filesNote}`);
+                    showMsg("success", `✅ Service request submitted successfully.${filesNote}`);
                     form.reset();
+                    dateGroup.style.display = "flex";
+                    dateInput.setAttribute("required", "required");
                     selectedFiles = [];
                     renderFileList();
+                    calculateDynamicPricing();
                 } else {
                     showMsg("error", data.error || "Submission failed.");
                 }
@@ -1398,7 +1512,8 @@
 
         function setLoading(on) {
             submitBtn.disabled = on;
-            submitLbl.textContent = on ? "Submitting…" : "Submit Secure Intake";
+            if (!on) calculateDynamicPricing();
+            else submitLbl.textContent = "Submitting…";
         }
 
         function showMsg(type, text) {
@@ -1422,8 +1537,9 @@
 
             <h3>2. Payment Terms, Triage Deposits & Revisions</h3>
             <ul>
-                <li><strong>Non-Refundable Intake Deposit:</strong> A minimum payment of $200 is processed at checkout to secure file triage, engineering allocation, and initial data verification. This deposit is non-refundable.</li>
-                <li><strong>Final Invoicing Parameters:</strong> The final billing balance is dynamically adjusted to exactly 2% of the gross total value calculated in the finalized Xactimate® document.</li>
+                <li><strong>Baseline Processing Fee:</strong> Any individual estimate with a gross calculated value under $10,000 is billed at a flat architectural rate of $100. For estimates exceeding a gross calculation of $10,000, the fee is adjusted to exactly 1% of the total calculated value.</li>
+                <li><strong>Field Deployment Surcharges:</strong> Travel coordinates extending outside our Tri-County base territory (Miami-Dade and Broward) into Palm Beach County or Monroe County are subject to a flat travel and mileage surcharge of $125.00 to offset highway logistics, fuel assets, and toll infrastructure costs.</li>
+                <li><strong>Supplement Processing Rules:</strong> Any file structural revisions, additional scope items discovered during progression, or line-item supplement architectures requested after initial file completion will be invoiced at 1% of the newly calculated added volume, subject to a standard $100 baseline minimum fee per iteration.</li>
                 <li><strong>Review Window & Automatic Finalization:</strong> Upon electronic delivery of the preliminary draft, the Client has exactly <strong>seven (7) calendar days</strong> to request corrections or line-item edits. If no written modification directives are logged within this 7-day window, the file is automatically flagged as <em>Approved as Written</em>, and the remaining balance will be immediately processed using the card on file.</li>
             </ul>
 
