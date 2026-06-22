@@ -209,6 +209,38 @@
             box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
         }
 
+        /* Botón Hamburguesa Estilos Base */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            z-index: 1001;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--white);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Animación Hamburguesa Activa */
+        .hamburger-btn.active span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+            background-color: var(--accent-gold);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+            background-color: var(--accent-gold);
+        }
+
         /* --- HERO SECTION --- */
         .hero {
             padding: 220px 2rem 140px 2rem;
@@ -942,21 +974,118 @@
             .pricing-grid { justify-content: center; }
         }
 
+        /* --- MEDIA QUERIES GENERALES REVISADAS (TABLETS / MÓVILES) --- */
+        @media (max-width: 1024px) {
+            /* Header & Hamburguesa */
+            .hamburger-btn {
+                display: block; /* Muestra las 3 líneas */
+            }
+
+            nav ul {
+                display: none; /* Esconde el menú horizontal original */
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: rgba(7, 13, 20, 0.98);
+                border-bottom: 1px solid var(--border-alpha);
+                padding: 2rem;
+                gap: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            }
+
+            nav ul.active {
+                display: flex; /* Se abre con JS */
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav a {
+                display: block;
+                font-size: 1rem;
+                padding: 10px 0;
+            }
+
+            .cta-phone {
+                display: inline-block !important;
+                width: auto;
+                margin-top: 10px;
+            }
+
+            /* Transformación de Secciones a Carrusel */
+            .grid-3, 
+            .workflow-grid, 
+            .pricing-grid {
+                display: flex !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory;
+                scroll-behavior: smooth;
+                gap: 20px;
+                padding: 20px 5px 30px 5px;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            /* Habilitar barra de desplazamiento visualmente sutil para guiar al usuario */
+            .grid-3::-webkit-scrollbar, 
+            .workflow-grid::-webkit-scrollbar, 
+            .pricing-grid::-webkit-scrollbar {
+                height: 4px;
+            }
+            .grid-3::-webkit-scrollbar-thumb, 
+            .workflow-grid::-webkit-scrollbar-thumb, 
+            .pricing-grid::-webkit-scrollbar-thumb {
+                background: var(--accent-gold);
+                border-radius: 2px;
+            }
+
+            .metric-card, 
+            .workflow-card, 
+            .pricing-card {
+                flex: 0 0 82% !important; /* Muestra el 82% del ancho para sugerir que hay más tarjetas deslizando */
+                max-width: 82% !important;
+                min-width: 280px !important;
+                scroll-snap-align: start;
+            }
+        }
+
         @media (max-width: 992px) {
             .hero h1 { font-size: 2.6rem; }
             .nav-container { padding: 1rem; }
-            nav ul { gap: 16px; }
         }
 
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.1rem; }
-            nav ul { display: none; }
             .splash-slogan { font-size: 2.4rem; }
             .splash-logo { height: 50vh; }
-            .form-grid { grid-template-columns: 1fr; }
+            
+            /* Formulario B2B - Elementos uno debajo de otro estrictamente sin superponerse */
+            .form-grid { 
+                grid-template-columns: 1fr !important; 
+                gap: 15px !important;
+            }
+            
+            .form-grid .full-width { 
+                grid-column: span 1 !important; 
+            }
+            
+            .form-grid.full-width {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+
             .intake-form-wrapper { padding: 35px 20px; }
             .section { padding: 70px 1rem; }
-            .pricing-card { max-width: 100%; }
+            
+            .metric-card, 
+            .workflow-card, 
+            .pricing-card {
+                flex: 0 0 88% !important;
+                max-width: 88% !important;
+            }
         }
     </style>
 </head>
@@ -981,7 +1110,13 @@
                 <h1>TRIVAULT PROPERTY SOLUTIONS</h1>
             </div>
             <nav>
-                <ul>
+                <!-- Botón Hamburguesa Estructural -->
+                <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul id="navMenu">
                     <li><a href="#pricing">Fee Structure</a></li>
                     <li><a href="#samples">Architecture Samples</a></li>
                     <li><a href="#intake">Submit File</a></li>
@@ -1237,7 +1372,7 @@
                         </select>
                     </div>
 
-                    <div class="form-grid full-width" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; margin: 0;">
+                    <div class="form-grid full-width">
                         <div class="form-group">
                             <label for="clientType">Client Type <span style="color:#ef4444">*</span></label>
                             <select id="clientType" name="clientType" required>
@@ -1276,7 +1411,7 @@
                         <input type="text" id="propertyAddress" name="propertyAddress" placeholder="Enter full address (City, Zip Code, County)" required>
                     </div>
 
-                    <div class="form-grid full-width" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0; margin: 0;">
+                    <div class="form-grid full-width">
                         <div class="form-group">
                             <label for="claimNumber">Claim / Case Number <span style="color:#ef4444">*</span></label>
                             <input type="text" id="claimNumber" name="claimNumber" placeholder="CLM-2026-00001" required>
@@ -1363,10 +1498,7 @@
             activeTravelSurcharge = 0;
             if (currentService && currentService !== "Estimation") {
                 const addressText = propertyAddress.value.toLowerCase();
-                
-                // Mapeo inteligente de palabras claves para Monroe y Palm Beach Counties
                 const isExtendedZone = /palm beach|pbc|west palm|jupiter|boca raton|delray|boynton|monroe|marathon|key largo|islamorada|key west|cayos|keys/i.test(addressText);
-                
             }
 
             // Actualizar etiqueta del botón de envíos reflectando los costos calculados
@@ -1577,6 +1709,7 @@
     <!-- INTERACTION & TIMING JAVASCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            // Animación Splash Screen
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 if (splash) {
@@ -1586,6 +1719,27 @@
                 }
             }, 2500);
 
+            // Controladores del Menú Hamburguesa
+            const hamburgerBtn = document.getElementById("hamburgerBtn");
+            const navMenu = document.getElementById("navMenu");
+            const navLinks = document.querySelectorAll("#navMenu a");
+
+            if (hamburgerBtn && navMenu) {
+                hamburgerBtn.addEventListener("click", function() {
+                    hamburgerBtn.classList.toggle("active");
+                    navMenu.classList.toggle("active");
+                });
+
+                // Cierra automáticamente el menú al hacer click en cualquier sección interna
+                navLinks.forEach(link => {
+                    link.addEventListener("click", function() {
+                        hamburgerBtn.classList.remove("active");
+                        navMenu.classList.remove("active");
+                    });
+                });
+            }
+
+            // Lógica Legal del Modal
             const modal = document.getElementById("legalModal");
             const openLinks = document.querySelectorAll(".open-terms-link");
             const closeBtn = document.getElementById("closeTermsBtn");
