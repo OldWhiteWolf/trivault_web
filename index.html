@@ -39,7 +39,6 @@
             letter-spacing: 0.2px;
         }
 
-        /* --- INTRO SPLASH SCREEN EFFECT --- */
         #splash-screen {
             position: fixed;
             top: 0;
@@ -118,7 +117,6 @@
             overflow: hidden;
         }
 
-        /* --- HEADER NAVIGATION --- */
         header {
             background-color: rgba(7, 13, 20, 0.96);
             backdrop-filter: blur(8px);
@@ -209,7 +207,6 @@
             box-shadow: 0 0 15px rgba(197, 160, 89, 0.2);
         }
 
-        /* Botón Hamburguesa Estilos Base */
         .hamburger-btn {
             display: none;
             background: none;
@@ -228,7 +225,6 @@
             transition: all 0.3s ease;
         }
 
-        /* Animación Hamburguesa Activa */
         .hamburger-btn.active span:nth-child(1) {
             transform: translateY(7px) rotate(45deg);
             background-color: var(--accent-gold);
@@ -241,7 +237,6 @@
             background-color: var(--accent-gold);
         }
 
-        /* --- HERO SECTION --- */
         .hero {
             padding: 220px 2rem 140px 2rem;
             text-align: center;
@@ -331,7 +326,6 @@
             box-shadow: 0 0 30px rgba(197, 160, 89, 0.15);
         }
 
-        /* --- TRUST BADGES BAR --- */
         .trust-bar {
             background-color: var(--secondary-dark);
             border-top: 1px solid var(--border-alpha);
@@ -364,7 +358,6 @@
             font-size: 1.1rem;
         }
 
-        /* --- SECTION STRUCTURE --- */
         .section {
             padding: 100px 2rem;
             max-width: 1300px;
@@ -399,7 +392,6 @@
             gap: 30px;
         }
 
-        /* --- METRIC CARDS --- */
         .metric-card {
             background-color: var(--secondary-dark);
             padding: 3.5rem 2.5rem;
@@ -463,7 +455,6 @@
             margin-top: 0.5rem;
         }
 
-        /* --- MODERN WORKFLOW SYSTEM --- */
         .workflow-section {
             background-color: #04080e;
             padding: 100px 2rem;
@@ -530,7 +521,6 @@
             line-height: 1.6;
         }
 
-        /* --- PRICING STRUCTURE SECTION --- */
         .pricing-section {
             padding: 100px 2rem;
             background-color: var(--primary-dark);
@@ -641,7 +631,6 @@
             background-color: rgba(0,0,0,0.1);
         }
 
-        /* --- TERMS AND CONDITIONS MODAL WINDOW --- */
         .legal-modal {
             display: none; 
             position: fixed;
@@ -710,7 +699,6 @@
             margin-bottom: 15px;
         }
 
-        /* --- PREMIUM SAMPLES CARDS --- */
         .samples-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -804,7 +792,6 @@
             stroke: var(--primary-dark);
         }
 
-        /* --- SECURE INTAKE PORTAL GATEWAY --- */
         .intake-section {
             background: linear-gradient(180deg, #04080e 0%, var(--primary-dark) 100%);
             padding: 110px 2rem;
@@ -865,6 +852,12 @@
             transition: all 0.25s ease;
             width: 100%;
         }
+
+        .form-group select:disabled,
+        .form-group input:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
         
         .form-group select option { background: var(--secondary-dark); }
         
@@ -879,8 +872,15 @@
         .form-group input::placeholder,
         .form-group textarea::placeholder { color: rgba(255, 255, 255, 0.2); }
         .form-group textarea { resize: vertical; min-height: 120px; }
+
+        .slot-status-note {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .slot-status-note.error { color: #fca5a5; font-style: normal; }
         
-        /* TECHNICAL DROP ZONE */
         .drop-zone {
             border: 1px dashed rgba(197, 160, 89, 0.4);
             background: rgba(0, 0, 0, 0.15);
@@ -939,7 +939,6 @@
         .intake-msg.success { background: rgba(34, 197, 94, 0.08); border-color: #22c55e; color: #4ade80; }
         .intake-msg.error   { background: rgba(239, 68, 68, 0.08); border-color: #ef4444; color: #fca5a5; }
 
-        /* --- FOOTER --- */
         footer {
             background-color: #03060a;
             padding: 60px 2rem;
@@ -974,15 +973,13 @@
             .pricing-grid { justify-content: center; }
         }
 
-        /* --- MEDIA QUERIES GENERALES REVISADAS (TABLETS / MÓVILES) --- */
         @media (max-width: 1024px) {
-            /* Header & Hamburguesa */
             .hamburger-btn {
-                display: block; /* Muestra las 3 líneas */
+                display: block;
             }
 
             nav ul {
-                display: none; /* Esconde el menú horizontal original */
+                display: none;
                 flex-direction: column;
                 position: absolute;
                 top: 100%;
@@ -996,7 +993,7 @@
             }
 
             nav ul.active {
-                display: flex; /* Se abre con JS */
+                display: flex;
             }
 
             nav ul li {
@@ -1016,7 +1013,6 @@
                 margin-top: 10px;
             }
 
-            /* Transformación de Secciones a Carrusel */
             .grid-3, 
             .workflow-grid, 
             .pricing-grid {
@@ -1029,7 +1025,6 @@
                 -webkit-overflow-scrolling: touch;
             }
 
-            /* Habilitar barra de desplazamiento visualmente sutil para guiar al usuario */
             .grid-3::-webkit-scrollbar, 
             .workflow-grid::-webkit-scrollbar, 
             .pricing-grid::-webkit-scrollbar {
@@ -1045,7 +1040,7 @@
             .metric-card, 
             .workflow-card, 
             .pricing-card {
-                flex: 0 0 82% !important; /* Muestra el 82% del ancho para sugerir que hay más tarjetas deslizando */
+                flex: 0 0 82% !important;
                 max-width: 82% !important;
                 min-width: 280px !important;
                 scroll-snap-align: start;
@@ -1062,7 +1057,6 @@
             .splash-slogan { font-size: 2.4rem; }
             .splash-logo { height: 50vh; }
             
-            /* Formulario B2B - Elementos uno debajo de otro estrictamente sin superponerse */
             .form-grid { 
                 grid-template-columns: 1fr !important; 
                 gap: 15px !important;
@@ -1110,7 +1104,6 @@
                 <h1>TRIVAULT PROPERTY SOLUTIONS</h1>
             </div>
             <nav>
-                <!-- Botón Hamburguesa Estructural -->
                 <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
                     <span></span>
                     <span></span>
@@ -1233,7 +1226,7 @@
         </div>
     </section>
 
-    <!-- PRICING SECTION - SIMPLIFIED TO 3 CARDS WITH UPDATED BASE RATES -->
+    <!-- PRICING SECTION -->
     <section id="pricing" class="pricing-section">
         <div class="section-header">
             <h2>Fee Structure</h2>
@@ -1241,7 +1234,6 @@
         </div>
         
         <div class="pricing-grid">
-            <!-- 1. Baseline Estimate Pricing Card -->
             <div class="pricing-card featured">
                 <h3>Standard Estimate</h3>
                 <div class="pricing-price">$100<span>Minimum Fee</span></div>
@@ -1252,7 +1244,6 @@
                 </ul>
             </div>
 
-            <!-- 2. Field Inspection Base Card (UPDATED TO $200 + MILEAGE NOTICE) -->
             <div class="pricing-card">
                 <h3>Field Inspection</h3>
                 <div class="pricing-price">$200<span>Base Fee</span></div>
@@ -1263,7 +1254,6 @@
                 </ul>
             </div>
 
-            <!-- 3. Estimate Supplements Card -->
             <div class="pricing-card">
                 <h3>Supplements</h3>
                 <div class="pricing-price">$100<span>Per Iteration</span></div>
@@ -1349,7 +1339,7 @@
         </div>
     </section>
 
-    <!-- SECURE B2B INTAKE SECTION WITH AUTOMATED TRAVEL MATRIX LÓGICA -->
+    <!-- SECURE B2B INTAKE SECTION WITH LIVE CALENDAR AVAILABILITY -->
     <section id="intake" class="intake-section">
         <div class="intake-form-wrapper">
             <div style="display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,0.4);padding:6px 16px;margin-bottom:24px;border:1px solid var(--border-alpha);">
@@ -1418,9 +1408,17 @@
                         </div>
 
                         <div class="form-group" id="dateGroup">
-                            <label for="date">Preferred Date & Time <span style="color:#ef4444">*</span></label>
-                            <input type="datetime-local" id="date" name="date" required>
+                            <label for="date">Preferred Date <span style="color:#ef4444">*</span></label>
+                            <input type="date" id="date" name="date" required>
                         </div>
+                    </div>
+
+                    <div class="form-group full-width" id="timeSlotGroup">
+                        <label for="timeSlot">Available Time Slots (8:00 AM – 4:00 PM, Miami Time) <span style="color:#ef4444">*</span></label>
+                        <select id="timeSlot" name="timeSlot" required disabled>
+                            <option value="" selected>— Select a date first —</option>
+                        </select>
+                        <div class="slot-status-note" id="slotStatusNote"></div>
                     </div>
 
                     <div class="form-group full-width">
@@ -1446,7 +1444,6 @@
                     </div>
                 </div>
 
-                <!-- BOTÓN DINÁMICO QUE CALCULA EL TOTAL SEGÚN SERVICIO Y MILLAJE -->
                 <button type="submit" class="btn-submit-intake" id="submitBtn">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:16px;height:16px">
                         <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
@@ -1461,7 +1458,7 @@
         </div>
     </section>
 
-    <!-- INTAKE PORTAL BACKEND SCRIPT WITH TRAVEL FEES MATIX AND TIMESTAMPS -->
+    <!-- INTAKE PORTAL BACKEND SCRIPT WITH LIVE CALENDAR AVAILABILITY -->
     <script>
     (function () {
         const BACKEND_URL     = "https://trivaultweb-production.up.railway.app";
@@ -1470,6 +1467,9 @@
         const propertyAddress = document.getElementById("propertyAddress");
         const dateGroup       = document.getElementById("dateGroup");
         const dateInput       = document.getElementById("date");
+        const timeSlotGroup   = document.getElementById("timeSlotGroup");
+        const timeSlotSelect  = document.getElementById("timeSlot");
+        const slotStatusNote  = document.getElementById("slotStatusNote");
         const fileInput       = document.getElementById("docFiles");
         const fileList        = document.getElementById("fileList");
         const dropZone        = document.getElementById("dropZone");
@@ -1479,56 +1479,117 @@
         const scopeLabel      = document.getElementById("scopeLabel");
 
         let selectedFiles = [];
-        let activeTravelSurcharge = 0;
+        let selectedSlotISO = ""; // ISO start datetime of the chosen, validated slot
 
-        // FUNCIÓN CENTRAL: CALCULA EL PRECIO BASE Y SÚMA DE SURCHARGE POR UBICACIÓN
-        function calculateDynamicPricing() {
-            let baseFee = 0;
-            let currentService = serviceType.value;
+        // ─── DATE FIELD CONSTRAINTS: no same-day booking, no Saturdays/Sundays ───
+        function getMiamiTodayISODate() {
+            return new Intl.DateTimeFormat("en-CA", { timeZone: "America/New_York" }).format(new Date());
+        }
 
-            if (currentService === "Field Inspection") {
-                baseFee = 200;
-            } else if (currentService === "Field Inspection and estimation") {
-                baseFee = 300;
-            } else if (currentService === "Estimation") {
-                baseFee = 100;
+        function addDaysToISODate(isoDate, days) {
+            const [y, m, d] = isoDate.split("-").map(Number);
+            const dt = new Date(Date.UTC(y, m - 1, d));
+            dt.setUTCDate(dt.getUTCDate() + days);
+            return dt.toISOString().slice(0, 10);
+        }
+
+        function isSaturdayOrSunday(isoDate) {
+            const [y, m, d] = isoDate.split("-").map(Number);
+            const dow = new Date(Date.UTC(y, m - 1, d)).getUTCDay(); // 0=Sun, 6=Sat
+            return dow === 0 || dow === 6;
+        }
+
+        const todayMiami = getMiamiTodayISODate();
+        const minBookableDate = addDaysToISODate(todayMiami, 1);
+        dateInput.min = minBookableDate;
+
+        // ─── LOAD AVAILABLE TIME SLOTS FOR THE CHOSEN DATE ───────────────────────
+        async function loadAvailability(dateStr) {
+            timeSlotSelect.innerHTML = '<option value="" selected>Loading available times…</option>';
+            timeSlotSelect.disabled = true;
+            slotStatusNote.textContent = "";
+            slotStatusNote.classList.remove("error");
+            selectedSlotISO = "";
+
+            if (isSaturdayOrSunday(dateStr)) {
+                timeSlotSelect.innerHTML = '<option value="" selected>— Closed on weekends —</option>';
+                slotStatusNote.textContent = "We are closed Saturdays and Sundays. Please choose a weekday.";
+                slotStatusNote.classList.add("error");
+                return;
             }
 
-            // Verificar ubicación geográfica solo si requiere traslado físico
-            activeTravelSurcharge = 0;
-            if (currentService && currentService !== "Estimation") {
-                const addressText = propertyAddress.value.toLowerCase();
-                const isExtendedZone = /palm beach|pbc|west palm|jupiter|boca raton|delray|boynton|monroe|marathon|key largo|islamorada|key west|cayos|keys/i.test(addressText);
-            }
+            try {
+                const res = await fetch(`${BACKEND_URL}/availability?date=${dateStr}`);
+                const data = await res.json();
 
-            // Actualizar etiqueta del botón de envíos reflectando los costos calculados
-            if (!currentService) {
-                submitLbl.textContent = "Submit Secure Intake";
-            } else {
-                let totalText = `Submit Secure Intake ($${baseFee + activeTravelSurcharge} Total Base)`;
-                if (activeTravelSurcharge > 0) {
-                    totalText += ` *Includes $125 Extended Travel Surcharge`;
+                if (data.reason === "closed_weekend") {
+                    timeSlotSelect.innerHTML = '<option value="" selected>— Closed on weekends —</option>';
+                    slotStatusNote.textContent = "We are closed Saturdays and Sundays. Please choose a weekday.";
+                    slotStatusNote.classList.add("error");
+                    return;
                 }
-                submitLbl.textContent = totalText;
+
+                if (data.reason === "same_day_or_past_not_allowed") {
+                    timeSlotSelect.innerHTML = '<option value="" selected>— Choose a future date —</option>';
+                    slotStatusNote.textContent = "Same-day appointments are not available. Please choose a later date.";
+                    slotStatusNote.classList.add("error");
+                    return;
+                }
+
+                if (!data.slots || data.slots.length === 0) {
+                    timeSlotSelect.innerHTML = '<option value="" selected>— No times available this day —</option>';
+                    slotStatusNote.textContent = "All slots are booked for this date. Please try another day.";
+                    slotStatusNote.classList.add("error");
+                    return;
+                }
+
+                timeSlotSelect.innerHTML = '<option value="" disabled selected>— Select an available time —</option>' +
+                    data.slots.map(s => `<option value="${s.startISO}">${s.label}</option>`).join("");
+                timeSlotSelect.disabled = false;
+                slotStatusNote.textContent = `${data.slots.length} time slot(s) available (each appointment is 2 hours).`;
+
+            } catch (err) {
+                timeSlotSelect.innerHTML = '<option value="" selected>— Could not load availability —</option>';
+                slotStatusNote.textContent = "Could not reach the scheduling server. Please call us at 786-879-1056.";
+                slotStatusNote.classList.add("error");
             }
         }
 
-        // CONTROLADORES DE EVENTO DINÁMICOS
+        dateInput.addEventListener("change", function () {
+            const val = dateInput.value;
+            if (!val) return;
+
+            if (val < minBookableDate) {
+                dateInput.value = minBookableDate;
+                loadAvailability(minBookableDate);
+                return;
+            }
+            loadAvailability(val);
+        });
+
+        timeSlotSelect.addEventListener("change", function () {
+            selectedSlotISO = timeSlotSelect.value || "";
+        });
+
+        // ─── SERVICE TYPE TOGGLE: Estimation skips date/time entirely ───────────
         serviceType.addEventListener("change", function() {
             if (this.value === "Estimation") {
                 dateGroup.style.display = "none";
+                timeSlotGroup.style.display = "none";
                 dateInput.removeAttribute("required");
-                dateInput.value = ""; 
+                timeSlotSelect.removeAttribute("required");
+                dateInput.value = "";
+                timeSlotSelect.value = "";
+                selectedSlotISO = "";
                 scopeLabel.innerHTML = 'Work Description / Scope of Claim <span style="color:#ef4444">*</span>';
             } else {
                 dateGroup.style.display = "flex";
+                timeSlotGroup.style.display = "flex";
                 dateInput.setAttribute("required", "required");
+                timeSlotSelect.setAttribute("required", "required");
                 scopeLabel.innerHTML = 'Work Description / Scope of Claim';
             }
-            calculateDynamicPricing();
         });
-
-        propertyAddress.addEventListener("input", calculateDynamicPricing);
 
         // DRAG & DROP LOGIC
         dropZone.addEventListener("dragover", e => { e.preventDefault(); dropZone.classList.add("drag-over"); });
@@ -1596,10 +1657,17 @@
                 return;
             }
 
-            if (serviceType.value !== "Estimation" && !dateInput.value) {
-                showMsg("error", "Please select a Preferred Date & Time for the inspection.");
-                dateInput.focus();
-                return;
+            if (serviceType.value !== "Estimation") {
+                if (!dateInput.value) {
+                    showMsg("error", "Please select a Preferred Date for the inspection.");
+                    dateInput.focus();
+                    return;
+                }
+                if (!selectedSlotISO) {
+                    showMsg("error", "Please select an available time slot. Only open times can be booked.");
+                    timeSlotSelect.focus();
+                    return;
+                }
             }
 
             if (!document.getElementById("agreeTerms").checked) {
@@ -1618,13 +1686,12 @@
             formData.append("propertyAddress",      propertyAddress.value);
             formData.append("claimNumber",          document.getElementById("claimNumber").value);
             formData.append("jobDescription",       document.getElementById("jobDescription").value);
-            formData.append("calculatedTravelFee",  activeTravelSurcharge.toString());
-            
+
             if (serviceType.value === "Estimation") {
-                formData.append("date", new Date().toISOString()); 
-                formData.append("isSubmissionTimestamp", "true"); 
+                formData.append("date", new Date().toISOString());
+                formData.append("isSubmissionTimestamp", "true");
             } else {
-                formData.append("date", dateInput.value); 
+                formData.append("date", selectedSlotISO);
                 formData.append("isSubmissionTimestamp", "false");
             }
 
@@ -1639,11 +1706,18 @@
                     showMsg("success", `✅ Service request submitted successfully.${filesNote}`);
                     form.reset();
                     dateGroup.style.display = "flex";
+                    timeSlotGroup.style.display = "flex";
                     dateInput.setAttribute("required", "required");
+                    timeSlotSelect.innerHTML = '<option value="" selected>— Select a date first —</option>';
+                    timeSlotSelect.disabled = true;
+                    slotStatusNote.textContent = "";
+                    selectedSlotISO = "";
                     scopeLabel.innerHTML = 'Work Description / Scope of Claim';
                     selectedFiles = [];
                     renderFileList();
-                    calculateDynamicPricing();
+                } else if (res.status === 409) {
+                    showMsg("error", data.error || "That time slot was just booked. Please pick another time.");
+                    loadAvailability(dateInput.value);
                 } else {
                     showMsg("error", data.error || "Submission failed.");
                 }
@@ -1655,8 +1729,7 @@
 
         function setLoading(on) {
             submitBtn.disabled = on;
-            if (!on) calculateDynamicPricing();
-            else submitLbl.textContent = "Submitting…";
+            submitLbl.textContent = on ? "Submitting…" : "Submit Secure Intake";
         }
 
         function showMsg(type, text) {
@@ -1709,7 +1782,6 @@
     <!-- INTERACTION & TIMING JAVASCRIPT -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // Animación Splash Screen
             setTimeout(function() {
                 const splash = document.getElementById('splash-screen');
                 if (splash) {
@@ -1719,7 +1791,6 @@
                 }
             }, 2500);
 
-            // Controladores del Menú Hamburguesa
             const hamburgerBtn = document.getElementById("hamburgerBtn");
             const navMenu = document.getElementById("navMenu");
             const navLinks = document.querySelectorAll("#navMenu a");
@@ -1730,7 +1801,6 @@
                     navMenu.classList.toggle("active");
                 });
 
-                // Cierra automáticamente el menú al hacer click en cualquier sección interna
                 navLinks.forEach(link => {
                     link.addEventListener("click", function() {
                         hamburgerBtn.classList.remove("active");
@@ -1739,7 +1809,6 @@
                 });
             }
 
-            // Lógica Legal del Modal
             const modal = document.getElementById("legalModal");
             const openLinks = document.querySelectorAll(".open-terms-link");
             const closeBtn = document.getElementById("closeTermsBtn");
